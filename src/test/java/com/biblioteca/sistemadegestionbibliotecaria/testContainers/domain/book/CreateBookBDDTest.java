@@ -2,7 +2,7 @@ package com.biblioteca.sistemadegestionbibliotecaria.testContainers.domain.book;
 
 import com.biblioteca.sistemadegestionbibliotecaria.author.aplication.port.out.AuthorRepositoryPort;
 import com.biblioteca.sistemadegestionbibliotecaria.author.domain.model.Author;
-import com.biblioteca.sistemadegestionbibliotecaria.book.repo.IBookRepo;
+import com.biblioteca.sistemadegestionbibliotecaria.book.infraestructure.persistance.SpringDataBookRepository;
 import com.biblioteca.sistemadegestionbibliotecaria.testContainers.common.AbstractIntegrationTest;
 import com.biblioteca.sistemadegestionbibliotecaria.libraries.entity.LibraryEntity;
 import com.biblioteca.sistemadegestionbibliotecaria.libraries.repo.ILibraryRepo;
@@ -25,14 +25,14 @@ class CreateBookBDDTest extends AbstractIntegrationTest {
     private ILibraryRepo libraryRepo;
 
     @Autowired
-    private IBookRepo bookRepo;
+    private SpringDataBookRepository bookRepo;
 
     @Test
     void registrarLibroConAutorYBibliotecaExistentes() {
 
         // Given: que el autor y la biblioteca ya existen en el sistema
        Author author = authorRepo.save(
-                new Author(null, "Gabriel García Márquez", new ArrayList<>())
+                new Author(null, "Gabriel García Márquez")
         );
         LibraryEntity library = libraryRepo.save(
                 new LibraryEntity(null, "Biblioteca Nacional", "Colombia", new ArrayList<>())

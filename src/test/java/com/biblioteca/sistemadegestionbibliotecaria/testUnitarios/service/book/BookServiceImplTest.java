@@ -1,12 +1,13 @@
 package com.biblioteca.sistemadegestionbibliotecaria.testUnitarios.service.book;
 
 import com.biblioteca.sistemadegestionbibliotecaria.author.infraestructure.persistance.AuthorEntity;
-import com.biblioteca.sistemadegestionbibliotecaria.book.dto.input.BookCreateDTO;
-import com.biblioteca.sistemadegestionbibliotecaria.book.dto.input.BookDTO;
-import com.biblioteca.sistemadegestionbibliotecaria.book.entity.BookEntity;
-import com.biblioteca.sistemadegestionbibliotecaria.book.mapper.IBookMapper;
-import com.biblioteca.sistemadegestionbibliotecaria.book.repo.IBookRepo;
-import com.biblioteca.sistemadegestionbibliotecaria.book.service.impl.BookServiceImpl;
+import com.biblioteca.sistemadegestionbibliotecaria.book.aplication.port.out.BookRepositoryPort;
+import com.biblioteca.sistemadegestionbibliotecaria.book.aplication.service.BookService;
+import com.biblioteca.sistemadegestionbibliotecaria.book.domain.model.Book;
+import com.biblioteca.sistemadegestionbibliotecaria.book.infraestructure.controller.dto.input.BookDTO;
+import com.biblioteca.sistemadegestionbibliotecaria.book.infraestructure.persistance.BookEntity;
+import com.biblioteca.sistemadegestionbibliotecaria.book.infraestructure.mapper.IBookMapper;
+import com.biblioteca.sistemadegestionbibliotecaria.book.infraestructure.persistance.SpringDataBookRepository;
 import com.biblioteca.sistemadegestionbibliotecaria.libraries.entity.LibraryEntity;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -24,94 +25,77 @@ import static org.junit.jupiter.api.Assertions.*;
 class BookServiceImplTest {
 
     @InjectMocks
-    private BookServiceImpl bookService;
+    private BookService bookService;
     @Mock
-    private IBookRepo bookRepo;
+    private BookRepositoryPort repositoryPort;
     @Spy
     private IBookMapper bookMapper = Mappers.getMapper(IBookMapper.class);
 
     @Test
     void givenBookRequestDTOWhenAddBookThenReturnBookResponseDTO() {
-        //given:
-        BookCreateDTO input = new BookCreateDTO("Libro","9780306406157",1L,1L);
+        // given
+        Book input = new Book(1L, "Libro", "9780306406157", 1L, 1L);
+        Book expected = new Book(1L, "Libro", "9780306406157", 1L, 1L);
 
-        //when:
-        AuthorEntity authorEntity = new AuthorEntity();
-        authorEntity.setId(1L);
+        // when
+        Mockito.when(repositoryPort.save(Mockito.any(Book.class))).thenReturn(expected);
 
-        LibraryEntity libraryEntity = new LibraryEntity();
-        libraryEntity.setId(1L);
+        // act
+        Book result = bookService.createBook(input);
 
-        BookEntity bookEntity = new BookEntity();
-        bookEntity.setTitle("Libro");
-        bookEntity.setIsbn("9780306406157");
-        bookEntity.setAuthor(authorEntity);
-        bookEntity.setLibrary(libraryEntity);
-
-        BookEntity bookEntity2 = new BookEntity();
-        bookEntity2.setId(1L);
-        bookEntity2.setTitle("Libro");
-        bookEntity2.setIsbn("9780306406157");
-        bookEntity2.setAuthor(authorEntity);
-        bookEntity2.setLibrary(libraryEntity);
-
-        Mockito.when(bookRepo.save(bookEntity)).thenReturn(bookEntity2);
-
-        BookDTO outPutEsperado = new BookDTO("Libro","9780306406157",1L,1L);
-        BookDTO resultado = bookService.addBook(input);
-        //then:
-        assertEquals(outPutEsperado, resultado);
-
+        // then
+        assertEquals(expected, result);
     }
+
+
 
     @Test
     void givenBookRequestDTOWhenAddBookWithNUllISBNThenReturnBookResponseDTO3() {
         //given:
-        BookCreateDTO input = new BookCreateDTO("Libro2",null,1L,1L);
-        assertThrows(IllegalArgumentException.class, () -> bookService.addBook(input));
+        Book input = new Book(1L, "Libro2",null,1L,1L);
+        assertThrows(IllegalArgumentException.class, () -> bookService.createBook(input));
     }
 
     @Test
     void givenBookRequestDTOWhenAddBookWithEmptyISBNThenReturnBookResponseDTO3() {
         //given:
-        BookCreateDTO input = new BookCreateDTO("Libro2","",1L,1L);
-        assertThrows(IllegalArgumentException.class, () -> bookService.addBook(input));
+        Book input = new Book(1L, "Libro2","",1L,1L);
+        assertThrows(IllegalArgumentException.class, () -> bookService.createBook(input));
     }
 
     @Test
     void givenBookRequestDTOWhenAddBookWithRandomCaracterISBNThenReturnBookResponseDTO3() {
         //given:
-        BookCreateDTO input = new BookCreateDTO("Libro2","12sgh2",1L,1L);
-        assertThrows(IllegalArgumentException.class, () -> bookService.addBook(input));
+        Book input = new Book(1L, "Libro2","12sgh2",1L,1L);
+        assertThrows(IllegalArgumentException.class, () -> bookService.createBook(input));
     }
 
 
     @Test
     void givenBookRequestDTOWhenAddBookWithNUllTitleThenReturnBookResponseDTO3() {
         //given:
-        BookCreateDTO input = new BookCreateDTO(null,"9780306406157",1L,1L);
-        assertThrows(IllegalArgumentException.class, () -> bookService.addBook(input));
+        Book input = new Book(1L, null,"9780306406157",1L,1L);
+        assertThrows(IllegalArgumentException.class, () -> bookService.createBook(input));
     }
 
     @Test
     void givenBookRequestDTOWhenAddBookWithEmptyTitleThenReturnBookResponseDTO3() {
         //given:
-        BookCreateDTO input = new BookCreateDTO("","9780306406157",1L,1L);
-        assertThrows(IllegalArgumentException.class, () -> bookService.addBook(input));
+        Book input = new Book(1L, "","9780306406157",1L,1L);
+        assertThrows(IllegalArgumentException.class, () -> bookService.createBook(input));
     }
 
     @Test
     void givenBookRequestDTOWhenAddBookWithNUllAuthorIdThenReturnBookResponseDTO3() {
         //given:
-        BookCreateDTO input = new BookCreateDTO(null,"9780306406157",null,1L);
-        assertThrows(IllegalArgumentException.class, () -> bookService.addBook(input));
+        Book input = new Book(1L, null,"9780306406157",null,1L);
+        assertThrows(IllegalArgumentException.class, () -> bookService.createBook(input));
     }
 
     @Test
     void givenBookRequestDTOWhenAddBookWithNULLLibraryIdThenReturnBookResponseDTO3() {
         //given:
-        BookCreateDTO input = new BookCreateDTO("","9780306406157", 1L,null);
-        assertThrows(IllegalArgumentException.class, () -> bookService.addBook(input));
+        Book input = new Book(1L, "","9780306406157", 1L,null);
+        assertThrows(IllegalArgumentException.class, () -> bookService.createBook(input));
     }
-
 }

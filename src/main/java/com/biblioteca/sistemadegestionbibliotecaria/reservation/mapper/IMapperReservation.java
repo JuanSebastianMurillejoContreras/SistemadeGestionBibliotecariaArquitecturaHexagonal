@@ -1,8 +1,6 @@
 package com.biblioteca.sistemadegestionbibliotecaria.reservation.mapper;
 
-import com.biblioteca.sistemadegestionbibliotecaria.book.dto.input.BookDTO;
-import com.biblioteca.sistemadegestionbibliotecaria.book.dto.out.BookListResponseDTO;
-import com.biblioteca.sistemadegestionbibliotecaria.book.entity.BookEntity;
+import com.biblioteca.sistemadegestionbibliotecaria.book.infraestructure.persistance.BookEntity;
 import com.biblioteca.sistemadegestionbibliotecaria.reservation.dto.input.ReservationCreateDTO;
 import com.biblioteca.sistemadegestionbibliotecaria.reservation.dto.input.ReservationDTO;
 import com.biblioteca.sistemadegestionbibliotecaria.reservation.dto.input.ReservationRequestDTO;

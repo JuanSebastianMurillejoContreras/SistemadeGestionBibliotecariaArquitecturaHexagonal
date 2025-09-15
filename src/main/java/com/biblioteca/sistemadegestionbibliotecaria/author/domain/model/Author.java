@@ -1,13 +1,9 @@
 package com.biblioteca.sistemadegestionbibliotecaria.author.domain.model;
 
-import com.biblioteca.sistemadegestionbibliotecaria.book.entity.BookEntity;
-
-import java.util.List;
-
 public record Author(
         Long id,
-        String name,
-        List<BookEntity> books //MAL
+        String name
+
 ) {
 /*
     public Author {

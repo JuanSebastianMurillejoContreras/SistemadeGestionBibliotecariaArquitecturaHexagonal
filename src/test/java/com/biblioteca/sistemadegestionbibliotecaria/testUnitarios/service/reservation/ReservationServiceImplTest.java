@@ -1,6 +1,6 @@
 package com.biblioteca.sistemadegestionbibliotecaria.testUnitarios.service.reservation;
 
-import com.biblioteca.sistemadegestionbibliotecaria.book.entity.BookEntity;
+import com.biblioteca.sistemadegestionbibliotecaria.book.infraestructure.persistance.BookEntity;
 import com.biblioteca.sistemadegestionbibliotecaria.reservation.dto.input.ReservationCreateDTO;
 import com.biblioteca.sistemadegestionbibliotecaria.reservation.dto.input.ReservationDTO;
 import com.biblioteca.sistemadegestionbibliotecaria.reservation.dto.input.ReservationUpdateDTO;

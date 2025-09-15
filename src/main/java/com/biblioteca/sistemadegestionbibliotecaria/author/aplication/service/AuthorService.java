@@ -5,7 +5,6 @@ import com.biblioteca.sistemadegestionbibliotecaria.author.aplication.port.in.Ge
 import com.biblioteca.sistemadegestionbibliotecaria.author.aplication.port.out.AuthorRepositoryPort;
 import com.biblioteca.sistemadegestionbibliotecaria.author.domain.exception.AuthorErrorMessage;
 import com.biblioteca.sistemadegestionbibliotecaria.author.domain.exception.AuthorException;
-import com.biblioteca.sistemadegestionbibliotecaria.author.domain.exception.AuthorNotFoundException;
 import com.biblioteca.sistemadegestionbibliotecaria.author.domain.model.Author;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

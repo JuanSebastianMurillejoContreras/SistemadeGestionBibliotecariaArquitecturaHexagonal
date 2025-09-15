@@ -1,7 +1,5 @@
 package com.biblioteca.sistemadegestionbibliotecaria.libraries.service.impl;
 
-import com.biblioteca.sistemadegestionbibliotecaria.book.dto.input.BookCreateDTO;
-import com.biblioteca.sistemadegestionbibliotecaria.book.service.IBookService;
 import com.biblioteca.sistemadegestionbibliotecaria.libraries.constants.LibraryErrorMessage;
 import com.biblioteca.sistemadegestionbibliotecaria.libraries.dto.input.LibraryCreateDTO;
 import com.biblioteca.sistemadegestionbibliotecaria.libraries.dto.input.LibraryDTO;

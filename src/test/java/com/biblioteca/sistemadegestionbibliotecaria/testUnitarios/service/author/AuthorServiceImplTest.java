@@ -31,8 +31,8 @@ public class AuthorServiceImplTest {
     @Test
     void givenAuthorWhenCreateAuthorThenReturnSavedAuthor() {
         // Given
-        Author input = new Author(null, "Gabriel García Márquez", null);
-        Author savedAuthor = new Author(1L, "Gabriel García Márquez", null);
+        Author input = new Author(null, "Gabriel García Márquez");
+        Author savedAuthor = new Author(1L, "Gabriel García Márquez");
 
         // When
         Mockito.when(authorRepo.existsByName("Gabriel García Márquez")).thenReturn(false);
@@ -47,13 +47,13 @@ public class AuthorServiceImplTest {
 
     @Test
     void givenAuthorWithNullNameWhenCreateAuthorThenThrowException() {
-        Author input = new Author(null, null, null);
+        Author input = new Author(null, null);
         assertThrows(IllegalArgumentException.class, () -> authorService.createAuthor(input));
     }
 
     @Test
     void givenAuthorWithEmptyNameWhenCreateAuthorThenThrowException() {
-        Author input = new Author(null, "", null);
+        Author input = new Author(null, "");
         assertThrows(IllegalArgumentException.class, () -> authorService.createAuthor(input));
     }
 }

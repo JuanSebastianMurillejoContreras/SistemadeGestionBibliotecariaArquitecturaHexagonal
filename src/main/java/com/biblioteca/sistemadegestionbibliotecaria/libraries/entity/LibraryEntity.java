@@ -1,6 +1,6 @@
 package com.biblioteca.sistemadegestionbibliotecaria.libraries.entity;
 
-import com.biblioteca.sistemadegestionbibliotecaria.book.entity.BookEntity;
+import com.biblioteca.sistemadegestionbibliotecaria.book.infraestructure.persistance.BookEntity;
 import jakarta.persistence.*;
 import lombok.*;
 

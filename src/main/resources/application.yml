@@ -2,5 +2,5 @@ spring:
   application:
     name: SistemaDeGestionBibliotecaria
   profiles:
-    active: dev
+    active: prod
 
