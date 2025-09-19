@@ -11,6 +11,8 @@ import com.biblioteca.sistemadegestionbibliotecaria.reservation.domain.exception
 import com.biblioteca.sistemadegestionbibliotecaria.reservation.domain.model.Reservation;
 import com.biblioteca.sistemadegestionbibliotecaria.reservation.infraestructure.persistance.ReservationEntity;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -36,7 +38,7 @@ public class ReservationService implements CreateReservationUseCase, CancelReser
         Reservation cancelled = new Reservation(
                 existing.id(),
                 existing.usuarioId(),
-                existing.book(),
+                existing.bookId(),
                 existing.dateReservation(),
                 false
         );
@@ -46,7 +48,7 @@ public class ReservationService implements CreateReservationUseCase, CancelReser
 
     @Override
     public Reservation createReservation(Reservation reservation) {
-        if (reservation.book().id() == null){
+        if (reservation.bookId() == null){
             throw new IllegalArgumentException("El bookId no puede ser nulo");
         }
 
@@ -58,28 +60,22 @@ public class ReservationService implements CreateReservationUseCase, CancelReser
             throw new IllegalArgumentException("El isActive no puede ser nulo");
         }
 
-        boolean existReservation = repositoryPort.existsByBook_IdAndIsActive(reservation.book().id(), true);
+        boolean existReservation = repositoryPort.existsByBook_IdAndIsActive(reservation.bookId(), true);
 
         if(existReservation)
-            throw new LibraryException(ReservationErrorMessage.RESERVATION_EXIST_AND_IS_ACTIVE + ": ID Libro " + reservation.book().id());
+            throw new LibraryException(ReservationErrorMessage.RESERVATION_EXIST_AND_IS_ACTIVE + ": ID Libro " + reservation.bookId());
 
         return repositoryPort.save(reservation);
     }
 
-
     @Override
     public Reservation getReservationById(Long id) {
-
-        if (id == null){
-            throw new IllegalArgumentException("El ID de la reservación no puede ser nulo");
-        }
-
-        Reservation reservation = repositoryPort.getReservationById(id);
-
-        if (reservation == null){
-            throw new IllegalArgumentException(ReservationErrorMessage.RESERVATION_DOES_NOT_EXIST);
-        }
-
-        return reservation;
+        return  repositoryPort.getReservationById(id);
     }
+
+    @Override
+    public Page<Reservation> findByIsActiveAndUsuario_Id(Boolean isActive, Long usuarioId, Pageable pageable) {
+        return repositoryPort.findByIsActiveAndUsuario_Id(isActive, usuarioId, pageable);
+    }
+
 }

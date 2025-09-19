@@ -8,6 +8,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
 @RequiredArgsConstructor
 public class JpaReservationRepositoryAdapter implements ReservationRepositoryPort {
@@ -16,15 +18,20 @@ public class JpaReservationRepositoryAdapter implements ReservationRepositoryPor
     private final IMapperReservation  mapperReservation;
 
     @Override
+    public Reservation findById(Long id) {
+        return null;
+    }
+
+    @Override
     public Reservation getReservationById(Long id) {
-        ReservationEntity reservationEntity = reservationRepository.findById(id);
-        return reservationRepository.findById(id);
+        Optional<ReservationEntity> reservationEntity = reservationRepository.findById(id);
+        return mapperReservation.toDomain(reservationEntity);
     }
 
     @Override
     public Reservation save(Reservation reservation) {
         ReservationEntity reservationEntity = mapperReservation.toEntity(reservation);
-        return mapperReservation.toDomain(reservationRepository.save(reservationEntity));
+        return mapperReservation.toDomain(Optional.of(reservationRepository.save(reservationEntity)));
     }
 
     @Override
