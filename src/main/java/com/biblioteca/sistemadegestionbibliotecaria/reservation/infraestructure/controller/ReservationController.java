@@ -1,12 +1,12 @@
-package com.biblioteca.sistemadegestionbibliotecaria.reservation.controller;
+package com.biblioteca.sistemadegestionbibliotecaria.reservation.infraestructure.controller;
 
-import com.biblioteca.sistemadegestionbibliotecaria.reservation.dto.input.ReservationCreateDTO;
-import com.biblioteca.sistemadegestionbibliotecaria.reservation.dto.input.ReservationDTO;
-import com.biblioteca.sistemadegestionbibliotecaria.reservation.dto.input.ReservationRequestDTO;
-import com.biblioteca.sistemadegestionbibliotecaria.reservation.dto.input.ReservationUpdateDTO;
-import com.biblioteca.sistemadegestionbibliotecaria.reservation.dto.out.ReservationListResponseDTO;
-import com.biblioteca.sistemadegestionbibliotecaria.reservation.dto.out.ReservationResponseDTO;
-import com.biblioteca.sistemadegestionbibliotecaria.reservation.mapper.IMapperReservation;
+import com.biblioteca.sistemadegestionbibliotecaria.reservation.infraestructure.controller.dto.input.ReservationCreateDTO;
+import com.biblioteca.sistemadegestionbibliotecaria.reservation.infraestructure.controller.dto.input.ReservationDTO;
+import com.biblioteca.sistemadegestionbibliotecaria.reservation.infraestructure.controller.dto.input.ReservationRequestDTO;
+import com.biblioteca.sistemadegestionbibliotecaria.reservation.infraestructure.controller.dto.input.ReservationUpdateDTO;
+import com.biblioteca.sistemadegestionbibliotecaria.reservation.infraestructure.controller.dto.out.ReservationListResponseDTO;
+import com.biblioteca.sistemadegestionbibliotecaria.reservation.infraestructure.controller.dto.out.ReservationResponseDTO;
+import com.biblioteca.sistemadegestionbibliotecaria.reservation.infraestructure.mapper.IMapperReservation;
 import com.biblioteca.sistemadegestionbibliotecaria.reservation.service.IReservationService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

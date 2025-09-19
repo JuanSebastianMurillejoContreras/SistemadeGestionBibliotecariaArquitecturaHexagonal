@@ -1,4 +1,4 @@
-package com.biblioteca.sistemadegestionbibliotecaria.reservation.exception;
+package com.biblioteca.sistemadegestionbibliotecaria.reservation.domain.exception;
 
 import lombok.Getter;
 

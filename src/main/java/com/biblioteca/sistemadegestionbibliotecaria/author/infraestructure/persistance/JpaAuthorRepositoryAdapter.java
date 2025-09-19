@@ -23,16 +23,6 @@ public class JpaAuthorRepositoryAdapter implements AuthorRepositoryPort {
         return mapper.toDomain(repository.save(entity));
     }
 
-    /*
-    @Override
-    public Author getAuthorById(Long id) {
-        Optional<AuthorEntity> authorEntity = repository.findById(id);
-        if (authorEntity.isEmpty()) {
-            throw new AuthorNotFoundException(AuthorErrorMessage.AUTOR_NOT_REGISTERED);
-        }
-        return mapper.toDomain(authorEntity.get());
-    }*/
-
     @Override
     public Author getAuthorById(Long id) {
         AuthorEntity entity = repository.findById(id)
@@ -40,7 +30,6 @@ public class JpaAuthorRepositoryAdapter implements AuthorRepositoryPort {
 
         return mapper.toDomain(entity);
     }
-
 
     @Override
     public boolean existsByName(String name) {

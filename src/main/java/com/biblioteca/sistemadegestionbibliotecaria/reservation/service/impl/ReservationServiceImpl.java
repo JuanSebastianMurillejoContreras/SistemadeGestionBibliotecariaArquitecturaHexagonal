@@ -1,13 +1,13 @@
 package com.biblioteca.sistemadegestionbibliotecaria.reservation.service.impl;
 
 import com.biblioteca.sistemadegestionbibliotecaria.libraries.domain.exception.LibraryException;
-import com.biblioteca.sistemadegestionbibliotecaria.reservation.constants.ReservationErrorMessage;
-import com.biblioteca.sistemadegestionbibliotecaria.reservation.dto.input.ReservationCreateDTO;
-import com.biblioteca.sistemadegestionbibliotecaria.reservation.dto.input.ReservationDTO;
-import com.biblioteca.sistemadegestionbibliotecaria.reservation.dto.input.ReservationUpdateDTO;
-import com.biblioteca.sistemadegestionbibliotecaria.reservation.entity.ReservationEntity;
-import com.biblioteca.sistemadegestionbibliotecaria.reservation.exception.ReservationNotFoundException;
-import com.biblioteca.sistemadegestionbibliotecaria.reservation.mapper.IMapperReservation;
+import com.biblioteca.sistemadegestionbibliotecaria.reservation.domain.exception.ReservationErrorMessage;
+import com.biblioteca.sistemadegestionbibliotecaria.reservation.infraestructure.controller.dto.input.ReservationCreateDTO;
+import com.biblioteca.sistemadegestionbibliotecaria.reservation.infraestructure.controller.dto.input.ReservationDTO;
+import com.biblioteca.sistemadegestionbibliotecaria.reservation.infraestructure.controller.dto.input.ReservationUpdateDTO;
+import com.biblioteca.sistemadegestionbibliotecaria.reservation.infraestructure.persistance.ReservationEntity;
+import com.biblioteca.sistemadegestionbibliotecaria.reservation.domain.exception.ReservationNotFoundException;
+import com.biblioteca.sistemadegestionbibliotecaria.reservation.infraestructure.mapper.IMapperReservation;
 import com.biblioteca.sistemadegestionbibliotecaria.reservation.repo.IReservationRepo;
 import com.biblioteca.sistemadegestionbibliotecaria.reservation.service.IReservationService;
 import lombok.RequiredArgsConstructor;

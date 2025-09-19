@@ -1,7 +1,5 @@
 package com.biblioteca.sistemadegestionbibliotecaria.usuario.controller;
 
-import com.biblioteca.sistemadegestionbibliotecaria.reservation.dto.input.ReservationDTO;
-import com.biblioteca.sistemadegestionbibliotecaria.reservation.dto.out.ReservationResponseDTO;
 import com.biblioteca.sistemadegestionbibliotecaria.usuario.api.UsuarioApi;
 import com.biblioteca.sistemadegestionbibliotecaria.usuario.dto.input.UsuarioCreateDTO;
 import com.biblioteca.sistemadegestionbibliotecaria.usuario.dto.input.UsuarioDTO;
@@ -13,8 +11,6 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequiredArgsConstructor

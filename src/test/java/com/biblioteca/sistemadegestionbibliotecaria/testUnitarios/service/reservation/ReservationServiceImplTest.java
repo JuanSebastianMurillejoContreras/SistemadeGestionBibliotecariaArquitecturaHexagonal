@@ -1,11 +1,11 @@
 package com.biblioteca.sistemadegestionbibliotecaria.testUnitarios.service.reservation;
 
 import com.biblioteca.sistemadegestionbibliotecaria.book.infraestructure.persistance.BookEntity;
-import com.biblioteca.sistemadegestionbibliotecaria.reservation.dto.input.ReservationCreateDTO;
-import com.biblioteca.sistemadegestionbibliotecaria.reservation.dto.input.ReservationDTO;
-import com.biblioteca.sistemadegestionbibliotecaria.reservation.dto.input.ReservationUpdateDTO;
-import com.biblioteca.sistemadegestionbibliotecaria.reservation.entity.ReservationEntity;
-import com.biblioteca.sistemadegestionbibliotecaria.reservation.mapper.IMapperReservation;
+import com.biblioteca.sistemadegestionbibliotecaria.reservation.infraestructure.controller.dto.input.ReservationCreateDTO;
+import com.biblioteca.sistemadegestionbibliotecaria.reservation.infraestructure.controller.dto.input.ReservationDTO;
+import com.biblioteca.sistemadegestionbibliotecaria.reservation.infraestructure.controller.dto.input.ReservationUpdateDTO;
+import com.biblioteca.sistemadegestionbibliotecaria.reservation.infraestructure.persistance.ReservationEntity;
+import com.biblioteca.sistemadegestionbibliotecaria.reservation.infraestructure.mapper.IMapperReservation;
 import com.biblioteca.sistemadegestionbibliotecaria.reservation.repo.IReservationRepo;
 import com.biblioteca.sistemadegestionbibliotecaria.reservation.service.impl.ReservationServiceImpl;
 import com.biblioteca.sistemadegestionbibliotecaria.usuario.entity.UsuarioEntity;

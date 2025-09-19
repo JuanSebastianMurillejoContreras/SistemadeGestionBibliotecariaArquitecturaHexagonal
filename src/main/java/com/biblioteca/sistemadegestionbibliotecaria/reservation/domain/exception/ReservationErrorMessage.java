@@ -1,4 +1,4 @@
-package com.biblioteca.sistemadegestionbibliotecaria.reservation.constants;
+package com.biblioteca.sistemadegestionbibliotecaria.reservation.domain.exception;
 
 public final class ReservationErrorMessage {
 

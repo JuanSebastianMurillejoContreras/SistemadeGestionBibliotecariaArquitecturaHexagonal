@@ -1,4 +1,4 @@
-package com.biblioteca.sistemadegestionbibliotecaria.reservation.dto.out;
+package com.biblioteca.sistemadegestionbibliotecaria.reservation.infraestructure.controller.dto.out;
 
 import java.util.List;
 

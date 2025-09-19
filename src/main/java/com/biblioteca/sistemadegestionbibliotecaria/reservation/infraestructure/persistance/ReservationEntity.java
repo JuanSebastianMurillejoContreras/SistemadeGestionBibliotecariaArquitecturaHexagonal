@@ -1,4 +1,4 @@
-package com.biblioteca.sistemadegestionbibliotecaria.reservation.entity;
+package com.biblioteca.sistemadegestionbibliotecaria.reservation.infraestructure.persistance;
 
 import com.biblioteca.sistemadegestionbibliotecaria.book.infraestructure.persistance.BookEntity;
 import com.biblioteca.sistemadegestionbibliotecaria.usuario.entity.UsuarioEntity;
