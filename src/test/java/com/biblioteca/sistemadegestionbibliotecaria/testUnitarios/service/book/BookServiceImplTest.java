@@ -1,14 +1,9 @@
 package com.biblioteca.sistemadegestionbibliotecaria.testUnitarios.service.book;
 
-import com.biblioteca.sistemadegestionbibliotecaria.author.infraestructure.persistance.AuthorEntity;
 import com.biblioteca.sistemadegestionbibliotecaria.book.aplication.port.out.BookRepositoryPort;
 import com.biblioteca.sistemadegestionbibliotecaria.book.aplication.service.BookService;
 import com.biblioteca.sistemadegestionbibliotecaria.book.domain.model.Book;
-import com.biblioteca.sistemadegestionbibliotecaria.book.infraestructure.controller.dto.input.BookDTO;
-import com.biblioteca.sistemadegestionbibliotecaria.book.infraestructure.persistance.BookEntity;
 import com.biblioteca.sistemadegestionbibliotecaria.book.infraestructure.mapper.IBookMapper;
-import com.biblioteca.sistemadegestionbibliotecaria.book.infraestructure.persistance.SpringDataBookRepository;
-import com.biblioteca.sistemadegestionbibliotecaria.libraries.entity.LibraryEntity;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mapstruct.factory.Mappers;

@@ -57,7 +57,7 @@ public class CreateAuthorBDDTest extends AbstractIntegrationTest {
         // Then la API responde con un 400 Bad Request
         response.then()
                 .statusCode(400)
-                .body("message", containsString("El nombre del autor no puede estar vacío"));
+                .body(containsString("El nombre del autor no puede estar vacío"));
 
     }
 

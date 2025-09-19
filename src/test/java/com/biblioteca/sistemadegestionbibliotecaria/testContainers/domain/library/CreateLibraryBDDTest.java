@@ -4,9 +4,6 @@ import com.biblioteca.sistemadegestionbibliotecaria.testContainers.common.Abstra
 import io.restassured.http.ContentType;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 

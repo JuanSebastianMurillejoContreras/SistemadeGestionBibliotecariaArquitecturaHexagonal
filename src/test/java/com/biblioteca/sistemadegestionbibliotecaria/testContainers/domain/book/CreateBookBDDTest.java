@@ -2,15 +2,17 @@ package com.biblioteca.sistemadegestionbibliotecaria.testContainers.domain.book;
 
 import com.biblioteca.sistemadegestionbibliotecaria.author.aplication.port.out.AuthorRepositoryPort;
 import com.biblioteca.sistemadegestionbibliotecaria.author.domain.model.Author;
+import com.biblioteca.sistemadegestionbibliotecaria.book.domain.model.Book;
 import com.biblioteca.sistemadegestionbibliotecaria.book.infraestructure.persistance.SpringDataBookRepository;
+import com.biblioteca.sistemadegestionbibliotecaria.libraries.aplication.port.out.LibraryRepositoryPort;
+import com.biblioteca.sistemadegestionbibliotecaria.libraries.domain.model.Library;
 import com.biblioteca.sistemadegestionbibliotecaria.testContainers.common.AbstractIntegrationTest;
-import com.biblioteca.sistemadegestionbibliotecaria.libraries.entity.LibraryEntity;
-import com.biblioteca.sistemadegestionbibliotecaria.libraries.repo.ILibraryRepo;
 import io.restassured.http.ContentType;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
@@ -22,7 +24,7 @@ class CreateBookBDDTest extends AbstractIntegrationTest {
     private AuthorRepositoryPort authorRepo;
 
     @Autowired
-    private ILibraryRepo libraryRepo;
+    private LibraryRepositoryPort libraryRepo;
 
     @Autowired
     private SpringDataBookRepository bookRepo;
@@ -34,9 +36,11 @@ class CreateBookBDDTest extends AbstractIntegrationTest {
        Author author = authorRepo.save(
                 new Author(null, "Gabriel García Márquez")
         );
-        LibraryEntity library = libraryRepo.save(
-                new LibraryEntity(null, "Biblioteca Nacional", "Colombia", new ArrayList<>())
+
+        Library library = libraryRepo.createLibrary(
+                new Library(null, "Biblioteca Nacional", "Colombia", null)
         );
+
 
         // When: se envía una solicitud con el título del libro, ID del autor e ID de la biblioteca
         String requestBody = """
@@ -46,7 +50,7 @@ class CreateBookBDDTest extends AbstractIntegrationTest {
                   "authorId": %d,
                   "libraryId": %d
                 }
-                """.formatted(author.id(), library.getId());
+                """.formatted(author.id(), library.id());
 
         var response =
         given()
@@ -62,7 +66,7 @@ class CreateBookBDDTest extends AbstractIntegrationTest {
                 .body("title", equalTo("Cien Años de Soledad"))
                 .body("isbn", equalTo("9780307474728"))
                 .body("authorId", equalTo(author.id().intValue()))
-                .body("libraryId", equalTo(library.getId().intValue()));
+                .body("libraryId", equalTo(library.id().intValue()));
 
         // And: se verifica que el libro existe en la base de datos
         assertTrue(

@@ -3,6 +3,7 @@ package com.biblioteca.sistemadegestionbibliotecaria.book.infraestructure.persis
 import com.biblioteca.sistemadegestionbibliotecaria.book.aplication.port.out.BookRepositoryPort;
 import com.biblioteca.sistemadegestionbibliotecaria.book.domain.model.Book;
 import com.biblioteca.sistemadegestionbibliotecaria.book.infraestructure.mapper.IBookMapper;
+import com.biblioteca.sistemadegestionbibliotecaria.libraries.domain.model.Library;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

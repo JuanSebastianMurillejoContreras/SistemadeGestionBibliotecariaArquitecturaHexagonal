@@ -6,8 +6,6 @@ import com.biblioteca.sistemadegestionbibliotecaria.book.aplication.port.out.Boo
 import com.biblioteca.sistemadegestionbibliotecaria.book.domain.exception.BookErrorMessage;
 import com.biblioteca.sistemadegestionbibliotecaria.book.domain.exception.BookException;
 import com.biblioteca.sistemadegestionbibliotecaria.book.domain.model.Book;
-import com.biblioteca.sistemadegestionbibliotecaria.book.infraestructure.mapper.IBookMapper;
-import com.biblioteca.sistemadegestionbibliotecaria.book.infraestructure.persistance.BookEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -21,7 +19,6 @@ import java.util.List;
 public class BookService implements CreateBookUseCase, GetBookUseCase {
 
     private final BookRepositoryPort repositoryPort;
-    private final IBookMapper bookMapper;
 
     @Override
     public Book createBook(Book book) {

@@ -1,6 +1,6 @@
 package com.biblioteca.sistemadegestionbibliotecaria.reservation.service.impl;
 
-import com.biblioteca.sistemadegestionbibliotecaria.libraries.exception.LibraryException;
+import com.biblioteca.sistemadegestionbibliotecaria.libraries.domain.exception.LibraryException;
 import com.biblioteca.sistemadegestionbibliotecaria.reservation.constants.ReservationErrorMessage;
 import com.biblioteca.sistemadegestionbibliotecaria.reservation.dto.input.ReservationCreateDTO;
 import com.biblioteca.sistemadegestionbibliotecaria.reservation.dto.input.ReservationDTO;
@@ -57,7 +57,7 @@ public class ReservationServiceImpl implements IReservationService {
             throw new IllegalArgumentException("El isActive no puede ser nulo");
         }
 
-        if (reservationUpdateDTO.isActive() == true) {
+        if (reservationUpdateDTO.isActive() == false) {
             throw new IllegalArgumentException("Solo se permite actualizar para cancelar la reserva (isActive debe ser false)");
         }
 
