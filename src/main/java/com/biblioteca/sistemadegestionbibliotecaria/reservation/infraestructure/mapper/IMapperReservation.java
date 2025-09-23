@@ -2,9 +2,7 @@ package com.biblioteca.sistemadegestionbibliotecaria.reservation.infraestructure
 
 import com.biblioteca.sistemadegestionbibliotecaria.book.infraestructure.persistance.BookEntity;
 import com.biblioteca.sistemadegestionbibliotecaria.reservation.domain.model.Reservation;
-import com.biblioteca.sistemadegestionbibliotecaria.reservation.infraestructure.controller.dto.input.ReservationCreateDTO;
 import com.biblioteca.sistemadegestionbibliotecaria.reservation.infraestructure.controller.dto.input.ReservationDTO;
-import com.biblioteca.sistemadegestionbibliotecaria.reservation.infraestructure.controller.dto.input.ReservationRequestDTO;
 import com.biblioteca.sistemadegestionbibliotecaria.reservation.infraestructure.controller.dto.input.ReservationUpdateDTO;
 import com.biblioteca.sistemadegestionbibliotecaria.reservation.infraestructure.controller.dto.out.ReservationListResponseDTO;
 import com.biblioteca.sistemadegestionbibliotecaria.reservation.infraestructure.controller.dto.out.ReservationResponseDTO;
@@ -19,13 +17,11 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Mapper(componentModel = "spring")
 public interface IMapperReservation {
 
-    // ---------- Helpers Usuario ----------
     @Named("mapUsuarioIdToEntity")
     default UsuarioEntity mapUsuarioIdToEntity(Long id) {
         if (id == null) return null;
@@ -39,7 +35,6 @@ public interface IMapperReservation {
         return user != null ? user.getId() : null;
     }
 
-    // ---------- Helpers Book ----------
     @Named("mapBookIdToEntity")
     default BookEntity mapBookIdToEntity(Long id) {
         if (id == null) return null;
@@ -53,21 +48,24 @@ public interface IMapperReservation {
         return book != null ? book.getId() : null;
     }
 
-    // ---------- Entity -> DTO ----------
-    @Mapping(source = "usuario.id", target = "usuarioId")
-    @Mapping(source = "book.id", target = "bookId")
-    ReservationDTO reservationEntityToReservationDTO(ReservationEntity reservationEntity);
+    @Mapping(source = "usuarioId", target = "usuario", qualifiedByName = "mapUsuarioIdToEntity")
+    @Mapping(source = "bookId", target = "book", qualifiedByName = "mapBookIdToEntity")
+    ReservationEntity toEntity(Reservation reservation);
 
-    // ---------- DTO -> DTO ----------
+    @Mapping(source = "usuario", target = "usuarioId", qualifiedByName = "mapUsuarioEntityToId")
+    @Mapping(source = "book", target = "bookId", qualifiedByName = "mapBookEntityToId")
+    Reservation toDomain(ReservationEntity reservationEntity);
+
+    @Mapping(source = "usuarioId", target = "usuarioId")
+    @Mapping(source = "bookId", target = "bookId")
+    ReservationDTO toDTO(Reservation reservation);
+
+
     List<ReservationResponseDTO> reservationDTOListToReservationResponseDTOList(List<ReservationDTO> reservationDTOs);
-    ReservationCreateDTO reservationRequestDTOToReservationCreateDTO(ReservationRequestDTO reservationRequestDTO);
-    ReservationResponseDTO reservationDTOToReservationResponseDTO(ReservationDTO reservationUpdateDTO);
 
-    // ---------- Update ----------
     void updateReservationEntityFromDTO(ReservationUpdateDTO dto, @MappingTarget ReservationEntity entity);
 
-    // ---------- Page<DTO> -> ListResponseDTO ----------
-    default ReservationListResponseDTO toBookListResponseDTO(Page<ReservationDTO> page) {
+    default ReservationListResponseDTO toReservationListResponseDTO(Page<ReservationDTO> page) {
         return new ReservationListResponseDTO(
                 reservationDTOListToReservationResponseDTOList(page.getContent()),
                 page.getNumber(),
@@ -77,7 +75,6 @@ public interface IMapperReservation {
         );
     }
 
-    // ---------- Page<Entity> -> Page<Domain> ----------
     default Page<Reservation> toDomainPage(Page<ReservationEntity> entityPage, Pageable pageable) {
         List<Reservation> reservations = entityPage.getContent()
                 .stream()
@@ -86,15 +83,5 @@ public interface IMapperReservation {
 
         return new PageImpl<>(reservations, pageable, entityPage.getTotalElements());
     }
-
-    // Domain -> Entity
-    @Mapping(source = "usuarioId", target = "usuario", qualifiedByName = "mapUsuarioIdToEntity")
-    @Mapping(source = "bookId", target = "book", qualifiedByName = "mapBookIdToEntity")
-    ReservationEntity toEntity(Reservation reservation);
-
-    // Entity -> Domain
-    @Mapping(source = "usuario", target = "usuarioId", qualifiedByName = "mapUsuarioEntityToId")
-    @Mapping(source = "book", target = "bookId", qualifiedByName = "mapBookEntityToId")
-    Reservation toDomain(Optional<ReservationEntity> reservationEntity);
 
 }

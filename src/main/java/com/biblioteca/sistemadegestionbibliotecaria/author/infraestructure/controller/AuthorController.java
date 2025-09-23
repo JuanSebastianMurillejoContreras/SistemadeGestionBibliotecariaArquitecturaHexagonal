@@ -28,15 +28,15 @@ public class AuthorController implements AuthorApi {
     @PostMapping
     public ResponseEntity<AuthorResponseDTO> addAuthor(@Valid @RequestBody AuthorRequestDTO request) {
         Author domainAuthor = authorMapper.toDomain(request);
-        Author savedAuthor = createAuthorUseCase.createAuthor(domainAuthor);
+        Author savedAuthor = createAuthorUseCase.createAuthor(domainAuthor);//Corregir porque el dominio no debe estar en el controlador
         return ResponseEntity.status(HttpStatus.CREATED)
-                .body(authorMapper.toResponseDTO(savedAuthor));
+                .body(authorMapper.toResponseDTO(savedAuthor));//Devolver el DTO
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<AuthorResponseDTO> getByID(@PathVariable Long id) {
-        Author foundAuthor = getAuthorUseCase.getAuthorById(id);
-        return ResponseEntity.ok(authorMapper.toResponseDTO(foundAuthor));
+        Author foundAuthor = getAuthorUseCase.getAuthorById(id);//Corregir porque el dominio no debe estar en el controlador
+        return ResponseEntity.ok(authorMapper.toResponseDTO(foundAuthor));//Devolver el DTO
     }
 
 }

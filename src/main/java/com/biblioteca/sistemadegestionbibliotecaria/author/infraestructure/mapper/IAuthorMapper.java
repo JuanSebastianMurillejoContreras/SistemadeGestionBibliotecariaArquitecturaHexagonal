@@ -11,6 +11,17 @@ import org.mapstruct.Mapper;
 @Mapper(componentModel = "spring")
 public interface IAuthorMapper {
 
+    // Request -> DTO
+    AuthorDTO authorRequestDTOToAuthorDTO(AuthorRequestDTO authorRequestDTO);
+
+    //DTO -> Request
+    AuthorResponseDTO authorDTOToAuthorResponseDTO( AuthorDTO authorDTO);
+
+    // DTO -> Entity
+    AuthorEntity authorDTOToAuthorEntity(AuthorDTO authorDTO);
+
+    // Entity -> DTO
+    AuthorDTO authorDTOToAuthorEntity(AuthorEntity authorEntity);
 
     // Request -> Domain
     Author toDomain(AuthorRequestDTO dto);

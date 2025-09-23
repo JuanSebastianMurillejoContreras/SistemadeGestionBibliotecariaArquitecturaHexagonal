@@ -39,7 +39,7 @@ public class ReservationController {
 
         Page<ReservationDTO> reservationDTOs = reservations.map(mapperReservation::toDTO);
 
-        ReservationListResponseDTO reservationListResponseDTO = mapperReservation.toBookListResponseDTO(reservationDTOs);
+        ReservationListResponseDTO reservationListResponseDTO = mapperReservation.toReservationListResponseDTO(reservationDTOs);
 
         return ResponseEntity.ok(reservationListResponseDTO);
     }

@@ -1,7 +1,5 @@
 package com.biblioteca.sistemadegestionbibliotecaria.reservation.aplication.service;
 
-import com.biblioteca.sistemadegestionbibliotecaria.author.domain.exception.AuthorErrorMessage;
-import com.biblioteca.sistemadegestionbibliotecaria.author.domain.model.Author;
 import com.biblioteca.sistemadegestionbibliotecaria.libraries.domain.exception.LibraryException;
 import com.biblioteca.sistemadegestionbibliotecaria.reservation.aplication.port.in.CancelReservationUseCase;
 import com.biblioteca.sistemadegestionbibliotecaria.reservation.aplication.port.in.CreateReservationUseCase;
@@ -9,7 +7,6 @@ import com.biblioteca.sistemadegestionbibliotecaria.reservation.aplication.port.
 import com.biblioteca.sistemadegestionbibliotecaria.reservation.aplication.port.out.ReservationRepositoryPort;
 import com.biblioteca.sistemadegestionbibliotecaria.reservation.domain.exception.ReservationErrorMessage;
 import com.biblioteca.sistemadegestionbibliotecaria.reservation.domain.model.Reservation;
-import com.biblioteca.sistemadegestionbibliotecaria.reservation.infraestructure.persistance.ReservationEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -23,6 +20,7 @@ public class ReservationService implements CreateReservationUseCase, CancelReser
 
     @Override
     public Reservation cancelReservation(Long id, Reservation reservation) {
+
         if (reservation.isActive() == null) {
             throw new IllegalArgumentException("El isActive no puede ser nulo");
         }

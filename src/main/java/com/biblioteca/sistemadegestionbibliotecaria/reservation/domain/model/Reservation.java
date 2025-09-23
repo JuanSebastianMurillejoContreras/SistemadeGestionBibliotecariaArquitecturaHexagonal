@@ -1,7 +1,5 @@
 package com.biblioteca.sistemadegestionbibliotecaria.reservation.domain.model;
 
-import com.biblioteca.sistemadegestionbibliotecaria.book.domain.model.Book;
-
 import java.time.LocalDateTime;
 
 public record Reservation(

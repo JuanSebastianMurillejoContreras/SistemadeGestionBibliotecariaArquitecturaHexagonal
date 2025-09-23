@@ -1,14 +1,9 @@
 package com.biblioteca.sistemadegestionbibliotecaria.testUnitarios.service.reservation;
 
-import com.biblioteca.sistemadegestionbibliotecaria.book.infraestructure.persistance.BookEntity;
-import com.biblioteca.sistemadegestionbibliotecaria.reservation.infraestructure.controller.dto.input.ReservationCreateDTO;
-import com.biblioteca.sistemadegestionbibliotecaria.reservation.infraestructure.controller.dto.input.ReservationDTO;
-import com.biblioteca.sistemadegestionbibliotecaria.reservation.infraestructure.controller.dto.input.ReservationUpdateDTO;
-import com.biblioteca.sistemadegestionbibliotecaria.reservation.infraestructure.persistance.ReservationEntity;
+import com.biblioteca.sistemadegestionbibliotecaria.reservation.aplication.port.out.ReservationRepositoryPort;
+import com.biblioteca.sistemadegestionbibliotecaria.reservation.aplication.service.ReservationService;
+import com.biblioteca.sistemadegestionbibliotecaria.reservation.domain.model.Reservation;
 import com.biblioteca.sistemadegestionbibliotecaria.reservation.infraestructure.mapper.IMapperReservation;
-import com.biblioteca.sistemadegestionbibliotecaria.reservation.repo.IReservationRepo;
-import com.biblioteca.sistemadegestionbibliotecaria.reservation.service.impl.ReservationServiceImpl;
-import com.biblioteca.sistemadegestionbibliotecaria.usuario.entity.UsuarioEntity;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mapstruct.factory.Mappers;
@@ -18,6 +13,8 @@ import org.mockito.Mockito;
 import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.time.LocalDateTime;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -25,35 +22,28 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class ReservationServiceImplTest {
 
     @InjectMocks
-    private ReservationServiceImpl reservationService;
+    private ReservationService reservationService;
     @Mock
-    private IReservationRepo reservationRepo;
+    private ReservationRepositoryPort reservationRepo;
     @Spy
     private IMapperReservation reservationMapper = Mappers.getMapper(IMapperReservation.class);
 
     @Test
     void givenReservationRequestDTOWhenAddReservationThenReturnReservationResponseDTO() {
+
+        LocalDateTime now = LocalDateTime.now();
+
         //Given
-        ReservationCreateDTO input = new ReservationCreateDTO(1L,1L, true);
-
-        UsuarioEntity usuarioEntity = new UsuarioEntity();
-        usuarioEntity.setId(1L);
-
-        BookEntity bookEntity = new BookEntity();
-        bookEntity.setId(1L);
+        Reservation input = new Reservation(1L, 1L, 1L, now, true);
 
         //When
-        ReservationEntity reservationEntity = new ReservationEntity();
-        reservationEntity.setId(1L);
-        reservationEntity.setUsuario(usuarioEntity);
-        reservationEntity.setBook(bookEntity);
-        reservationEntity.setIsActive(true);
+        Reservation reservation = new Reservation(1L, 1L, 1L, now, true);
 
         // When
-        Mockito.when(reservationRepo.save(Mockito.any(ReservationEntity.class))).thenReturn(reservationEntity);
+        Mockito.when(reservationRepo.save(Mockito.any(Reservation.class))).thenReturn(reservation);
 
-        ReservationDTO outputEsperado = new ReservationDTO(1L,1L,true);
-        ReservationDTO resultadoEsperado = reservationService.addReservation(input);
+        Reservation outputEsperado = new Reservation(1L, 1L, 1L, now, true);
+        Reservation resultadoEsperado = reservationService.createReservation(input);
 
         //Then
         assertEquals(outputEsperado, resultadoEsperado);
@@ -63,31 +53,31 @@ public class ReservationServiceImplTest {
     @Test
     void givenReservationRequestDTOWhenCreateReservationWithNullUsuarioIDThenThrowException() {
         // given
-        ReservationCreateDTO input = new ReservationCreateDTO(null, 1L, true);
+        Reservation input = new Reservation(1L, null, 1L, LocalDateTime.now(), true);
         // then
-        assertThrows(IllegalArgumentException.class, () -> reservationService.addReservation(input));
+        assertThrows(IllegalArgumentException.class, () -> reservationService.createReservation(input));
     }
 
     @Test
     void givenReservationRequestDTOWhenCreateReservationWithNullBookIDThenThrowException() {
         // given
-        ReservationCreateDTO input = new ReservationCreateDTO(1L, null, true);
+        Reservation input = new Reservation(1L, 1L, null, LocalDateTime.now(), true);
         // then
-        assertThrows(IllegalArgumentException.class, () -> reservationService.addReservation(input));
+        assertThrows(IllegalArgumentException.class, () -> reservationService.createReservation(input));
     }
 
     @Test
     void givenReservationRequestDTOWhenCreateReservationWithNullIsActiveThenThrowException() {
         // given
-        ReservationCreateDTO input = new ReservationCreateDTO(null, 1L, null);
+        Reservation input = new Reservation(1L, 1L, 1L, LocalDateTime.now(), null);
         // then
-        assertThrows(IllegalArgumentException.class, () -> reservationService.addReservation(input));
+        assertThrows(IllegalArgumentException.class, () -> reservationService.createReservation(input));
     }
 
     @Test
     void givenReservationUpdateDTOWhenCreateReservationWithNullIsActiveThenThrowException() {
         // given
-        ReservationUpdateDTO input = new ReservationUpdateDTO( null);
+        Reservation input = new Reservation(1L, 1L, 1L, LocalDateTime.now(), null);
         // then
         assertThrows(IllegalArgumentException.class, () -> reservationService.cancelReservation(1L, input));
     }
@@ -95,7 +85,7 @@ public class ReservationServiceImplTest {
     @Test
     void givenReservationUpdateDTOWhenCreateReservationWithTrueIsActiveThenThrowException() {
         // given
-        ReservationUpdateDTO input = new ReservationUpdateDTO( true);
+        Reservation input = new Reservation(1L, 1L, 1L, LocalDateTime.now(), true);
         // then
         assertThrows(IllegalArgumentException.class, () -> reservationService.cancelReservation(1L, input));
     }

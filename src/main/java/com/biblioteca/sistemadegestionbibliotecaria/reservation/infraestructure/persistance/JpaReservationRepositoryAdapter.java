@@ -19,19 +19,24 @@ public class JpaReservationRepositoryAdapter implements ReservationRepositoryPor
 
     @Override
     public Reservation findById(Long id) {
-        return null;
+
+        return reservationRepository.findById(id)
+                .map(mapperReservation::toDomain)
+                .orElse(null);
     }
 
     @Override
     public Reservation getReservationById(Long id) {
-        Optional<ReservationEntity> reservationEntity = reservationRepository.findById(id);
-        return mapperReservation.toDomain(reservationEntity);
+        return reservationRepository.findById(id)
+                .map(mapperReservation::toDomain)
+                .orElseThrow();
     }
 
     @Override
     public Reservation save(Reservation reservation) {
         ReservationEntity reservationEntity = mapperReservation.toEntity(reservation);
-        return mapperReservation.toDomain(Optional.of(reservationRepository.save(reservationEntity)));
+        ReservationEntity saved = reservationRepository.save(reservationEntity);
+        return mapperReservation.toDomain(saved);
     }
 
     @Override
@@ -41,7 +46,7 @@ public class JpaReservationRepositoryAdapter implements ReservationRepositoryPor
 
     @Override
     public Page<Reservation> findByIsActiveAndUsuario_Id(Boolean isActive, Long usuarioId, Pageable pageable) {
-        Page<ReservationEntity> bookEntityPage = reservationRepository.findByIsActiveAndUsuario_Id(true, usuarioId, pageable);
-        return mapperReservation.toDomainPage(bookEntityPage, pageable);
+        Page<ReservationEntity> entityPage = reservationRepository.findByIsActiveAndUsuario_Id(isActive, usuarioId, pageable);
+        return mapperReservation.toDomainPage(entityPage, pageable);
     }
 }
