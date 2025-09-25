@@ -1,11 +1,11 @@
 package com.biblioteca.sistemadegestionbibliotecaria.testUnitarios.service.usuario;
 
-import com.biblioteca.sistemadegestionbibliotecaria.usuario.dto.input.UsuarioCreateDTO;
-import com.biblioteca.sistemadegestionbibliotecaria.usuario.dto.input.UsuarioDTO;
-import com.biblioteca.sistemadegestionbibliotecaria.usuario.entity.UsuarioEntity;
-import com.biblioteca.sistemadegestionbibliotecaria.usuario.mapper.IUsuarioMapper;
-import com.biblioteca.sistemadegestionbibliotecaria.usuario.repository.IUsuarioRepo;
-import com.biblioteca.sistemadegestionbibliotecaria.usuario.service.impl.UsuarioServiceImpl;
+import com.biblioteca.sistemadegestionbibliotecaria.usuario.aplication.port.out.UsuarioRepositoryPort;
+import com.biblioteca.sistemadegestionbibliotecaria.usuario.aplication.service.UsuarioService;
+import com.biblioteca.sistemadegestionbibliotecaria.usuario.domain.model.Usuario;
+import com.biblioteca.sistemadegestionbibliotecaria.usuario.infraestructura.controller.dto.input.UsuarioCreateDTO;
+import com.biblioteca.sistemadegestionbibliotecaria.usuario.infraestructura.controller.dto.input.UsuarioDTO;
+import com.biblioteca.sistemadegestionbibliotecaria.usuario.infraestructura.mapper.IUsuarioMapper;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mapstruct.factory.Mappers;
@@ -22,27 +22,25 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class UsuarioServiceImplTest {
 
     @InjectMocks
-    private UsuarioServiceImpl usuarioService;
+    private UsuarioService usuarioService;
 
     @Mock
-    private IUsuarioRepo usuarioRepo;
+    private UsuarioRepositoryPort usuarioRepo;
     @Spy
     private IUsuarioMapper usuarioMapper = Mappers.getMapper(IUsuarioMapper.class);
 
     @Test
     public void givenUsuarioCreateDTOWhenCreateUsuarioThenReturnUsuarioResponseDTO() {
         // Given
-        UsuarioCreateDTO input = new UsuarioCreateDTO("Juanito","juanito@mail.com");
+        Usuario input = new Usuario(1L,"Juanito","juanito@mail.com");
 
         //When
-        UsuarioEntity usuarioEntity = new UsuarioEntity();
-        usuarioEntity.setName("Juanito");
-        usuarioEntity.setEmail("juanito@mail.com");
+        Usuario usuario = new Usuario(1L,"Juanito","juanito@mail.com");
 
-        Mockito.when(usuarioRepo.save(usuarioEntity)).thenReturn(usuarioEntity);
+        Mockito.when(usuarioRepo.save(usuario)).thenReturn(usuario);
 
-        UsuarioDTO outputEsperado = new UsuarioDTO("Juanito","juanito@mail.com");
-        UsuarioDTO resultado = usuarioService.createUsuario(input);
+        Usuario outputEsperado = new Usuario(1L, "Juanito","juanito@mail.com");
+        Usuario resultado = usuarioService.createUser(input);
 
         //Then
         assertEquals(outputEsperado,resultado);
@@ -52,46 +50,46 @@ public class UsuarioServiceImplTest {
     @Test
     void givenUsuarioCreateDTOWhenAddUsuarioWithNullEmailThenThrowException() {
         // given
-        UsuarioCreateDTO input = new UsuarioCreateDTO("Juan", null);
+        Usuario input = new Usuario(1l, "Juan", null);
 
         // then
-        assertThrows(IllegalArgumentException.class, () -> usuarioService.createUsuario(input));
+        assertThrows(IllegalArgumentException.class, () -> usuarioService.createUser(input));
     }
 
     @Test
     void givenUsuarioCreateDTOWhenAddUsuarioWithEmptyEmailThenThrowException() {
         // given
-        UsuarioCreateDTO input = new UsuarioCreateDTO("Juan", "");
+        Usuario input = new Usuario(1l, "Juan", "");
 
         // then
-        assertThrows(IllegalArgumentException.class, () -> usuarioService.createUsuario(input));
+        assertThrows(IllegalArgumentException.class, () -> usuarioService.createUser(input));
     }
 
     @Test
     void givenUsuarioCreateDTOWhenAddUsuarioWithInvalidEmailThenThrowException() {
         // given
-        UsuarioCreateDTO input = new UsuarioCreateDTO("Juan", "juanito@@mail");
+        Usuario input = new Usuario(1l, "Juan", "juan@@mail.com");
 
         // then
-        assertThrows(IllegalArgumentException.class, () -> usuarioService.createUsuario(input));
+        assertThrows(IllegalArgumentException.class, () -> usuarioService.createUser(input));
     }
 
     @Test
     void givenUsuarioCreateDTOWhenAddUsuarioWithEmptyNameThenThrowException() {
         // given
-        UsuarioCreateDTO input = new UsuarioCreateDTO("", "juan@mail.com");
+        Usuario input = new Usuario(1l,"", "juan@mail.com");
 
         // then
-        assertThrows(IllegalArgumentException.class, () -> usuarioService.createUsuario(input));
+        assertThrows(IllegalArgumentException.class, () -> usuarioService.createUser(input));
     }
 
     @Test
     void givenUsuarioCreateDTOWhenAddUsuarioWithNullNameThenThrowException() {
         // given
-        UsuarioCreateDTO input = new UsuarioCreateDTO(null, "juan@mail.com");
+        Usuario input = new Usuario(1L,null, "juan@mail.com");
 
         // then
-        assertThrows(IllegalArgumentException.class, () -> usuarioService.createUsuario(input));
+        assertThrows(IllegalArgumentException.class, () -> usuarioService.createUser(input));
     }
 
 }

@@ -1,7 +1,6 @@
 package com.biblioteca.sistemadegestionbibliotecaria.reservation.aplication.port.in;
 
 import com.biblioteca.sistemadegestionbibliotecaria.reservation.domain.model.Reservation;
-import com.biblioteca.sistemadegestionbibliotecaria.reservation.infraestructure.persistance.ReservationEntity;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
