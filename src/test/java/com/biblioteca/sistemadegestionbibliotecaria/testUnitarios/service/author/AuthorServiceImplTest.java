@@ -3,6 +3,8 @@ package com.biblioteca.sistemadegestionbibliotecaria.testUnitarios.service.autho
 
 import com.biblioteca.sistemadegestionbibliotecaria.author.aplication.port.out.AuthorRepositoryPort;
 import com.biblioteca.sistemadegestionbibliotecaria.author.aplication.service.AuthorService;
+import com.biblioteca.sistemadegestionbibliotecaria.author.domain.exception.AuthorErrorMessage;
+import com.biblioteca.sistemadegestionbibliotecaria.author.domain.exception.AuthorException;
 import com.biblioteca.sistemadegestionbibliotecaria.author.domain.model.Author;
 import com.biblioteca.sistemadegestionbibliotecaria.author.infraestructure.mapper.IAuthorMapper;
 import org.junit.jupiter.api.Test;
@@ -14,8 +16,7 @@ import org.mockito.Mockito;
 import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 
 @ExtendWith(MockitoExtension.class)
@@ -56,4 +57,31 @@ public class AuthorServiceImplTest {
         Author input = new Author(null, "");
         assertThrows(IllegalArgumentException.class, () -> authorService.createAuthor(input));
     }
+
+    @Test
+    void givenAuthorWithExistingNameWhenCreateAuthorThenThrowAuthorException() {
+        Author input = new Author(null, "Juan");
+
+        Mockito.when(authorRepo.existsByName(input.name())).thenReturn(true);
+
+        AuthorException  ex = assertThrows(AuthorException.class, () -> authorService.createAuthor(input));
+
+        assertTrue(ex.getMessage().contains(AuthorErrorMessage.AUTOR_ALREADY_REGISTERED));
+    }
+
+    @Test
+    void givenExistingAuthorWhenGetAuthorByIdThenReturnAuthor() {
+        // given
+        Long id = 1L;
+        Author expected = new Author(id, "Gabriel García Márquez");
+        Mockito.when(authorRepo.getAuthorById(id)).thenReturn(expected);
+
+        // when
+        Author result = authorService.getAuthorById(id);
+
+        // then
+        assertNotNull(result);
+        assertEquals(expected, result);
+    }
+
 }

@@ -1,6 +1,5 @@
 package com.biblioteca.sistemadegestionbibliotecaria.libraries.aplication.service;
 
-import com.biblioteca.sistemadegestionbibliotecaria.book.domain.exception.BookException;
 import com.biblioteca.sistemadegestionbibliotecaria.libraries.aplication.port.in.CreateLibraryUseCase;
 import com.biblioteca.sistemadegestionbibliotecaria.libraries.aplication.port.out.LibraryRepositoryPort;
 import com.biblioteca.sistemadegestionbibliotecaria.libraries.domain.exception.LibraryErrorMessage;

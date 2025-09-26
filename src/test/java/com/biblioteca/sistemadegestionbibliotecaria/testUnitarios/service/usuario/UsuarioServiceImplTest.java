@@ -2,6 +2,8 @@ package com.biblioteca.sistemadegestionbibliotecaria.testUnitarios.service.usuar
 
 import com.biblioteca.sistemadegestionbibliotecaria.usuario.aplication.port.out.UsuarioRepositoryPort;
 import com.biblioteca.sistemadegestionbibliotecaria.usuario.aplication.service.UsuarioService;
+import com.biblioteca.sistemadegestionbibliotecaria.usuario.domain.exception.UsuarioErrorMessage;
+import com.biblioteca.sistemadegestionbibliotecaria.usuario.domain.exception.UsuarioException;
 import com.biblioteca.sistemadegestionbibliotecaria.usuario.domain.model.Usuario;
 import com.biblioteca.sistemadegestionbibliotecaria.usuario.infraestructura.controller.dto.input.UsuarioCreateDTO;
 import com.biblioteca.sistemadegestionbibliotecaria.usuario.infraestructura.controller.dto.input.UsuarioDTO;
@@ -15,8 +17,7 @@ import org.mockito.Mockito;
 import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(MockitoExtension.class)
 public class UsuarioServiceImplTest {
@@ -91,5 +92,36 @@ public class UsuarioServiceImplTest {
         // then
         assertThrows(IllegalArgumentException.class, () -> usuarioService.createUser(input));
     }
+
+    @Test
+    void givenUsuarioWithExistingNameWhenCreateUserThenThrowUsuarioException() {
+        // given
+        Usuario input = new Usuario(1L, "Juan", "juan@mail.com");
+
+        Mockito.when(usuarioRepo.existsByName(input.name())).thenReturn(true);
+        Mockito.when(usuarioRepo.existsByEmail(input.email())).thenReturn(false);
+
+        // then
+        UsuarioException ex = assertThrows(UsuarioException.class, () -> usuarioService.createUser(input));
+
+        assertTrue(ex.getMessage().contains(UsuarioErrorMessage.USER_NAME_ALREADY_REGISTERED));
+    }
+
+    @Test
+    void givenUsuarioWithExistingEmailWhenCreateUserThenThrowUsuarioException() {
+        // given
+        Usuario input = new Usuario(1L, "Juan", "juan@mail.com");
+
+        Mockito.when(usuarioRepo.existsByName(input.name())).thenReturn(false);
+        Mockito.when(usuarioRepo.existsByEmail(input.email())).thenReturn(true);
+
+        // then
+        UsuarioException ex = assertThrows(UsuarioException.class, () -> usuarioService.createUser(input));
+
+        assertTrue(ex.getMessage().contains(UsuarioErrorMessage.USER_EMAIL_ALREADY_REGISTERED));
+    }
+
+
+
 
 }

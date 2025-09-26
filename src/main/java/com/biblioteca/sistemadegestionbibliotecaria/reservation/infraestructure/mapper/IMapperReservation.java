@@ -2,7 +2,9 @@ package com.biblioteca.sistemadegestionbibliotecaria.reservation.infraestructure
 
 import com.biblioteca.sistemadegestionbibliotecaria.book.infraestructure.persistance.BookEntity;
 import com.biblioteca.sistemadegestionbibliotecaria.reservation.domain.model.Reservation;
+import com.biblioteca.sistemadegestionbibliotecaria.reservation.infraestructure.controller.dto.input.ReservationCreateDTO;
 import com.biblioteca.sistemadegestionbibliotecaria.reservation.infraestructure.controller.dto.input.ReservationDTO;
+import com.biblioteca.sistemadegestionbibliotecaria.reservation.infraestructure.controller.dto.input.ReservationRequestDTO;
 import com.biblioteca.sistemadegestionbibliotecaria.reservation.infraestructure.controller.dto.input.ReservationUpdateDTO;
 import com.biblioteca.sistemadegestionbibliotecaria.reservation.infraestructure.controller.dto.out.ReservationListResponseDTO;
 import com.biblioteca.sistemadegestionbibliotecaria.reservation.infraestructure.controller.dto.out.ReservationResponseDTO;
@@ -83,5 +85,11 @@ public interface IMapperReservation {
 
         return new PageImpl<>(reservations, pageable, entityPage.getTotalElements());
     }
+
+    ReservationCreateDTO reservationRequestDTOToReservationCreateDTO(ReservationRequestDTO reservationRequestDTO);
+    Reservation reservationCreateDTOToReservation(ReservationCreateDTO reservationCreateDTO);
+    ReservationResponseDTO reservationToReservationResponseDTO(Reservation reservation);
+    ReservationDTO ReservationUpdateDTOToReservation(ReservationUpdateDTO reservationUpdateDTO);
+    Reservation reservationDTOToReservation(ReservationDTO reservationDTO);
 
 }

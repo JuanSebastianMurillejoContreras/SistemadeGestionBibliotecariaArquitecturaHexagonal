@@ -3,6 +3,8 @@ package com.biblioteca.sistemadegestionbibliotecaria.testUnitarios.service.libra
 import com.biblioteca.sistemadegestionbibliotecaria.book.domain.model.Book;
 import com.biblioteca.sistemadegestionbibliotecaria.libraries.aplication.port.out.LibraryRepositoryPort;
 import com.biblioteca.sistemadegestionbibliotecaria.libraries.aplication.service.LibraryService;
+import com.biblioteca.sistemadegestionbibliotecaria.libraries.domain.exception.LibraryErrorMessage;
+import com.biblioteca.sistemadegestionbibliotecaria.libraries.domain.exception.LibraryException;
 import com.biblioteca.sistemadegestionbibliotecaria.libraries.domain.model.Library;
 import com.biblioteca.sistemadegestionbibliotecaria.libraries.infraestructure.mapper.ILibraryMapper;
 
@@ -92,6 +94,24 @@ public class LibraryServiceImplTest {
         // then
         assertThrows(IllegalArgumentException.class, () -> libraryService.createLibrary(input));
     }
+
+    @Test
+    void givenExistingLibraryNameWhenCreateLibraryThenThrowLibraryException() {
+        // given
+        Library input = new Library(1L, "Central Library","Cra 5", lstBooks);
+        Mockito.when(libraryRepositoryPort.existsByName(input.name())).thenReturn(true);
+
+        // when - then
+        LibraryException ex = assertThrows(
+                LibraryException.class,
+                () -> libraryService.createLibrary(input)
+        );
+
+        assertEquals(LibraryErrorMessage.LIBRARY_ALREDY_REGISTERED, ex.getMessage());
+        Mockito.verify(libraryRepositoryPort).existsByName(input.name());
+    }
+
+
 
 
 }

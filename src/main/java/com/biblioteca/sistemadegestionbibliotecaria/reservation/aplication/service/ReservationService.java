@@ -6,6 +6,7 @@ import com.biblioteca.sistemadegestionbibliotecaria.reservation.aplication.port.
 import com.biblioteca.sistemadegestionbibliotecaria.reservation.aplication.port.in.GetReservationUseCase;
 import com.biblioteca.sistemadegestionbibliotecaria.reservation.aplication.port.out.ReservationRepositoryPort;
 import com.biblioteca.sistemadegestionbibliotecaria.reservation.domain.exception.ReservationErrorMessage;
+import com.biblioteca.sistemadegestionbibliotecaria.reservation.domain.exception.ReservationException;
 import com.biblioteca.sistemadegestionbibliotecaria.reservation.domain.model.Reservation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -29,19 +30,11 @@ public class ReservationService implements CreateReservationUseCase, CancelReser
             throw new IllegalArgumentException("Solo se permite actualizar para cancelar la reserva (isActive debe ser false)");
         }
 
-        // Usar el id del path, no el del body
         Reservation existing = repositoryPort.getReservationById(id);
 
-        // Crear un nuevo record con isActive = false
-        Reservation cancelled = new Reservation(
-                existing.id(),
-                existing.usuarioId(),
-                existing.bookId(),
-                existing.dateReservation(),
-                false
+        return repositoryPort.save(
+                new Reservation(existing.id(), existing.usuarioId(), existing.bookId(), existing.dateReservation(), false)
         );
-
-        return repositoryPort.save(cancelled);
     }
 
     @Override
@@ -61,7 +54,7 @@ public class ReservationService implements CreateReservationUseCase, CancelReser
         boolean existReservation = repositoryPort.existsByBook_IdAndIsActive(reservation.bookId(), true);
 
         if(existReservation)
-            throw new LibraryException(ReservationErrorMessage.RESERVATION_EXIST_AND_IS_ACTIVE + ": ID Libro " + reservation.bookId());
+            throw new ReservationException(ReservationErrorMessage.RESERVATION_EXIST_AND_IS_ACTIVE);
 
         return repositoryPort.save(reservation);
     }

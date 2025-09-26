@@ -4,9 +4,14 @@ import com.biblioteca.sistemadegestionbibliotecaria.reservation.aplication.port.
 import com.biblioteca.sistemadegestionbibliotecaria.reservation.aplication.port.in.CreateReservationUseCase;
 import com.biblioteca.sistemadegestionbibliotecaria.reservation.aplication.port.in.GetReservationUseCase;
 import com.biblioteca.sistemadegestionbibliotecaria.reservation.domain.model.Reservation;
+import com.biblioteca.sistemadegestionbibliotecaria.reservation.infraestructure.controller.dto.input.ReservationCreateDTO;
 import com.biblioteca.sistemadegestionbibliotecaria.reservation.infraestructure.controller.dto.input.ReservationDTO;
+import com.biblioteca.sistemadegestionbibliotecaria.reservation.infraestructure.controller.dto.input.ReservationRequestDTO;
+import com.biblioteca.sistemadegestionbibliotecaria.reservation.infraestructure.controller.dto.input.ReservationUpdateDTO;
 import com.biblioteca.sistemadegestionbibliotecaria.reservation.infraestructure.controller.dto.out.ReservationListResponseDTO;
+import com.biblioteca.sistemadegestionbibliotecaria.reservation.infraestructure.controller.dto.out.ReservationResponseDTO;
 import com.biblioteca.sistemadegestionbibliotecaria.reservation.infraestructure.mapper.IMapperReservation;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -38,7 +43,7 @@ public class ReservationController {
         return ResponseEntity.ok(reservationListResponseDTO);
     }
 
-/*
+
     @PostMapping
     public ResponseEntity<ReservationResponseDTO> createReservation(
             @Valid @RequestBody ReservationRequestDTO reservationRequestDTO) {
@@ -47,12 +52,15 @@ public class ReservationController {
         ReservationCreateDTO reservationCreateDTO =
                 mapperReservation.reservationRequestDTOToReservationCreateDTO(reservationRequestDTO);
 
+        // 2. Mapper al modelo
+        Reservation reservation = mapperReservation.reservationCreateDTOToReservation(reservationCreateDTO);
+
         // 2. Llamar al caso de uso
-        ReservationDTO createdReservation = createReservationUseCase.createReservation(reservationCreateDTO);
+        Reservation createdReservation = createReservationUseCase.createReservation(reservation);
 
         // 3. Mapear salida
         ReservationResponseDTO responseDTO =
-                mapperReservation.reservationDTOToReservationResponseDTO(createdReservation);
+                mapperReservation.reservationToReservationResponseDTO(createdReservation);
 
         return ResponseEntity.status(201).body(responseDTO);
     }
@@ -62,17 +70,16 @@ public class ReservationController {
             @PathVariable Long id,
             @Valid @RequestBody ReservationUpdateDTO reservationUpdateDTO) {
 
-        // 1. Cancelar reserva
-        ReservationDTO canceledReservation = cancelReservationUseCase.cancelReservation(id, reservationUpdateDTO);
+        ReservationDTO reservationDTO = mapperReservation.ReservationUpdateDTOToReservation(reservationUpdateDTO);
+
+        Reservation reservation = mapperReservation.reservationDTOToReservation(reservationDTO);
+
+        Reservation canceledReservation = cancelReservationUseCase.cancelReservation(id, reservation);
 
         // 2. Mapear salida
         ReservationResponseDTO responseDTO =
-                mapperReservation.reservationDTOToReservationResponseDTO(canceledReservation);
+                mapperReservation.reservationToReservationResponseDTO(canceledReservation);
 
         return ResponseEntity.ok(responseDTO);
     }
-    */
-
-
-
 }
