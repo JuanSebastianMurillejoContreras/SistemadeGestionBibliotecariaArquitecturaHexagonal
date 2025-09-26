@@ -21,6 +21,7 @@ import org.springframework.data.domain.Pageable;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 import static org.hibernate.validator.internal.util.Contracts.assertNotNull;
 import static org.junit.jupiter.api.Assertions.*;
@@ -94,13 +95,13 @@ public class ReservationServiceImplTest {
         // given
         Reservation input = new Reservation(1L, 1L, 1L, LocalDateTime.now(), true);
         // then
-        assertThrows(IllegalArgumentException.class, () -> reservationService.cancelReservation(1L, input));
+        assertThrows(ReservationException.class, () -> reservationService.cancelReservation(1L, input));
     }
 
     @Test
     void givenExistingReservationWhenCreateReservationThenThrowReservationException() {
         // given
-        Reservation input = new Reservation(1L, 1L, 1L, true);
+        Reservation input = new Reservation(1L, 1L, 1L, LocalDateTime.now(), true);
         Mockito.when(reservationRepo.existsByBook_IdAndIsActive(input.bookId(), true)).thenReturn(true);
 
         // when - then
@@ -116,7 +117,7 @@ public class ReservationServiceImplTest {
     @Test
     void givenNewReservationWhenCreateReservationThenSucceed() {
         // given
-        Reservation input = new Reservation(1L, 1L, 1L, true);
+        Reservation input = new Reservation(1L, 1L, 1L, LocalDateTime.now(), true);
 
         Mockito.when(reservationRepo.existsByBook_IdAndIsActive(input.bookId(), true))
                 .thenReturn(false);
@@ -137,7 +138,7 @@ public class ReservationServiceImplTest {
     @Test
     void givenReservationInactiveWhenCreateReservationThenSucceed() {
         // given
-        Reservation input = new Reservation(1L, 1L, 1L, false);
+        Reservation input = new Reservation(1L, 1L, 1L, LocalDateTime.now(), false);
         Mockito.when(reservationRepo.existsByBook_IdAndIsActive(input.bookId(), true))
                 .thenReturn(false);
         Mockito.when(reservationRepo.save(Mockito.any()))
@@ -158,9 +159,9 @@ public class ReservationServiceImplTest {
         // given
         Long reservationId = 1L;
 
-        Reservation expected = new Reservation(1L, 1L, 1L, true);
+        Reservation expected = new Reservation(1L, 1L, 1L, LocalDateTime.now(), true);
         Mockito.when(reservationRepo.getReservationById(reservationId))
-                .thenReturn(expected);
+                .thenReturn(Optional.of(expected));
 
         // when
         Reservation result = reservationService.getReservationById(reservationId);
@@ -172,17 +173,16 @@ public class ReservationServiceImplTest {
     }
 
     @Test
-    void givenNonExistingIdWhenGetReservationByIdThenReturnNull() {
+    void givenNonExistingIdWhenGetReservationByIdThenThrowException() {
         // given
         Long reservationId = 99L;
         Mockito.when(reservationRepo.getReservationById(reservationId))
-                .thenReturn(null);
+                .thenReturn(Optional.empty());
 
-        // when
-        Reservation result = reservationService.getReservationById(reservationId);
+        // when + then
+        assertThrows(ReservationException.class,
+                () -> reservationService.getReservationById(reservationId));
 
-        // then
-        assertNull(result);
         Mockito.verify(reservationRepo).getReservationById(reservationId);
     }
 
@@ -191,7 +191,7 @@ public class ReservationServiceImplTest {
         // given
         Long usuarioId = 1L;
         Pageable pageable = PageRequest.of(0, 10);
-        Reservation reservation = new Reservation(1L, usuarioId, 1L, true);
+        Reservation reservation = new Reservation(1L, usuarioId, 1L, LocalDateTime.now(), true);
         Page<Reservation> expectedPage = new PageImpl<>(List.of(reservation));
 
         Mockito.when(reservationRepo.findByIsActiveAndUsuario_Id(true, usuarioId, pageable))

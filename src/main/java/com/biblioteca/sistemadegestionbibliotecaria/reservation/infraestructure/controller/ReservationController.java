@@ -43,6 +43,19 @@ public class ReservationController {
         return ResponseEntity.ok(reservationListResponseDTO);
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<ReservationResponseDTO> getReservationById(
+            @PathVariable Long id,
+            @PageableDefault(page = 0, size = 10) Pageable pageable) {
+
+        ReservationDTO reservationDTO = mapperReservation.
+                reservationToReservationDTO(getReservationUseCase.getReservationById(id));
+        Reservation reservations = mapperReservation.reservationDTOToReservation(reservationDTO);
+        ReservationDTO reservationDTOToReservation = mapperReservation.toDTO(reservations);
+
+        return ResponseEntity.ok(mapperReservation.reservationDTOToReservationResponseDTO(reservationDTOToReservation));
+
+    }
 
     @PostMapping
     public ResponseEntity<ReservationResponseDTO> createReservation(

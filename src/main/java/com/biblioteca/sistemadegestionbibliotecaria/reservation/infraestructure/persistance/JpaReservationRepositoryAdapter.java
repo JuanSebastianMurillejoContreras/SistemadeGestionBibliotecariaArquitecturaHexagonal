@@ -8,6 +8,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
 @RequiredArgsConstructor
 public class JpaReservationRepositoryAdapter implements ReservationRepositoryPort {
@@ -15,19 +17,11 @@ public class JpaReservationRepositoryAdapter implements ReservationRepositoryPor
     private final SpringDataReservationRepository reservationRepository;
     private final IMapperReservation  mapperReservation;
 
-    @Override
-    public Reservation findById(Long id) {
-
-        return reservationRepository.findById(id)
-                .map(mapperReservation::toDomain)
-                .orElse(null);
-    }
 
     @Override
-    public Reservation getReservationById(Long id) {
+    public Optional<Reservation> getReservationById(Long id) {
         return reservationRepository.findById(id)
-                .map(mapperReservation::toDomain)
-                .orElseThrow();
+                .map(mapperReservation::toDomain);
     }
 
     @Override

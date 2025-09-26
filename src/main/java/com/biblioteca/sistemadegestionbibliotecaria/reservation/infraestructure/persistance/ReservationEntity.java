@@ -31,7 +31,14 @@ public class ReservationEntity {
     private BookEntity book;
 
     @Column(nullable = false)
-    private LocalDateTime dateReservation =  LocalDateTime.now();
+    private LocalDateTime dateReservation;
+
+    @PrePersist
+    public void prePersist() {
+        if (dateReservation == null) {
+            dateReservation = LocalDateTime.now();
+        }
+    }
 
     @Column(nullable = false)
     private Boolean isActive;

@@ -27,10 +27,10 @@ public class ReservationService implements CreateReservationUseCase, CancelReser
         }
 
         if (Boolean.TRUE.equals(reservation.isActive())) {
-            throw new IllegalArgumentException("Solo se permite actualizar para cancelar la reserva (isActive debe ser false)");
+            throw new ReservationException(ReservationErrorMessage.SOLO_SE_PERMITE_ACTUALIZAR_LA_RESERVA);
         }
 
-        Reservation existing = repositoryPort.getReservationById(id);
+        Reservation existing = repositoryPort.getReservationById(id).orElseThrow(() -> new ReservationException(ReservationErrorMessage.RESERVATION_DOES_NOT_EXIST));
 
         return repositoryPort.save(
                 new Reservation(existing.id(), existing.usuarioId(), existing.bookId(), existing.dateReservation(), false)
@@ -61,7 +61,13 @@ public class ReservationService implements CreateReservationUseCase, CancelReser
 
     @Override
     public Reservation getReservationById(Long id) {
-        return  repositoryPort.getReservationById(id);
+
+        if (id <= 0) {
+            throw new ReservationException(ReservationErrorMessage.ID_ERROR);
+        }
+
+        return repositoryPort.getReservationById(id)
+                .orElseThrow(() -> new ReservationException(ReservationErrorMessage.RESERVATION_DOES_NOT_EXIST));
     }
 
     @Override

@@ -3,6 +3,7 @@ package com.biblioteca.sistemadegestionbibliotecaria.usuario.infraestructura.con
 import com.biblioteca.sistemadegestionbibliotecaria.usuario.aplication.port.in.CreateUserUseCase;
 import com.biblioteca.sistemadegestionbibliotecaria.usuario.domain.model.Usuario;
 import com.biblioteca.sistemadegestionbibliotecaria.usuario.infraestructura.controller.api.UsuarioApi;
+import com.biblioteca.sistemadegestionbibliotecaria.usuario.infraestructura.controller.dto.input.UsuarioDTO;
 import com.biblioteca.sistemadegestionbibliotecaria.usuario.infraestructura.controller.dto.input.UsuarioRequestDTO;
 import com.biblioteca.sistemadegestionbibliotecaria.usuario.infraestructura.controller.dto.out.UsuarioResponseDTO;
 import com.biblioteca.sistemadegestionbibliotecaria.usuario.infraestructura.mapper.IUsuarioMapper;
@@ -22,9 +23,12 @@ public class UsuarioController implements UsuarioApi {
     @PostMapping
     public ResponseEntity<UsuarioResponseDTO> create(@RequestBody @Valid UsuarioRequestDTO usuarioRequestDTO) {
 
-        Usuario usuario = usuarioMapper.usuarioRequestDTOToUsuario(usuarioRequestDTO);
+        UsuarioDTO usuarioDTO = usuarioMapper.UsuarioRequestDTOToUsuarioDTO(usuarioRequestDTO);
+        Usuario usuario = usuarioMapper.usuarioDTOToUsuario(usuarioDTO);
         Usuario usuarioCreate = createUserUseCase.createUser(usuario);
-        UsuarioResponseDTO usuarioResponseDTO = usuarioMapper.usuarioToUsuarioResponseDTO(usuarioCreate);
+        UsuarioDTO usuarioDTOResponse = usuarioMapper.usuarioToUsuarioDTO(usuarioCreate);
+
+        UsuarioResponseDTO usuarioResponseDTO = usuarioMapper.UsuarioDTOToUsuarioResponseDTO(usuarioDTOResponse);
         return ResponseEntity.ok(usuarioResponseDTO);
     }
 

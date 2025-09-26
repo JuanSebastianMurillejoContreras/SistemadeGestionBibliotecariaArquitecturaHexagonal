@@ -13,18 +13,11 @@ public interface IAuthorMapper {
 
     // Request -> DTO
     AuthorDTO authorRequestDTOToAuthorDTO(AuthorRequestDTO authorRequestDTO);
+    Author authorDTOToAuthor(AuthorDTO author);
+    AuthorDTO authorToAuthorDTO(Author author);
+    AuthorResponseDTO authorDTOToAuthorResponseDTO(AuthorDTO authorDTO);
 
-    //DTO -> Request
-    AuthorResponseDTO authorDTOToAuthorResponseDTO( AuthorDTO authorDTO);
 
-    // DTO -> Entity
-    AuthorEntity authorDTOToAuthorEntity(AuthorDTO authorDTO);
-
-    // Entity -> DTO
-    AuthorDTO authorDTOToAuthorEntity(AuthorEntity authorEntity);
-
-    // Request -> Domain
-    Author toDomain(AuthorRequestDTO dto);
 
     // Domain -> Response
     AuthorResponseDTO toResponseDTO(Author author);
@@ -32,5 +25,8 @@ public interface IAuthorMapper {
     // Domain <-> Entity
     AuthorEntity toEntity(Author author);
     Author toDomain(AuthorEntity entity);
+
+
+
 
 }

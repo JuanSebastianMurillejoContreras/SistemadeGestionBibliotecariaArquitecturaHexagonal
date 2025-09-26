@@ -91,5 +91,6 @@ public interface IMapperReservation {
     ReservationResponseDTO reservationToReservationResponseDTO(Reservation reservation);
     ReservationDTO ReservationUpdateDTOToReservation(ReservationUpdateDTO reservationUpdateDTO);
     Reservation reservationDTOToReservation(ReservationDTO reservationDTO);
-
+    ReservationDTO reservationToReservationDTO(Reservation reservation);
+    ReservationResponseDTO reservationDTOToReservationResponseDTO(ReservationDTO reservationDTO);
 }
