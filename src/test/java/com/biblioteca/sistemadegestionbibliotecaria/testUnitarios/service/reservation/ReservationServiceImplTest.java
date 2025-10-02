@@ -87,7 +87,7 @@ public class ReservationServiceImplTest {
         // given
         Reservation input = new Reservation(1L, 1L, 1L, LocalDateTime.now(), null);
         // then
-        assertThrows(IllegalArgumentException.class, () -> reservationService.cancelReservation(1L, input));
+        assertThrows(ReservationException.class, () -> reservationService.cancelReservation(1L));
     }
 
     @Test
@@ -95,7 +95,7 @@ public class ReservationServiceImplTest {
         // given
         Reservation input = new Reservation(1L, 1L, 1L, LocalDateTime.now(), true);
         // then
-        assertThrows(ReservationException.class, () -> reservationService.cancelReservation(1L, input));
+        assertThrows(ReservationException.class, () -> reservationService.cancelReservation(1L));
     }
 
     @Test

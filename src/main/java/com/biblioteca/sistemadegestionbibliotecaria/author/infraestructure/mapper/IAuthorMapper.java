@@ -1,8 +1,7 @@
 package com.biblioteca.sistemadegestionbibliotecaria.author.infraestructure.mapper;
 
 import com.biblioteca.sistemadegestionbibliotecaria.author.domain.model.Author;
-import com.biblioteca.sistemadegestionbibliotecaria.author.infraestructure.controller.dto.input.AuthorCreateDTO;
-import com.biblioteca.sistemadegestionbibliotecaria.author.infraestructure.controller.dto.input.AuthorDTO;
+import com.biblioteca.sistemadegestionbibliotecaria.author.infraestructure.controller.dto.input.AuthorCreateCommand;
 import com.biblioteca.sistemadegestionbibliotecaria.author.infraestructure.controller.dto.input.AuthorRequestDTO;
 import com.biblioteca.sistemadegestionbibliotecaria.author.infraestructure.controller.dto.out.AuthorResponseDTO;
 import com.biblioteca.sistemadegestionbibliotecaria.author.infraestructure.persistance.AuthorEntity;
@@ -12,11 +11,11 @@ import org.mapstruct.Mapper;
 public interface IAuthorMapper {
 
     // Request -> DTO
-    AuthorDTO authorRequestDTOToAuthorDTO(AuthorRequestDTO authorRequestDTO);
-    Author authorDTOToAuthor(AuthorDTO author);
-    AuthorDTO authorToAuthorDTO(Author author);
-    AuthorResponseDTO authorDTOToAuthorResponseDTO(AuthorDTO authorDTO);
-
+    AuthorCreateCommand authorRequestDTOToAuthorDTO(AuthorRequestDTO authorRequestDTO);
+    Author authorDTOToAuthor(AuthorCreateCommand author);
+    AuthorCreateCommand authorToAuthorDTO(Author author);
+    AuthorResponseDTO authorDTOToAuthorResponseDTO(AuthorCreateCommand authorCreateCommand);
+    Author authorCreateCommandToAuthor(AuthorCreateCommand authorCreateCommand);
 
 
     // Domain -> Response

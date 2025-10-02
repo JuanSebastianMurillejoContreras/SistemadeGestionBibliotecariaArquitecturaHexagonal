@@ -1,6 +1,8 @@
 package com.biblioteca.sistemadegestionbibliotecaria.reservation.infraestructure.persistance;
 
 import com.biblioteca.sistemadegestionbibliotecaria.reservation.aplication.port.out.ReservationRepositoryPort;
+import com.biblioteca.sistemadegestionbibliotecaria.reservation.domain.exception.ReservationErrorMessage;
+import com.biblioteca.sistemadegestionbibliotecaria.reservation.domain.exception.ReservationException;
 import com.biblioteca.sistemadegestionbibliotecaria.reservation.domain.model.Reservation;
 import com.biblioteca.sistemadegestionbibliotecaria.reservation.infraestructure.mapper.IMapperReservation;
 import lombok.RequiredArgsConstructor;
@@ -40,5 +42,14 @@ public class JpaReservationRepositoryAdapter implements ReservationRepositoryPor
     public Page<Reservation> findByIsActiveAndUsuario_Id(Boolean isActive, Long usuarioId, Pageable pageable) {
         Page<ReservationEntity> entityPage = reservationRepository.findByIsActiveAndUsuario_Id(isActive, usuarioId, pageable);
         return mapperReservation.toDomainPage(entityPage, pageable);
+    }
+
+    @Override
+    public Reservation cancel(Long id) {
+        ReservationEntity reservation = reservationRepository.findById(id)
+                .orElseThrow(()-> new ReservationException(ReservationErrorMessage.RESERVATION_DOES_NOT_EXIST));
+        reservation.setIsActive(false);
+        ReservationEntity save = reservationRepository.save(reservation);
+        return mapperReservation.toDomain(save);
     }
 }

@@ -2,7 +2,6 @@ package com.biblioteca.sistemadegestionbibliotecaria.testContainers.domain.book;
 
 import com.biblioteca.sistemadegestionbibliotecaria.author.aplication.port.out.AuthorRepositoryPort;
 import com.biblioteca.sistemadegestionbibliotecaria.author.domain.model.Author;
-import com.biblioteca.sistemadegestionbibliotecaria.book.domain.model.Book;
 import com.biblioteca.sistemadegestionbibliotecaria.book.infraestructure.persistance.SpringDataBookRepository;
 import com.biblioteca.sistemadegestionbibliotecaria.libraries.aplication.port.out.LibraryRepositoryPort;
 import com.biblioteca.sistemadegestionbibliotecaria.libraries.domain.model.Library;
@@ -10,9 +9,6 @@ import com.biblioteca.sistemadegestionbibliotecaria.testContainers.common.Abstra
 import io.restassured.http.ContentType;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
@@ -60,6 +56,52 @@ class CreateBookBDDTest extends AbstractIntegrationTest {
                 .when()
                 .post("/api/v1/books");
                 // Then: el libro se registra correctamente
+
+        response.then()
+                .statusCode(201)
+                .body("title", equalTo("Cien Años de Soledad"))
+                .body("isbn", equalTo("9780307474728"))
+                .body("authorId", equalTo(author.id().intValue()))
+                .body("libraryId", equalTo(library.id().intValue()));
+
+        // And: se verifica que el libro existe en la base de datos
+        assertTrue(
+                bookRepo.existsByIsbn("9780307474728"),
+                "El libro debería existir en la base de datos"
+        );
+    }
+
+    @Test
+    void registrarLibroConAutorYBibliotecaExistentesConGuion() {
+
+        // Given: que el autor y la biblioteca ya existen en el sistema
+        Author author = authorRepo.save(
+                new Author(null, "Gabriel García Márquez")
+        );
+
+        Library library = libraryRepo.createLibrary(
+                new Library(null, "Biblioteca Nacional", "Colombia", null)
+        );
+
+
+        // When: se envía una solicitud con el título del libro, ID del autor e ID de la biblioteca
+        String requestBody = """
+                {
+                  "title": "Cien Años de Soledad",
+                  "isbn": "9780-307474728",
+                  "authorId": %d,
+                  "libraryId": %d
+                }
+                """.formatted(author.id(), library.id());
+
+        var response =
+                given()
+                        .port(port)
+                        .contentType(ContentType.JSON)
+                        .body(requestBody)
+                        .when()
+                        .post("/api/v1/books");
+        // Then: el libro se registra correctamente
 
         response.then()
                 .statusCode(201)

@@ -6,6 +6,8 @@ import com.biblioteca.sistemadegestionbibliotecaria.author.aplication.port.out.A
 import com.biblioteca.sistemadegestionbibliotecaria.author.domain.exception.AuthorErrorMessage;
 import com.biblioteca.sistemadegestionbibliotecaria.author.domain.exception.AuthorException;
 import com.biblioteca.sistemadegestionbibliotecaria.author.domain.model.Author;
+import com.biblioteca.sistemadegestionbibliotecaria.author.infraestructure.controller.dto.input.AuthorCreateCommand;
+import com.biblioteca.sistemadegestionbibliotecaria.author.infraestructure.mapper.IAuthorMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -14,9 +16,10 @@ import org.springframework.stereotype.Service;
 public class AuthorService implements CreateAuthorUseCase, GetAuthorUseCase {
 
     private final AuthorRepositoryPort repositoryPort;
+    private final IAuthorMapper authorMapper;
 
     @Override
-    public Author createAuthor(Author author) {
+    public Author createAuthor(AuthorCreateCommand author) {
 
         if(author.name() == null){
             throw new IllegalArgumentException("El nombre del autor no puede ser nulo");
@@ -30,7 +33,9 @@ public class AuthorService implements CreateAuthorUseCase, GetAuthorUseCase {
             throw new AuthorException(AuthorErrorMessage.AUTOR_ALREADY_REGISTERED);
         }
 
-        return repositoryPort.save(author);
+         Author authorSave = authorMapper.authorCreateCommandToAuthor(author);
+
+        return repositoryPort.save(authorSave);
 
     }
 

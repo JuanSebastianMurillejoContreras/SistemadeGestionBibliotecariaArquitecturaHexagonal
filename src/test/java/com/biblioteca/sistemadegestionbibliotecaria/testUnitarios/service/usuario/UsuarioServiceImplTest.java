@@ -5,8 +5,6 @@ import com.biblioteca.sistemadegestionbibliotecaria.usuario.aplication.service.U
 import com.biblioteca.sistemadegestionbibliotecaria.usuario.domain.exception.UsuarioErrorMessage;
 import com.biblioteca.sistemadegestionbibliotecaria.usuario.domain.exception.UsuarioException;
 import com.biblioteca.sistemadegestionbibliotecaria.usuario.domain.model.Usuario;
-import com.biblioteca.sistemadegestionbibliotecaria.usuario.infraestructura.controller.dto.input.UsuarioCreateDTO;
-import com.biblioteca.sistemadegestionbibliotecaria.usuario.infraestructura.controller.dto.input.UsuarioDTO;
 import com.biblioteca.sistemadegestionbibliotecaria.usuario.infraestructura.mapper.IUsuarioMapper;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

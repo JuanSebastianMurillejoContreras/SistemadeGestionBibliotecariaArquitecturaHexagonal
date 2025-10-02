@@ -11,4 +11,5 @@ public interface ReservationRepositoryPort {
     Reservation save(Reservation reservation);
     boolean existsByBook_IdAndIsActive(Long bookId, Boolean isActive);
     Page<Reservation> findByIsActiveAndUsuario_Id(Boolean isActive, Long usuarioId, Pageable pageable);
+    Reservation cancel(Long id);
 }

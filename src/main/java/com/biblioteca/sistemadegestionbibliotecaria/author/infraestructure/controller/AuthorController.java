@@ -4,7 +4,7 @@ import com.biblioteca.sistemadegestionbibliotecaria.author.aplication.port.in.Cr
 import com.biblioteca.sistemadegestionbibliotecaria.author.aplication.port.in.GetAuthorUseCase;
 import com.biblioteca.sistemadegestionbibliotecaria.author.infraestructure.controller.api.AuthorApi;
 import com.biblioteca.sistemadegestionbibliotecaria.author.domain.model.Author;
-import com.biblioteca.sistemadegestionbibliotecaria.author.infraestructure.controller.dto.input.AuthorDTO;
+import com.biblioteca.sistemadegestionbibliotecaria.author.infraestructure.controller.dto.input.AuthorCreateCommand;
 import com.biblioteca.sistemadegestionbibliotecaria.author.infraestructure.controller.dto.input.AuthorRequestDTO;
 import com.biblioteca.sistemadegestionbibliotecaria.author.infraestructure.controller.dto.out.AuthorResponseDTO;
 import com.biblioteca.sistemadegestionbibliotecaria.author.infraestructure.mapper.IAuthorMapper;
@@ -29,12 +29,11 @@ public class AuthorController implements AuthorApi {
     @PostMapping
     public ResponseEntity<AuthorResponseDTO> addAuthor(@Valid @RequestBody AuthorRequestDTO request) {
 
-        AuthorDTO authorDTO = authorMapper.authorRequestDTOToAuthorDTO(request);
+        AuthorCreateCommand authorCreateCommand = authorMapper.authorRequestDTOToAuthorDTO(request);
 
-        Author domainAuthor = authorMapper.authorDTOToAuthor(authorDTO);
-        Author savedAuthor = createAuthorUseCase.createAuthor(domainAuthor);
+        Author savedAuthor = createAuthorUseCase.createAuthor(authorCreateCommand);
 
-        AuthorDTO authorDTOToAuthor = authorMapper.authorToAuthorDTO(savedAuthor);
+        AuthorCreateCommand authorDTOToAuthor = authorMapper.authorToAuthorDTO(savedAuthor);
 
         AuthorResponseDTO authorResponseDTO = authorMapper.authorDTOToAuthorResponseDTO(authorDTOToAuthor);
 
@@ -47,7 +46,7 @@ public class AuthorController implements AuthorApi {
 
         Author found = getAuthorUseCase.getAuthorById(id);
 
-        AuthorDTO dto = authorMapper.authorToAuthorDTO(found);
+        AuthorCreateCommand dto = authorMapper.authorToAuthorDTO(found);
 
         AuthorResponseDTO response = authorMapper.authorDTOToAuthorResponseDTO(dto);
 

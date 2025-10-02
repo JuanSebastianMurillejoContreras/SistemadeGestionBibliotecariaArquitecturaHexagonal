@@ -87,7 +87,7 @@ public class ReservationController {
 
         Reservation reservation = mapperReservation.reservationDTOToReservation(reservationDTO);
 
-        Reservation canceledReservation = cancelReservationUseCase.cancelReservation(id, reservation);
+        Reservation canceledReservation = cancelReservationUseCase.cancelReservation(id);
 
         // 2. Mapear salida
         ReservationResponseDTO responseDTO =

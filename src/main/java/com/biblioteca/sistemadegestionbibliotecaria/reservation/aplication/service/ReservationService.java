@@ -20,7 +20,9 @@ public class ReservationService implements CreateReservationUseCase, CancelReser
     private final ReservationRepositoryPort repositoryPort;
 
     @Override
-    public Reservation cancelReservation(Long id, Reservation reservation) {
+    public Reservation cancelReservation(Long id) {
+
+        Reservation reservation = repositoryPort.getReservationById(id).orElseThrow(() -> new ReservationException(ReservationErrorMessage.RESERVATION_DOES_NOT_EXIST));
 
         if (reservation.isActive() == null) {
             throw new IllegalArgumentException("El isActive no puede ser nulo");
@@ -30,11 +32,8 @@ public class ReservationService implements CreateReservationUseCase, CancelReser
             throw new ReservationException(ReservationErrorMessage.SOLO_SE_PERMITE_ACTUALIZAR_LA_RESERVA);
         }
 
-        Reservation existing = repositoryPort.getReservationById(id).orElseThrow(() -> new ReservationException(ReservationErrorMessage.RESERVATION_DOES_NOT_EXIST));
 
-        return repositoryPort.save(
-                new Reservation(existing.id(), existing.usuarioId(), existing.bookId(), existing.dateReservation(), false)
-        );
+        return repositoryPort.cancel(id);
     }
 
     @Override

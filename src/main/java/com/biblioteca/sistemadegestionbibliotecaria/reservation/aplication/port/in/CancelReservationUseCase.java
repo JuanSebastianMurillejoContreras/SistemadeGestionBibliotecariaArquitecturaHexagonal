@@ -4,6 +4,6 @@ import com.biblioteca.sistemadegestionbibliotecaria.reservation.domain.model.Res
 
 public interface CancelReservationUseCase {
 
-    Reservation cancelReservation(Long id, Reservation reservation);
+    Reservation cancelReservation(Long id);
 
 }

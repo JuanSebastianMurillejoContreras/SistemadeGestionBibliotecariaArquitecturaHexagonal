@@ -6,6 +6,7 @@ import com.biblioteca.sistemadegestionbibliotecaria.author.aplication.service.Au
 import com.biblioteca.sistemadegestionbibliotecaria.author.domain.exception.AuthorErrorMessage;
 import com.biblioteca.sistemadegestionbibliotecaria.author.domain.exception.AuthorException;
 import com.biblioteca.sistemadegestionbibliotecaria.author.domain.model.Author;
+import com.biblioteca.sistemadegestionbibliotecaria.author.infraestructure.controller.dto.input.AuthorCreateCommand;
 import com.biblioteca.sistemadegestionbibliotecaria.author.infraestructure.mapper.IAuthorMapper;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -32,35 +33,37 @@ public class AuthorServiceImplTest {
     @Test
     void givenAuthorWhenCreateAuthorThenReturnSavedAuthor() {
         // Given
-        Author input = new Author(null, "Gabriel García Márquez");
+        AuthorCreateCommand input = new AuthorCreateCommand("Gabriel García Márquez");
         Author savedAuthor = new Author(1L, "Gabriel García Márquez");
 
         // When
         Mockito.when(authorRepo.existsByName("Gabriel García Márquez")).thenReturn(false);
         Mockito.when(authorRepo.save(Mockito.any(Author.class))).thenReturn(savedAuthor);
 
+
         Author result = authorService.createAuthor(input);
+        Author author = new Author(null, "Gabriel García Márquez");
 
         // Then
         assertEquals(savedAuthor, result);
-        Mockito.verify(authorRepo).save(input);
+        Mockito.verify(authorRepo).save(author);
     }
 
     @Test
     void givenAuthorWithNullNameWhenCreateAuthorThenThrowException() {
-        Author input = new Author(null, null);
+        AuthorCreateCommand input = new AuthorCreateCommand( null);
         assertThrows(IllegalArgumentException.class, () -> authorService.createAuthor(input));
     }
 
     @Test
     void givenAuthorWithEmptyNameWhenCreateAuthorThenThrowException() {
-        Author input = new Author(null, "");
+        AuthorCreateCommand input = new AuthorCreateCommand( "");
         assertThrows(IllegalArgumentException.class, () -> authorService.createAuthor(input));
     }
 
     @Test
     void givenAuthorWithExistingNameWhenCreateAuthorThenThrowAuthorException() {
-        Author input = new Author(null, "Juan");
+        AuthorCreateCommand input = new AuthorCreateCommand( "Gabriel García Márquez");
 
         Mockito.when(authorRepo.existsByName(input.name())).thenReturn(true);
 
