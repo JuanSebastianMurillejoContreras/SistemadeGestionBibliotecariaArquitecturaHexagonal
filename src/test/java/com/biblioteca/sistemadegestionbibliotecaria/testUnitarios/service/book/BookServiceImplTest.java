@@ -52,8 +52,6 @@ class BookServiceImplTest {
         assertEquals(expected, result);
     }
 
-
-
     @Test
     void givenBookRequestDTOWhenAddBookWithNUllISBNThenReturnBookResponseDTO3() {
         //given:

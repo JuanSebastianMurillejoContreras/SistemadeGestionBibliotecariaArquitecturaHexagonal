@@ -1,6 +1,5 @@
 package com.biblioteca.author_service_mejorado.aplication.service;
 
-
 import com.biblioteca.author_service_mejorado.aplication.port.in.CreateAuthorUseCase;
 import com.biblioteca.author_service_mejorado.aplication.port.in.GetAuthorUseCase;
 import com.biblioteca.author_service_mejorado.aplication.port.out.AuthorRepositoryPort;
@@ -21,6 +20,10 @@ public class AuthorService implements CreateAuthorUseCase, GetAuthorUseCase {
     private final AuthorRepositoryPort repositoryPort;
     private final BookPort bookPort;
     private final IAuthorMapper authorMapper;
+
+    /**
+     * Crea un nuevo autor validando las reglas de negocio
+     */
 
     @Override
     public Author createAuthor(AuthorCreateCommand author) {
@@ -43,11 +46,14 @@ public class AuthorService implements CreateAuthorUseCase, GetAuthorUseCase {
 
     }
 
+    /**
+     * Obtiene un autor por su ID
+     */
     @Override
     public Author getAuthorById(Long id) {
 
         if (id == null){
-            throw new IllegalArgumentException("El ID del autor no puede ser nulo");
+            throw new IllegalArgumentException(AuthorErrorMessage.ID_AUTOR_NOT_REGISTERED);
         }
 
         Author author = repositoryPort.getAuthorById(id);
@@ -59,8 +65,11 @@ public class AuthorService implements CreateAuthorUseCase, GetAuthorUseCase {
         return author;
     }
 
+    /**
+     * Obtiene un autor junto con sus libros asociados (consulta externa)
+     */
     @Override
-    public AuthorResponseDTO getAuthor(Long id) {
+    public AuthorResponseDTO getAuthorWithBooks(Long id) {
         Author author = repositoryPort.getAuthorById(id);
 
         if (author == null) {
@@ -68,13 +77,11 @@ public class AuthorService implements CreateAuthorUseCase, GetAuthorUseCase {
         }
 
         return new AuthorResponseDTO(
-                author.getId(),
-                author.getName(),
-                bookPort.getBooksByAuthor(author.getId())
+                author.id(),
+                author.name(),
+                List<>
         );
     }
-
-
 
 }
 
