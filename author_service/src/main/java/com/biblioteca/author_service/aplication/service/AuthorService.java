@@ -13,6 +13,8 @@ import com.biblioteca.author_service.infraestructure.mapper.IAuthorMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Random;
+
 @Service
 @RequiredArgsConstructor
 public class AuthorService implements CreateAuthorUseCase, GetAuthorUseCase {
@@ -20,6 +22,7 @@ public class AuthorService implements CreateAuthorUseCase, GetAuthorUseCase {
     private final AuthorRepositoryPort repositoryPort;
     private final BookRepositoryPort bookRepositoryPort;
     private final IAuthorMapper authorMapper;
+    private final Random random;
 
     @Override
     public Author createAuthor(AuthorCreateCommand author) {

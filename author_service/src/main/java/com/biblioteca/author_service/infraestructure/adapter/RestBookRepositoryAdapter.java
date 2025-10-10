@@ -1,7 +1,7 @@
 package com.biblioteca.author_service.infraestructure.adapter;
 
+import com.biblioteca.author_service.aplication.port.out.BookRepositoryPort;
 import com.biblioteca.author_service.infraestructure.controller.dto.out.BookDTO;
-import com.biblioteca.author_service.infraestructure.persistance.RestBookRepositoryAdapter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
@@ -14,7 +14,7 @@ import java.util.List;
 
 @Component
 @RequiredArgsConstructor
-public class BookAdapter extends RestBookRepositoryAdapter {
+public class RestBookRepositoryAdapter implements BookRepositoryPort {
 
     private final RestTemplate restTemplate;
 
@@ -34,4 +34,5 @@ public class BookAdapter extends RestBookRepositoryAdapter {
 
         return response.getBody();
     }
+
 }

@@ -1,8 +1,8 @@
 package com.biblioteca.book_service.infraestructure.persistance;
 
-import com.biblioteca.sistemadegestionbibliotecaria.book.aplication.port.out.BookRepositoryPort;
-import com.biblioteca.sistemadegestionbibliotecaria.book.domain.model.Book;
-import com.biblioteca.sistemadegestionbibliotecaria.book.infraestructure.mapper.IBookMapper;
+import com.biblioteca.book_service.aplication.port.out.BookRepositoryPort;
+import com.biblioteca.book_service.domain.model.Book;
+import com.biblioteca.book_service.infraestructure.mapper.IBookMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

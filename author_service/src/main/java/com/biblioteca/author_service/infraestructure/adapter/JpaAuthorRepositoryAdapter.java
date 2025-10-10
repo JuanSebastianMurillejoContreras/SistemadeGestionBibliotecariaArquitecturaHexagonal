@@ -1,4 +1,4 @@
-package com.biblioteca.author_service.infraestructure.persistance;
+package com.biblioteca.author_service.infraestructure.adapter;
 
 
 import com.biblioteca.author_service.aplication.port.out.AuthorRepositoryPort;
@@ -7,6 +7,8 @@ import com.biblioteca.author_service.domain.exception.AuthorNotFoundException;
 import com.biblioteca.author_service.domain.model.Author;
 import com.biblioteca.author_service.infraestructure.controller.dto.out.AuthorResponseDTO;
 import com.biblioteca.author_service.infraestructure.mapper.IAuthorMapper;;
+import com.biblioteca.author_service.infraestructure.persistance.AuthorEntity;
+import com.biblioteca.author_service.infraestructure.persistance.SpringDataAuthorRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 

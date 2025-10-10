@@ -1,10 +1,11 @@
 package com.biblioteca.book_service.infraestructure.mapper;
 
-import com.biblioteca.sistemadegestionbibliotecaria.book.domain.model.Book;
-import com.biblioteca.sistemadegestionbibliotecaria.book.infraestructure.controller.dto.input.BookRequestDTO;
-import com.biblioteca.sistemadegestionbibliotecaria.book.infraestructure.controller.dto.out.BookResponseDTO;
-import com.biblioteca.sistemadegestionbibliotecaria.book.infraestructure.persistance.BookEntity;
-import com.biblioteca.sistemadegestionbibliotecaria.testContainers.common.dto.PageDTO;
+import com.biblioteca.book_service.domain.model.Book;
+import com.biblioteca.book_service.infraestructure.controller.dto.input.BookRequestDTO;
+import com.biblioteca.book_service.infraestructure.controller.dto.out.BookResponseDTO;
+import com.biblioteca.book_service.infraestructure.controller.dto.out.PageDTO;
+import com.biblioteca.book_service.infraestructure.persistance.BookEntity;
+
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.springframework.data.domain.Page;

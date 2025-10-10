@@ -1,6 +1,6 @@
 package com.biblioteca.book_service.domain.exception;
 
-import com.biblioteca.sistemadegestionbibliotecaria.book.domain.exception.BookException;
+import com.biblioteca.book_service.domain.exception.BookException;
 import lombok.Getter;
 
 @Getter

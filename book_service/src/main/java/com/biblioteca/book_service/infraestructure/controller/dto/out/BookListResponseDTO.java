@@ -1,6 +1,6 @@
 package com.biblioteca.book_service.infraestructure.controller.dto.out;
 
-import com.biblioteca.sistemadegestionbibliotecaria.testContainers.common.dto.PageDTO;
+import com.biblioteca.book_service.testContainers.common.dto.PageDTO;
 
 import java.util.List;
 

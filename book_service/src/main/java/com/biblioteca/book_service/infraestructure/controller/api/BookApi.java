@@ -1,9 +1,9 @@
 package com.biblioteca.book_service.infraestructure.controller.api;
 
-import com.biblioteca.sistemadegestionbibliotecaria.book.infraestructure.controller.dto.input.BookRequestDTO;
-import com.biblioteca.sistemadegestionbibliotecaria.book.infraestructure.controller.dto.out.BookListResponseDTO;
-import com.biblioteca.sistemadegestionbibliotecaria.book.infraestructure.controller.dto.out.BookResponseDTO;
-import com.biblioteca.sistemadegestionbibliotecaria.testContainers.common.dto.PageDTO;
+import com.biblioteca.book_service.infraestructure.controller.dto.input.BookRequestDTO;
+import com.biblioteca.book_service.infraestructure.controller.dto.out.BookListResponseDTO;
+import com.biblioteca.book_service.infraestructure.controller.dto.out.BookResponseDTO;
+import com.biblioteca.book_service.infraestructure.controller.dto.out.PageDTO;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -15,6 +15,7 @@ import jakarta.validation.Valid;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @Tag(name = "Libros", description = "Gestionar libros")
 @RequestMapping("/api/v1/books")

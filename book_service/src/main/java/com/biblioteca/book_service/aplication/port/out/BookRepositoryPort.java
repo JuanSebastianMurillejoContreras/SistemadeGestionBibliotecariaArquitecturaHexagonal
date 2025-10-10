@@ -1,6 +1,7 @@
 package com.biblioteca.book_service.aplication.port.out;
 
-import com.biblioteca.sistemadegestionbibliotecaria.book.domain.model.Book;
+
+import com.biblioteca.book_service.domain.model.Book;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
