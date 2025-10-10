@@ -5,7 +5,6 @@ import com.biblioteca.author_service.infraestructure.controller.dto.input.Author
 import com.biblioteca.author_service.infraestructure.controller.dto.input.AuthorRequestDTO;
 import com.biblioteca.author_service.infraestructure.controller.dto.out.AuthorResponseDTO;
 import com.biblioteca.author_service.infraestructure.persistance.AuthorEntity;
-
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")

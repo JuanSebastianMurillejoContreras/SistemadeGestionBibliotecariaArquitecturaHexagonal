@@ -1,6 +1,10 @@
 package com.biblioteca.author_service.infraestructure.controller.dto.out;
 
+import java.util.List;
+
 public record AuthorResponseDTO(
-        String name
+        Long id,
+        String name,
+        List<BookDTO> books
 ) {
 }

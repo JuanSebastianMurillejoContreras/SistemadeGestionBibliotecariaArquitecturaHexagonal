@@ -9,7 +9,6 @@ import com.biblioteca.author_service.infraestructure.controller.dto.input.Author
 import com.biblioteca.author_service.infraestructure.controller.dto.input.AuthorRequestDTO;
 import com.biblioteca.author_service.infraestructure.controller.dto.out.AuthorResponseDTO;
 import com.biblioteca.author_service.infraestructure.mapper.IAuthorMapper;
-
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -47,10 +46,7 @@ public class AuthorController implements AuthorApi {
     public ResponseEntity<AuthorResponseDTO> getById(@PathVariable Long id) {
 
         Author found = getAuthorUseCase.getAuthorById(id);
-
-        AuthorCreateCommand dto = authorMapper.authorToAuthorDTO(found);
-
-        AuthorResponseDTO response = authorMapper.authorDTOToAuthorResponseDTO(dto);
+        AuthorResponseDTO response = authorMapper.toResponseDTO(found);
 
         return ResponseEntity.ok(response);
     }

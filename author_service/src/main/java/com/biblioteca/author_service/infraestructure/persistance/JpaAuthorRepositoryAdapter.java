@@ -5,8 +5,8 @@ import com.biblioteca.author_service.aplication.port.out.AuthorRepositoryPort;
 import com.biblioteca.author_service.domain.exception.AuthorErrorMessage;
 import com.biblioteca.author_service.domain.exception.AuthorNotFoundException;
 import com.biblioteca.author_service.domain.model.Author;
-import com.biblioteca.author_service.infraestructure.mapper.IAuthorMapper;
-
+import com.biblioteca.author_service.infraestructure.controller.dto.out.AuthorResponseDTO;
+import com.biblioteca.author_service.infraestructure.mapper.IAuthorMapper;;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -29,6 +29,12 @@ public class JpaAuthorRepositoryAdapter implements AuthorRepositoryPort {
                 .orElseThrow(() -> new AuthorNotFoundException(AuthorErrorMessage.AUTOR_NOT_REGISTERED));
 
         return mapper.toDomain(entity);
+    }
+
+    @Override
+    public AuthorResponseDTO getAuthorWithBooks(Long id) {
+
+        return null;
     }
 
     @Override

@@ -6,7 +6,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
 import java.util.Objects;
 
 @Getter
@@ -23,11 +22,6 @@ public class AuthorEntity {
 
     @Column(unique = true, nullable = false)
     private String name;
-
-
-    @OneToMany(mappedBy = "author", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<BookEntity> books;
-
 
     @Override
     public boolean equals(Object o) {

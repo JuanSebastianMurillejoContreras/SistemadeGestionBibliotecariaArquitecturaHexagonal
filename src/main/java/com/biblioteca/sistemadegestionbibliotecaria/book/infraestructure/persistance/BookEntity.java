@@ -32,7 +32,7 @@ public class BookEntity {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "author_id")
-    private AuthorEntity author;
+    private AuthorEntity author; // Long author_id en microservicios
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "library_id")
