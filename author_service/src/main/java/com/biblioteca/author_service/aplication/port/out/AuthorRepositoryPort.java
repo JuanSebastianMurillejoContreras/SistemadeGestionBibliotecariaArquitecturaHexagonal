@@ -8,7 +8,6 @@ public interface AuthorRepositoryPort {
 
     Author save(Author author);
     Author getAuthorById(Long id);
-    AuthorResponseDTO getAuthorWithBooks(Long id);
     boolean existsByName(String name);
 
 }

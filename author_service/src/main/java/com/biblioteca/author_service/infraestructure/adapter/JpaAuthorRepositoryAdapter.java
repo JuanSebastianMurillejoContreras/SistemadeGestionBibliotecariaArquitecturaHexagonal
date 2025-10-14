@@ -34,12 +34,6 @@ public class JpaAuthorRepositoryAdapter implements AuthorRepositoryPort {
     }
 
     @Override
-    public AuthorResponseDTO getAuthorWithBooks(Long id) {
-
-        return null;
-    }
-
-    @Override
     public boolean existsByName(String name) {
         return repository.existsByName(name);
     }
