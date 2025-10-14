@@ -9,14 +9,14 @@ import com.biblioteca.book_service.infraestructure.controller.dto.out.BookRespon
 import com.biblioteca.book_service.infraestructure.controller.dto.out.PageDTO;
 import com.biblioteca.book_service.infraestructure.mapper.IBookMapper;
 import jakarta.validation.Valid;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.awt.print.Pageable;
 
 @RestController
 @RequestMapping("/api/v1/books")
@@ -46,5 +46,7 @@ public class BookController implements BookApi {
         PageDTO<BookResponseDTO> bookResponseDTOPageDTO = bookMapper.pageBookToPageDTO(bookDTOPage);
         return ResponseEntity.ok(bookResponseDTOPageDTO);
     }
+
+
 
 }

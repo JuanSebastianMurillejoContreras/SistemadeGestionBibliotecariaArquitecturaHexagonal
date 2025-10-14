@@ -1,12 +1,9 @@
 package com.biblioteca.author_service.infraestructure.controller.dto.out;
 
-import com.biblioteca.author_service.domain.model.Author;
-
 import java.util.List;
 
-public record AuthorResponseWithBooksDTO(
-        Author author,
-        List<BookDTO> books,
+public record BookServiceResponseDTO(
+        List<BookDTO> data,
         int currentPage,
         int totalPages,
         long totalElements,

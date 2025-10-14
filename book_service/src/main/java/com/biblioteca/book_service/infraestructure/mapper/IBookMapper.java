@@ -20,13 +20,9 @@ public interface IBookMapper {
     BookResponseDTO toResponseDTO(Book book);
 
     // Domain → Entity
-    @Mapping(source = "authorId", target = "author.id")
-    @Mapping(source = "libraryId", target = "library.id")
     BookEntity toEntity(Book book);
 
     // Entity → Domain
-    @Mapping(source = "author.id", target = "authorId")
-    @Mapping(source = "library.id", target = "libraryId")
     Book bookEntitytoDomain(BookEntity bookEntity);
 
     // Page<BookEntity> → Page<Book>

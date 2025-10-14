@@ -20,6 +20,12 @@ spring:
     name: "book_service"
 server:
   port: 8082
-book:
+author:
   service:
-    url: http://localhost:8081/api/v1/books
+    url: http://localhost:8081/api/v1/authors
+library:
+  service:
+    url: http://localhost:8081/api/v1/libraries
+reservation:
+  service:
+    url: http://localhost:8081/api/v1/reservations

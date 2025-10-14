@@ -9,10 +9,13 @@ import com.biblioteca.author_service.domain.exception.AuthorException;
 import com.biblioteca.author_service.domain.model.Author;
 import com.biblioteca.author_service.infraestructure.controller.dto.input.AuthorCreateCommand;
 import com.biblioteca.author_service.infraestructure.controller.dto.out.AuthorResponseWithBooksDTO;
+import com.biblioteca.author_service.infraestructure.controller.dto.out.BookDTO;
+import com.biblioteca.author_service.infraestructure.controller.dto.out.BookServiceResponseDTO;
 import com.biblioteca.author_service.infraestructure.mapper.IAuthorMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Random;
 
 @Service
@@ -61,16 +64,20 @@ public class AuthorService implements CreateAuthorUseCase, GetAuthorUseCase {
     }
 
     @Override
-    public AuthorResponseWithBooksDTO getAuthorWithBooks(Long id) {
-        Author author = repositoryPort.getAuthorById(id);
+    public AuthorResponseWithBooksDTO getAuthorWithBooks(Long authorId) {
+        Author author = repositoryPort.getAuthorById(authorId);
 
-        if (author == null) {
-            throw new AuthorException(AuthorErrorMessage.AUTOR_NOT_REGISTERED);
-        }
+        // Llamada al microservicio de libros
+        BookServiceResponseDTO response = bookRepositoryPort.getBooksByAuthor(authorId);
 
+        // Devolver el autor junto con todos los metadatos del servicio de libros
         return new AuthorResponseWithBooksDTO(
-                author.name(),
-                bookRepositoryPort.getBooksByAuthor(author.id())
+                author,
+                response.data(),
+                response.currentPage(),
+                response.totalPages(),
+                response.totalElements(),
+                response.pageSize()
         );
     }
 
