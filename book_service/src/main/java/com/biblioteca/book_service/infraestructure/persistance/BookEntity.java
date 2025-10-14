@@ -1,8 +1,5 @@
 package com.biblioteca.book_service.infraestructure.persistance;
 
-import com.biblioteca.book_service.author.infraestructure.persistance.AuthorEntity;
-import com.biblioteca.book_service.libraries.infraestructure.persistance.LibraryEntity;
-import com.biblioteca.book_service.reservation.infraestructure.persistance.ReservationEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -30,16 +27,11 @@ public class BookEntity {
     @Column(unique = true, nullable = false)
     private String isbn;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "author_id")
-    private AuthorEntity author; // Long author_id en microservicios
+    @Column(name = "author_id", nullable = false)
+    private Long authorId;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "library_id")
-    private LibraryEntity library;
-
-    @OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
-    private List<ReservationEntity> LstReservations;
+    @Column(name = "library_id", nullable = false)
+    private Long libraryId;
 
     @Override
     public boolean equals(Object o) {

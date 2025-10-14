@@ -1,7 +1,5 @@
 package com.biblioteca.book_service.aplication.service;
 
-
-
 import com.biblioteca.book_service.aplication.port.in.CreateBookUseCase;
 import com.biblioteca.book_service.aplication.port.in.GetBookUseCase;
 import com.biblioteca.book_service.aplication.port.out.BookRepositoryPort;
@@ -9,10 +7,10 @@ import com.biblioteca.book_service.domain.exception.BookErrorMessage;
 import com.biblioteca.book_service.domain.exception.BookException;
 import com.biblioteca.book_service.domain.model.Book;
 import lombok.RequiredArgsConstructor;
-import org.h2.mvstore.Page;
 import org.springframework.stereotype.Service;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
-import java.awt.print.Pageable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -73,8 +71,4 @@ public class BookService implements CreateBookUseCase, GetBookUseCase {
         return  repositoryPort.findByLibraryIdOrAuthorIdOrTitleContainingIgnoreCase(libraryId, authorId, title, pageable);
     }
 
-    @Override
-    public Page<Book> buscarLibroPorIdAutorOTituloIgnorandoMasyusculaOMinuscula(Long libraryId, Long authorId, String title, Pageable pageable) {
-        return null;
-    }
 }

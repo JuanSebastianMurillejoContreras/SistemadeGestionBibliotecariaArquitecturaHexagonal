@@ -1,0 +1,22 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/biblioteca
+    username: postgres
+    password: 12345
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+  application:
+    name: "author_service"
+server:
+  port: 8081
+author:
+  service:
+    url: http://localhost:8081/api/v1/authors
+library:
+  service:
+    url: http://localhost:8081/api/v1/libraries
+reservation:
+  service:
+    url: http://localhost:8081/api/v1/reservations
