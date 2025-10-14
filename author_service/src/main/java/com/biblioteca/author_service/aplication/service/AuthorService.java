@@ -8,7 +8,7 @@ import com.biblioteca.author_service.domain.exception.AuthorErrorMessage;
 import com.biblioteca.author_service.domain.exception.AuthorException;
 import com.biblioteca.author_service.domain.model.Author;
 import com.biblioteca.author_service.infraestructure.controller.dto.input.AuthorCreateCommand;
-import com.biblioteca.author_service.infraestructure.controller.dto.out.AuthorResponseDTO;
+import com.biblioteca.author_service.infraestructure.controller.dto.out.AuthorResponseWithBooksDTO;
 import com.biblioteca.author_service.infraestructure.mapper.IAuthorMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -22,7 +22,6 @@ public class AuthorService implements CreateAuthorUseCase, GetAuthorUseCase {
     private final AuthorRepositoryPort repositoryPort;
     private final BookRepositoryPort bookRepositoryPort;
     private final IAuthorMapper authorMapper;
-    private final Random random;
 
     @Override
     public Author createAuthor(AuthorCreateCommand author) {
@@ -62,15 +61,14 @@ public class AuthorService implements CreateAuthorUseCase, GetAuthorUseCase {
     }
 
     @Override
-    public AuthorResponseDTO getAuthorWithBooks(Long id) {
+    public AuthorResponseWithBooksDTO getAuthorWithBooks(Long id) {
         Author author = repositoryPort.getAuthorById(id);
 
         if (author == null) {
             throw new AuthorException(AuthorErrorMessage.AUTOR_NOT_REGISTERED);
         }
 
-        return new AuthorResponseDTO(
-                author.id(),
+        return new AuthorResponseWithBooksDTO(
                 author.name(),
                 bookRepositoryPort.getBooksByAuthor(author.id())
         );

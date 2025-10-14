@@ -1,0 +1,25 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:biblioteca
+    driver-class-name: org.h2.Driver
+    username: juan
+    password: 12345
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  sql:
+    init:
+      mode: always
+  application:
+    name: "author_service"
+server:
+  port: 8081
+book:
+  service:
+    url: http://localhost:8081/api/v1/books

@@ -8,6 +8,7 @@ import com.biblioteca.author_service.infraestructure.controller.api.AuthorApi;
 import com.biblioteca.author_service.infraestructure.controller.dto.input.AuthorCreateCommand;
 import com.biblioteca.author_service.infraestructure.controller.dto.input.AuthorRequestDTO;
 import com.biblioteca.author_service.infraestructure.controller.dto.out.AuthorResponseDTO;
+import com.biblioteca.author_service.infraestructure.controller.dto.out.AuthorResponseWithBooksDTO;
 import com.biblioteca.author_service.infraestructure.mapper.IAuthorMapper;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -51,5 +52,10 @@ public class AuthorController implements AuthorApi {
         return ResponseEntity.ok(response);
     }
 
+    @GetMapping("/{id}/books")
+    public ResponseEntity<AuthorResponseWithBooksDTO> getByIdWithBooks(@PathVariable Long id) {
+        AuthorResponseWithBooksDTO found = getAuthorUseCase.getAuthorWithBooks(id);
+        return ResponseEntity.ok(found);
+    }
 
 }

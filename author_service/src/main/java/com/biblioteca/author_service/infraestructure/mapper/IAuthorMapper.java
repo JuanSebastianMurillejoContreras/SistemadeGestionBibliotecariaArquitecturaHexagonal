@@ -4,6 +4,7 @@ import com.biblioteca.author_service.domain.model.Author;
 import com.biblioteca.author_service.infraestructure.controller.dto.input.AuthorCreateCommand;
 import com.biblioteca.author_service.infraestructure.controller.dto.input.AuthorRequestDTO;
 import com.biblioteca.author_service.infraestructure.controller.dto.out.AuthorResponseDTO;
+import com.biblioteca.author_service.infraestructure.controller.dto.out.AuthorResponseWithBooksDTO;
 import com.biblioteca.author_service.infraestructure.persistance.AuthorEntity;
 import org.mapstruct.Mapper;
 
@@ -16,6 +17,8 @@ public interface IAuthorMapper {
     AuthorCreateCommand authorToAuthorDTO(Author author);
     AuthorResponseDTO authorDTOToAuthorResponseDTO(AuthorCreateCommand authorCreateCommand);
     Author authorCreateCommandToAuthor(AuthorCreateCommand authorCreateCommand);
+
+    AuthorResponseWithBooksDTO authorResponseDTOToAuthorResponseWithBooks(AuthorResponseDTO authorResponseDTO);
 
 
     // Domain -> Response
