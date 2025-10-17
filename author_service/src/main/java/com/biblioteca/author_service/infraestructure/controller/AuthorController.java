@@ -6,6 +6,7 @@ import com.biblioteca.author_service.aplication.port.in.GetAuthorUseCase;
 import com.biblioteca.author_service.domain.model.Author;
 import com.biblioteca.author_service.infraestructure.controller.api.AuthorApi;
 import com.biblioteca.author_service.infraestructure.controller.dto.input.AuthorCreateCommand;
+import com.biblioteca.author_service.infraestructure.controller.dto.input.AuthorGetCommand;
 import com.biblioteca.author_service.infraestructure.controller.dto.input.AuthorRequestDTO;
 import com.biblioteca.author_service.infraestructure.controller.dto.out.AuthorResponseDTO;
 import com.biblioteca.author_service.infraestructure.controller.dto.out.AuthorResponseWithBooksDTO;
@@ -44,9 +45,12 @@ public class AuthorController implements AuthorApi {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<AuthorResponseDTO> getById(@PathVariable Long id) {
+    public ResponseEntity<AuthorResponseDTO> getById(@PathVariable Long id, @RequestParam Boolean books) {
 
-        Author found = getAuthorUseCase.getAuthorById(id);
+        AuthorGetCommand authorGetCommand = new AuthorGetCommand(id, books);
+
+        Author found = getAuthorUseCase.getAuthorById(authorGetCommand);
+
         AuthorResponseDTO response = authorMapper.toResponseDTO(found);
 
         return ResponseEntity.ok(response);

@@ -34,7 +34,6 @@ public class RestBookRepositoryAdapter implements BookRepositoryPort {
                 null,
                 new ParameterizedTypeReference<>() {}
         );
-
         return response.getBody();
     }
 }
