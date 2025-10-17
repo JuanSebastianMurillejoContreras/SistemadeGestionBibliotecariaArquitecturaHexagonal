@@ -1,12 +1,12 @@
-package com.biblioteca.sistemadegestionbibliotecaria.testUnitarios.service.book;
+package com.biblioteca.library_service.testUnitarios.service.book;
 
-import com.biblioteca.sistemadegestionbibliotecaria.author.domain.exception.AuthorErrorMessage;
-import com.biblioteca.sistemadegestionbibliotecaria.book.aplication.port.out.BookRepositoryPort;
-import com.biblioteca.sistemadegestionbibliotecaria.book.aplication.service.BookService;
-import com.biblioteca.sistemadegestionbibliotecaria.book.domain.exception.BookErrorMessage;
-import com.biblioteca.sistemadegestionbibliotecaria.book.domain.exception.BookException;
-import com.biblioteca.sistemadegestionbibliotecaria.book.domain.model.Book;
-import com.biblioteca.sistemadegestionbibliotecaria.book.infraestructure.mapper.IBookMapper;
+import com.biblioteca.library_service.author.domain.exception.AuthorErrorMessage;
+import com.biblioteca.library_service.book.aplication.port.out.BookRepositoryPort;
+import com.biblioteca.library_service.book.aplication.service.BookService;
+import com.biblioteca.library_service.book.domain.exception.BookErrorMessage;
+import com.biblioteca.library_service.book.domain.exception.BookException;
+import com.biblioteca.library_service.book.domain.model.Book;
+import com.biblioteca.library_service.book.infraestructure.mapper.IBookMapper;
 import jakarta.validation.constraints.AssertTrue;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

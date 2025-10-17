@@ -1,8 +1,8 @@
-package com.biblioteca.sistemadegestionbibliotecaria.libraries.infraestructure.persistance;
+package com.biblioteca.library_service.infraestructure.persistance;
 
-import com.biblioteca.sistemadegestionbibliotecaria.libraries.aplication.port.out.LibraryRepositoryPort;
-import com.biblioteca.sistemadegestionbibliotecaria.libraries.domain.model.Library;
-import com.biblioteca.sistemadegestionbibliotecaria.libraries.infraestructure.mapper.ILibraryMapper;
+import com.biblioteca.library_service.aplication.port.out.LibraryRepositoryPort;
+import com.biblioteca.library_service.domain.model.Library;
+import com.biblioteca.library_service.infraestructure.mapper.ILibraryMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 

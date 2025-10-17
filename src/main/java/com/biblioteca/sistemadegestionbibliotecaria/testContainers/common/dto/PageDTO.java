@@ -1,4 +1,4 @@
-package com.biblioteca.sistemadegestionbibliotecaria.testContainers.common.dto;
+package com.biblioteca.library_service.testContainers.common.dto;
 
 import java.util.List;
 

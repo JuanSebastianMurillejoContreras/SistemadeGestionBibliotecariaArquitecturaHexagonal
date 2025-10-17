@@ -1,6 +1,6 @@
-package com.biblioteca.sistemadegestionbibliotecaria.book.infraestructure.persistance;
+package com.biblioteca.library_service.book.infraestructure.persistance;
 
-import com.biblioteca.sistemadegestionbibliotecaria.author.domain.model.Author;
+import com.biblioteca.library_service.author.domain.model.Author;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -1,11 +1,11 @@
-package com.biblioteca.sistemadegestionbibliotecaria.book.aplication.service;
+package com.biblioteca.library_service.book.aplication.service;
 
-import com.biblioteca.sistemadegestionbibliotecaria.book.aplication.port.in.CreateBookUseCase;
-import com.biblioteca.sistemadegestionbibliotecaria.book.aplication.port.in.GetBookUseCase;
-import com.biblioteca.sistemadegestionbibliotecaria.book.aplication.port.out.BookRepositoryPort;
-import com.biblioteca.sistemadegestionbibliotecaria.book.domain.exception.BookErrorMessage;
-import com.biblioteca.sistemadegestionbibliotecaria.book.domain.exception.BookException;
-import com.biblioteca.sistemadegestionbibliotecaria.book.domain.model.Book;
+import com.biblioteca.library_service.book.aplication.port.in.CreateBookUseCase;
+import com.biblioteca.library_service.book.aplication.port.in.GetBookUseCase;
+import com.biblioteca.library_service.book.aplication.port.out.BookRepositoryPort;
+import com.biblioteca.library_service.book.domain.exception.BookErrorMessage;
+import com.biblioteca.library_service.book.domain.exception.BookException;
+import com.biblioteca.library_service.book.domain.model.Book;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

@@ -1,6 +1,6 @@
 package com.biblioteca.usuario_service.infraestructura.persistance;
 
-import com.biblioteca.sistemadegestionbibliotecaria.reservation.infraestructure.persistance.ReservationEntity;
+import com.biblioteca.library_service.reservation.infraestructure.persistance.ReservationEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

@@ -1,6 +1,6 @@
-package com.biblioteca.sistemadegestionbibliotecaria.author.aplication.port.out;
+package com.biblioteca.library_service.author.aplication.port.out;
 
-import com.biblioteca.sistemadegestionbibliotecaria.author.domain.model.Author;
+import com.biblioteca.library_service.author.domain.model.Author;
 
 public interface AuthorRepositoryPort {
 

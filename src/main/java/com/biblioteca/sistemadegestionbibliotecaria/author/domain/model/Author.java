@@ -1,4 +1,4 @@
-package com.biblioteca.sistemadegestionbibliotecaria.author.domain.model;
+package com.biblioteca.library_service.author.domain.model;
 
 public record Author(
         Long id,

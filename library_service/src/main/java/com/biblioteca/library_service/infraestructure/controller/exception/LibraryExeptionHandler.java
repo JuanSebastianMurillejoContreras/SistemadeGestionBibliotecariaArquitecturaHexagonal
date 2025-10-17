@@ -1,8 +1,8 @@
 package com.biblioteca.library_service.infraestructure.controller.exception;
 
-import com.biblioteca.sistemadegestionbibliotecaria.libraries.domain.exception.LibraryException;
-import com.biblioteca.sistemadegestionbibliotecaria.libraries.domain.exception.LibraryNotFoundException;
-import com.biblioteca.sistemadegestionbibliotecaria.libraries.infraestructure.controller.dto.out.LibraryErrorResponse;
+import com.biblioteca.library_service.domain.exception.LibraryException;
+import com.biblioteca.library_service.domain.exception.LibraryNotFoundException;
+import com.biblioteca.library_service.infraestructure.controller.dto.out.LibraryErrorResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -42,7 +42,5 @@ public class LibraryExeptionHandler {
         errors.add(ex.getMessage());
         return new LibraryErrorResponse(errors);
     }
-
-
 
 }

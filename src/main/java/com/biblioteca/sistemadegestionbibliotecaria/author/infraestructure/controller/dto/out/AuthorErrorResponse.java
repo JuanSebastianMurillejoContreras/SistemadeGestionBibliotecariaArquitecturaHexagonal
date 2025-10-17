@@ -1,4 +1,4 @@
-package com.biblioteca.sistemadegestionbibliotecaria.author.infraestructure.controller.dto.out;
+package com.biblioteca.library_service.author.infraestructure.controller.dto.out;
 
 import java.util.List;
 

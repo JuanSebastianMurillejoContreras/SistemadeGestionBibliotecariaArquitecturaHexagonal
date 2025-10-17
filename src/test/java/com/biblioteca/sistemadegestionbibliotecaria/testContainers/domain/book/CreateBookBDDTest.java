@@ -1,11 +1,11 @@
-package com.biblioteca.sistemadegestionbibliotecaria.testContainers.domain.book;
+package com.biblioteca.library_service.testContainers.domain.book;
 
-import com.biblioteca.sistemadegestionbibliotecaria.author.aplication.port.out.AuthorRepositoryPort;
-import com.biblioteca.sistemadegestionbibliotecaria.author.domain.model.Author;
-import com.biblioteca.sistemadegestionbibliotecaria.book.infraestructure.persistance.SpringDataBookRepository;
-import com.biblioteca.sistemadegestionbibliotecaria.libraries.aplication.port.out.LibraryRepositoryPort;
-import com.biblioteca.sistemadegestionbibliotecaria.libraries.domain.model.Library;
-import com.biblioteca.sistemadegestionbibliotecaria.testContainers.common.AbstractIntegrationTest;
+import com.biblioteca.library_service.author.aplication.port.out.AuthorRepositoryPort;
+import com.biblioteca.library_service.author.domain.model.Author;
+import com.biblioteca.library_service.book.infraestructure.persistance.SpringDataBookRepository;
+import com.biblioteca.library_service.aplication.port.out.LibraryRepositoryPort;
+import com.biblioteca.library_service.domain.model.Library;
+import com.biblioteca.library_service.testContainers.common.AbstractIntegrationTest;
 import io.restassured.http.ContentType;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

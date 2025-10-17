@@ -1,8 +1,11 @@
 package com.biblioteca.library_service.infraestructure.persistance;
 
-import com.biblioteca.sistemadegestionbibliotecaria.book.infraestructure.persistance.BookEntity;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-import java.util.List;
 import java.util.Objects;
 
 @Getter
@@ -21,9 +24,6 @@ public class LibraryEntity {
 
     @Column(nullable = false)
     private String address;
-
-    @OneToMany(mappedBy = "library", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<BookEntity> books;
 
     @Override
     public boolean equals(Object o) {

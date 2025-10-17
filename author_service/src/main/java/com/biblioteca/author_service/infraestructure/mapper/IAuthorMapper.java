@@ -20,7 +20,6 @@ public interface IAuthorMapper {
 
     AuthorResponseWithBooksDTO authorResponseDTOToAuthorResponseWithBooks(AuthorResponseDTO authorResponseDTO);
 
-
     // Domain -> Response
     AuthorResponseDTO toResponseDTO(Author author);
 

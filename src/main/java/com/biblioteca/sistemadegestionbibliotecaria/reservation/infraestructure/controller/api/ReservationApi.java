@@ -1,9 +1,9 @@
-package com.biblioteca.sistemadegestionbibliotecaria.reservation.infraestructure.controller.api;
+package com.biblioteca.library_service.reservation.infraestructure.controller.api;
 
-import com.biblioteca.sistemadegestionbibliotecaria.reservation.infraestructure.controller.dto.input.ReservationRequestDTO;
-import com.biblioteca.sistemadegestionbibliotecaria.reservation.infraestructure.controller.dto.input.ReservationUpdateDTO;
-import com.biblioteca.sistemadegestionbibliotecaria.reservation.infraestructure.controller.dto.out.ReservationListResponseDTO;
-import com.biblioteca.sistemadegestionbibliotecaria.reservation.infraestructure.controller.dto.out.ReservationResponseDTO;
+import com.biblioteca.library_service.reservation.infraestructure.controller.dto.input.ReservationRequestDTO;
+import com.biblioteca.library_service.reservation.infraestructure.controller.dto.input.ReservationUpdateDTO;
+import com.biblioteca.library_service.reservation.infraestructure.controller.dto.out.ReservationListResponseDTO;
+import com.biblioteca.library_service.reservation.infraestructure.controller.dto.out.ReservationResponseDTO;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;

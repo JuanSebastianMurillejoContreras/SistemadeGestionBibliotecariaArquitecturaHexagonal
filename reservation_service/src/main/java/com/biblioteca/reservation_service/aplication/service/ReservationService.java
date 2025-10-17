@@ -1,12 +1,12 @@
 package com.biblioteca.reservation_service.aplication.service;
 
-import com.biblioteca.sistemadegestionbibliotecaria.reservation.aplication.port.in.CancelReservationUseCase;
-import com.biblioteca.sistemadegestionbibliotecaria.reservation.aplication.port.in.CreateReservationUseCase;
-import com.biblioteca.sistemadegestionbibliotecaria.reservation.aplication.port.in.GetReservationUseCase;
-import com.biblioteca.sistemadegestionbibliotecaria.reservation.aplication.port.out.ReservationRepositoryPort;
-import com.biblioteca.sistemadegestionbibliotecaria.reservation.domain.exception.ReservationErrorMessage;
-import com.biblioteca.sistemadegestionbibliotecaria.reservation.domain.exception.ReservationException;
-import com.biblioteca.sistemadegestionbibliotecaria.reservation.domain.model.Reservation;
+import com.biblioteca.library_service.reservation.aplication.port.in.CancelReservationUseCase;
+import com.biblioteca.library_service.reservation.aplication.port.in.CreateReservationUseCase;
+import com.biblioteca.library_service.reservation.aplication.port.in.GetReservationUseCase;
+import com.biblioteca.library_service.reservation.aplication.port.out.ReservationRepositoryPort;
+import com.biblioteca.library_service.reservation.domain.exception.ReservationErrorMessage;
+import com.biblioteca.library_service.reservation.domain.exception.ReservationException;
+import com.biblioteca.library_service.reservation.domain.model.Reservation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

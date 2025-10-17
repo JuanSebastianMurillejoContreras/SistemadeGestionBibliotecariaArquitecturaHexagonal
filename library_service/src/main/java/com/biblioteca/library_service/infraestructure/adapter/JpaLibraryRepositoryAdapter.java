@@ -1,9 +1,10 @@
-package com.biblioteca.library_service.infraestructure.persistance;
+package com.biblioteca.library_service.infraestructure.adapter;
 
-import com.biblioteca.sistemadegestionbibliotecaria.libraries.aplication.port.out.LibraryRepositoryPort;
-import com.biblioteca.sistemadegestionbibliotecaria.libraries.domain.model.Library;
-import com.biblioteca.sistemadegestionbibliotecaria.libraries.infraestructure.mapper.ILibraryMapper;
-import com.biblioteca.sistemadegestionbibliotecaria.libraries.infraestructure.persistance.SpringDataLibraryRepository;
+import com.biblioteca.library_service.aplication.port.out.LibraryRepositoryPort;
+import com.biblioteca.library_service.domain.model.Library;
+import com.biblioteca.library_service.infraestructure.mapper.ILibraryMapper;
+import com.biblioteca.library_service.infraestructure.persistance.LibraryEntity;
+import com.biblioteca.library_service.infraestructure.persistance.SpringDataLibraryRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -18,6 +19,11 @@ public class JpaLibraryRepositoryAdapter implements LibraryRepositoryPort {
     public Library createLibrary(Library library) {
         LibraryEntity libraryEntity = libraryMapper.toEntity(library);
         return libraryMapper.toDomain(libraryRepository.save(libraryEntity));
+    }
+
+    @Override
+    public Library getLibraryById(Long id) {
+        return libraryRepository.getLibraryById(id);
     }
 
     @Override

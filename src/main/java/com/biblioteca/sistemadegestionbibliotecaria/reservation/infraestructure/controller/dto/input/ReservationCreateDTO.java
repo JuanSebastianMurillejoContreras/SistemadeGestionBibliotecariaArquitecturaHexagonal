@@ -1,4 +1,4 @@
-package com.biblioteca.sistemadegestionbibliotecaria.reservation.infraestructure.controller.dto.input;
+package com.biblioteca.library_service.reservation.infraestructure.controller.dto.input;
 
 public record ReservationCreateDTO(
         Long usuarioId,

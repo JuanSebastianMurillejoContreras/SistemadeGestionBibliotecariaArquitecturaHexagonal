@@ -1,9 +1,9 @@
-package com.biblioteca.sistemadegestionbibliotecaria.libraries.infraestructure.mapper;
+package com.biblioteca.library_service.infraestructure.mapper;
 
-import com.biblioteca.sistemadegestionbibliotecaria.libraries.domain.model.Library;
-import com.biblioteca.sistemadegestionbibliotecaria.libraries.infraestructure.controller.dto.input.LibraryRequestDTO;
-import com.biblioteca.sistemadegestionbibliotecaria.libraries.infraestructure.controller.dto.out.LibraryResponseDTO;
-import com.biblioteca.sistemadegestionbibliotecaria.libraries.infraestructure.persistance.LibraryEntity;
+import com.biblioteca.library_service.domain.model.Library;
+import com.biblioteca.library_service.infraestructure.controller.dto.input.LibraryRequestDTO;
+import com.biblioteca.library_service.infraestructure.controller.dto.out.LibraryResponseDTO;
+import com.biblioteca.library_service.infraestructure.persistance.LibraryEntity;
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")

@@ -1,4 +1,4 @@
-package com.biblioteca.sistemadegestionbibliotecaria.libraries.domain.exception;
+package com.biblioteca.library_service.domain.exception;
 
 public final class LibraryErrorMessage {
 

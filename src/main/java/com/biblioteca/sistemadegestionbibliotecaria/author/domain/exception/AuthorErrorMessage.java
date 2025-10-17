@@ -1,4 +1,4 @@
-package com.biblioteca.sistemadegestionbibliotecaria.author.domain.exception;
+package com.biblioteca.library_service.author.domain.exception;
 
 
 public final class AuthorErrorMessage {

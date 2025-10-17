@@ -1,10 +1,10 @@
-package com.biblioteca.sistemadegestionbibliotecaria;
+package com.biblioteca.library_service;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class SistemaDeGestionBibliotecariaApplicationTests {
+class library_serviceApplicationTests {
 
     @Test
     void contextLoads() {

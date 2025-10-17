@@ -1,4 +1,4 @@
-package com.biblioteca.sistemadegestionbibliotecaria.reservation.domain.model;
+package com.biblioteca.library_service.reservation.domain.model;
 
 import java.time.LocalDateTime;
 

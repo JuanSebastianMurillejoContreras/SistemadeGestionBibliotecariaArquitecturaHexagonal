@@ -1,10 +1,10 @@
 package com.biblioteca.usuario_service.infraestructura.mapper;
 
-import com.biblioteca.sistemadegestionbibliotecaria.usuario.domain.model.Usuario;
-import com.biblioteca.sistemadegestionbibliotecaria.usuario.infraestructura.controller.dto.input.UsuarioDTO;
-import com.biblioteca.sistemadegestionbibliotecaria.usuario.infraestructura.controller.dto.input.UsuarioRequestDTO;
-import com.biblioteca.sistemadegestionbibliotecaria.usuario.infraestructura.controller.dto.out.UsuarioResponseDTO;
-import com.biblioteca.sistemadegestionbibliotecaria.usuario.infraestructura.persistance.UsuarioEntity;
+import com.biblioteca.library_service.usuario.domain.model.Usuario;
+import com.biblioteca.library_service.usuario.infraestructura.controller.dto.input.UsuarioDTO;
+import com.biblioteca.library_service.usuario.infraestructura.controller.dto.input.UsuarioRequestDTO;
+import com.biblioteca.library_service.usuario.infraestructura.controller.dto.out.UsuarioResponseDTO;
+import com.biblioteca.library_service.usuario.infraestructura.persistance.UsuarioEntity;
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")

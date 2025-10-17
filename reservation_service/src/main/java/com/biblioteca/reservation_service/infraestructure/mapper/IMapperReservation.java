@@ -1,15 +1,15 @@
 package com.biblioteca.reservation_service.infraestructure.mapper;
 
-import com.biblioteca.sistemadegestionbibliotecaria.book.infraestructure.persistance.BookEntity;
-import com.biblioteca.sistemadegestionbibliotecaria.reservation.domain.model.Reservation;
-import com.biblioteca.sistemadegestionbibliotecaria.reservation.infraestructure.controller.dto.input.ReservationCreateDTO;
-import com.biblioteca.sistemadegestionbibliotecaria.reservation.infraestructure.controller.dto.input.ReservationDTO;
-import com.biblioteca.sistemadegestionbibliotecaria.reservation.infraestructure.controller.dto.input.ReservationRequestDTO;
-import com.biblioteca.sistemadegestionbibliotecaria.reservation.infraestructure.controller.dto.input.ReservationUpdateDTO;
-import com.biblioteca.sistemadegestionbibliotecaria.reservation.infraestructure.controller.dto.out.ReservationListResponseDTO;
-import com.biblioteca.sistemadegestionbibliotecaria.reservation.infraestructure.controller.dto.out.ReservationResponseDTO;
-import com.biblioteca.sistemadegestionbibliotecaria.reservation.infraestructure.persistance.ReservationEntity;
-import com.biblioteca.sistemadegestionbibliotecaria.usuario.infraestructura.persistance.UsuarioEntity;
+import com.biblioteca.library_service.book.infraestructure.persistance.BookEntity;
+import com.biblioteca.library_service.reservation.domain.model.Reservation;
+import com.biblioteca.library_service.reservation.infraestructure.controller.dto.input.ReservationCreateDTO;
+import com.biblioteca.library_service.reservation.infraestructure.controller.dto.input.ReservationDTO;
+import com.biblioteca.library_service.reservation.infraestructure.controller.dto.input.ReservationRequestDTO;
+import com.biblioteca.library_service.reservation.infraestructure.controller.dto.input.ReservationUpdateDTO;
+import com.biblioteca.library_service.reservation.infraestructure.controller.dto.out.ReservationListResponseDTO;
+import com.biblioteca.library_service.reservation.infraestructure.controller.dto.out.ReservationResponseDTO;
+import com.biblioteca.library_service.reservation.infraestructure.persistance.ReservationEntity;
+import com.biblioteca.library_service.usuario.infraestructura.persistance.UsuarioEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;

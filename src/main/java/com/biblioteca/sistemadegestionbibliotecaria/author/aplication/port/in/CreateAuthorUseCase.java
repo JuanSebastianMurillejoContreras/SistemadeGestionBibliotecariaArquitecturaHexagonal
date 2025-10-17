@@ -1,7 +1,7 @@
-package com.biblioteca.sistemadegestionbibliotecaria.author.aplication.port.in;
+package com.biblioteca.library_service.author.aplication.port.in;
 
-import com.biblioteca.sistemadegestionbibliotecaria.author.domain.model.Author;
-import com.biblioteca.sistemadegestionbibliotecaria.author.infraestructure.controller.dto.input.AuthorCreateCommand;
+import com.biblioteca.library_service.author.domain.model.Author;
+import com.biblioteca.library_service.author.infraestructure.controller.dto.input.AuthorCreateCommand;
 
 public interface CreateAuthorUseCase {
 

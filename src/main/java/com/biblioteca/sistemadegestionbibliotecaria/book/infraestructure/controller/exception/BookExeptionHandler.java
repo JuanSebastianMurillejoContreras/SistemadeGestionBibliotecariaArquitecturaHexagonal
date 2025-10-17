@@ -1,8 +1,8 @@
-package com.biblioteca.sistemadegestionbibliotecaria.book.infraestructure.controller.exception;
+package com.biblioteca.library_service.book.infraestructure.controller.exception;
 
-import com.biblioteca.sistemadegestionbibliotecaria.book.domain.exception.BookException;
-import com.biblioteca.sistemadegestionbibliotecaria.book.domain.exception.BookNotFoundException;
-import com.biblioteca.sistemadegestionbibliotecaria.book.infraestructure.controller.dto.out.BookErrorResponse;
+import com.biblioteca.library_service.book.domain.exception.BookException;
+import com.biblioteca.library_service.book.domain.exception.BookNotFoundException;
+import com.biblioteca.library_service.book.infraestructure.controller.dto.out.BookErrorResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;

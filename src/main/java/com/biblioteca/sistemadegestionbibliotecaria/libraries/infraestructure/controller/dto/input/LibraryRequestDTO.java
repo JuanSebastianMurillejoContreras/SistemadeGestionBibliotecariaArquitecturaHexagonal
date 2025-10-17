@@ -1,4 +1,4 @@
-package com.biblioteca.sistemadegestionbibliotecaria.libraries.infraestructure.controller.dto.input;
+package com.biblioteca.library_service.infraestructure.controller.dto.input;
 
 import jakarta.validation.constraints.NotBlank;
 

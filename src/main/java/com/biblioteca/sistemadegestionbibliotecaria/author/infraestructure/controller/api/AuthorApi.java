@@ -1,7 +1,7 @@
-package com.biblioteca.sistemadegestionbibliotecaria.author.infraestructure.controller.api;
+package com.biblioteca.library_service.author.infraestructure.controller.api;
 
-import com.biblioteca.sistemadegestionbibliotecaria.author.infraestructure.controller.dto.input.AuthorRequestDTO;
-import com.biblioteca.sistemadegestionbibliotecaria.author.infraestructure.controller.dto.out.AuthorResponseDTO;
+import com.biblioteca.library_service.author.infraestructure.controller.dto.input.AuthorRequestDTO;
+import com.biblioteca.library_service.author.infraestructure.controller.dto.out.AuthorResponseDTO;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.ExampleObject;

@@ -1,4 +1,4 @@
-package com.biblioteca.sistemadegestionbibliotecaria.book.domain.model;
+package com.biblioteca.library_service.book.domain.model;
 
 public record Book(
         Long id,

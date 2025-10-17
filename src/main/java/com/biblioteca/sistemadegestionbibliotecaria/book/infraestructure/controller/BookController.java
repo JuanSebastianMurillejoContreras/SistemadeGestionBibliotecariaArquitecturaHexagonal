@@ -1,13 +1,13 @@
-package com.biblioteca.sistemadegestionbibliotecaria.book.infraestructure.controller;
+package com.biblioteca.library_service.book.infraestructure.controller;
 
-import com.biblioteca.sistemadegestionbibliotecaria.book.aplication.port.in.CreateBookUseCase;
-import com.biblioteca.sistemadegestionbibliotecaria.book.aplication.port.in.GetBookUseCase;
-import com.biblioteca.sistemadegestionbibliotecaria.book.domain.model.Book;
-import com.biblioteca.sistemadegestionbibliotecaria.book.infraestructure.controller.api.BookApi;
-import com.biblioteca.sistemadegestionbibliotecaria.book.infraestructure.controller.dto.input.BookRequestDTO;
-import com.biblioteca.sistemadegestionbibliotecaria.book.infraestructure.controller.dto.out.BookResponseDTO;
-import com.biblioteca.sistemadegestionbibliotecaria.testContainers.common.dto.PageDTO;
-import com.biblioteca.sistemadegestionbibliotecaria.book.infraestructure.mapper.IBookMapper;
+import com.biblioteca.library_service.book.aplication.port.in.CreateBookUseCase;
+import com.biblioteca.library_service.book.aplication.port.in.GetBookUseCase;
+import com.biblioteca.library_service.book.domain.model.Book;
+import com.biblioteca.library_service.book.infraestructure.controller.api.BookApi;
+import com.biblioteca.library_service.book.infraestructure.controller.dto.input.BookRequestDTO;
+import com.biblioteca.library_service.book.infraestructure.controller.dto.out.BookResponseDTO;
+import com.biblioteca.library_service.testContainers.common.dto.PageDTO;
+import com.biblioteca.library_service.book.infraestructure.mapper.IBookMapper;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;

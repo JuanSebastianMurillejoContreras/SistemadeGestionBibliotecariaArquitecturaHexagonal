@@ -1,10 +1,10 @@
-package com.biblioteca.sistemadegestionbibliotecaria.libraries.aplication.service;
+package com.biblioteca.library_service.aplication.service;
 
-import com.biblioteca.sistemadegestionbibliotecaria.libraries.aplication.port.in.CreateLibraryUseCase;
-import com.biblioteca.sistemadegestionbibliotecaria.libraries.aplication.port.out.LibraryRepositoryPort;
-import com.biblioteca.sistemadegestionbibliotecaria.libraries.domain.exception.LibraryErrorMessage;
-import com.biblioteca.sistemadegestionbibliotecaria.libraries.domain.exception.LibraryException;
-import com.biblioteca.sistemadegestionbibliotecaria.libraries.domain.model.Library;
+import com.biblioteca.library_service.aplication.port.in.CreateLibraryUseCase;
+import com.biblioteca.library_service.aplication.port.out.LibraryRepositoryPort;
+import com.biblioteca.library_service.domain.exception.LibraryErrorMessage;
+import com.biblioteca.library_service.domain.exception.LibraryException;
+import com.biblioteca.library_service.domain.model.Library;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

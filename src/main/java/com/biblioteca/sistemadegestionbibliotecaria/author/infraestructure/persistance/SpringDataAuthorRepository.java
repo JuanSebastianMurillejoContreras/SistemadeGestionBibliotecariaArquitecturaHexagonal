@@ -1,4 +1,4 @@
-package com.biblioteca.sistemadegestionbibliotecaria.author.infraestructure.persistance;
+package com.biblioteca.library_service.author.infraestructure.persistance;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

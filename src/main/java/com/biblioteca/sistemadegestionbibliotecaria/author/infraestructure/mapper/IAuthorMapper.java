@@ -1,10 +1,10 @@
-package com.biblioteca.sistemadegestionbibliotecaria.author.infraestructure.mapper;
+package com.biblioteca.library_service.author.infraestructure.mapper;
 
-import com.biblioteca.sistemadegestionbibliotecaria.author.domain.model.Author;
-import com.biblioteca.sistemadegestionbibliotecaria.author.infraestructure.controller.dto.input.AuthorCreateCommand;
-import com.biblioteca.sistemadegestionbibliotecaria.author.infraestructure.controller.dto.input.AuthorRequestDTO;
-import com.biblioteca.sistemadegestionbibliotecaria.author.infraestructure.controller.dto.out.AuthorResponseDTO;
-import com.biblioteca.sistemadegestionbibliotecaria.author.infraestructure.persistance.AuthorEntity;
+import com.biblioteca.library_service.author.domain.model.Author;
+import com.biblioteca.library_service.author.infraestructure.controller.dto.input.AuthorCreateCommand;
+import com.biblioteca.library_service.author.infraestructure.controller.dto.input.AuthorRequestDTO;
+import com.biblioteca.library_service.author.infraestructure.controller.dto.out.AuthorResponseDTO;
+import com.biblioteca.library_service.author.infraestructure.persistance.AuthorEntity;
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")

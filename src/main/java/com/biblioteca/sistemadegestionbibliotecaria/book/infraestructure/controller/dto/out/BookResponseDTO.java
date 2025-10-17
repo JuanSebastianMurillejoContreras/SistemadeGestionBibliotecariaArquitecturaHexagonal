@@ -1,4 +1,4 @@
-package com.biblioteca.sistemadegestionbibliotecaria.book.infraestructure.controller.dto.out;
+package com.biblioteca.library_service.book.infraestructure.controller.dto.out;
 
 public record BookResponseDTO(
         String title,

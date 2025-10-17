@@ -1,6 +1,6 @@
-package com.biblioteca.sistemadegestionbibliotecaria.libraries.domain.model;
+package com.biblioteca.library_service.domain.model;
 
-import com.biblioteca.sistemadegestionbibliotecaria.book.domain.model.Book;
+import com.biblioteca.library_service.book.domain.model.Book;
 
 import java.util.List;
 

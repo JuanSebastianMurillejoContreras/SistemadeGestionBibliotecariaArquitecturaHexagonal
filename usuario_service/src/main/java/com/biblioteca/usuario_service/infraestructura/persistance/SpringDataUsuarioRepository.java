@@ -1,6 +1,6 @@
 package com.biblioteca.usuario_service.infraestructura.persistance;
 
-import com.biblioteca.sistemadegestionbibliotecaria.usuario.infraestructura.persistance.UsuarioEntity;
+import com.biblioteca.library_service.usuario.infraestructura.persistance.UsuarioEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

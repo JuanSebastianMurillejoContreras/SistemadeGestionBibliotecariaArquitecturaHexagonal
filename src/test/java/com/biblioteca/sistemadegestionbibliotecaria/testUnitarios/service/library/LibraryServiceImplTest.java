@@ -1,12 +1,12 @@
-package com.biblioteca.sistemadegestionbibliotecaria.testUnitarios.service.library;
+package com.biblioteca.library_service.testUnitarios.service.library;
 
-import com.biblioteca.sistemadegestionbibliotecaria.book.domain.model.Book;
-import com.biblioteca.sistemadegestionbibliotecaria.libraries.aplication.port.out.LibraryRepositoryPort;
-import com.biblioteca.sistemadegestionbibliotecaria.libraries.aplication.service.LibraryService;
-import com.biblioteca.sistemadegestionbibliotecaria.libraries.domain.exception.LibraryErrorMessage;
-import com.biblioteca.sistemadegestionbibliotecaria.libraries.domain.exception.LibraryException;
-import com.biblioteca.sistemadegestionbibliotecaria.libraries.domain.model.Library;
-import com.biblioteca.sistemadegestionbibliotecaria.libraries.infraestructure.mapper.ILibraryMapper;
+import com.biblioteca.library_service.book.domain.model.Book;
+import com.biblioteca.library_service.aplication.port.out.LibraryRepositoryPort;
+import com.biblioteca.library_service.aplication.service.LibraryService;
+import com.biblioteca.library_service.domain.exception.LibraryErrorMessage;
+import com.biblioteca.library_service.domain.exception.LibraryException;
+import com.biblioteca.library_service.domain.model.Library;
+import com.biblioteca.library_service.infraestructure.mapper.ILibraryMapper;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

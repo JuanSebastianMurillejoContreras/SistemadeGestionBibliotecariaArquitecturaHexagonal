@@ -1,7 +1,7 @@
 package com.biblioteca.usuario_service.infraestructura.controller.api;
 
-import com.biblioteca.sistemadegestionbibliotecaria.usuario.infraestructura.controller.dto.input.UsuarioRequestDTO;
-import com.biblioteca.sistemadegestionbibliotecaria.usuario.infraestructura.controller.dto.out.UsuarioResponseDTO;
+import com.biblioteca.library_service.usuario.infraestructura.controller.dto.input.UsuarioRequestDTO;
+import com.biblioteca.library_service.usuario.infraestructura.controller.dto.out.UsuarioResponseDTO;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;

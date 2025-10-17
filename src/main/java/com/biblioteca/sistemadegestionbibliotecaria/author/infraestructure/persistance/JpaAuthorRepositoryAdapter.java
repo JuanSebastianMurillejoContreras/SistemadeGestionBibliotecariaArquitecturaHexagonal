@@ -1,10 +1,10 @@
-package com.biblioteca.sistemadegestionbibliotecaria.author.infraestructure.persistance;
+package com.biblioteca.library_service.author.infraestructure.persistance;
 
-import com.biblioteca.sistemadegestionbibliotecaria.author.aplication.port.out.AuthorRepositoryPort;
-import com.biblioteca.sistemadegestionbibliotecaria.author.domain.exception.AuthorErrorMessage;
-import com.biblioteca.sistemadegestionbibliotecaria.author.domain.exception.AuthorNotFoundException;
-import com.biblioteca.sistemadegestionbibliotecaria.author.domain.model.Author;
-import com.biblioteca.sistemadegestionbibliotecaria.author.infraestructure.mapper.IAuthorMapper;
+import com.biblioteca.library_service.author.aplication.port.out.AuthorRepositoryPort;
+import com.biblioteca.library_service.author.domain.exception.AuthorErrorMessage;
+import com.biblioteca.library_service.author.domain.exception.AuthorNotFoundException;
+import com.biblioteca.library_service.author.domain.model.Author;
+import com.biblioteca.library_service.author.infraestructure.mapper.IAuthorMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 

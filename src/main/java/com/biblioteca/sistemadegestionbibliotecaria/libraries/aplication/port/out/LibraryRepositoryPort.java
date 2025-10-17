@@ -1,6 +1,6 @@
-package com.biblioteca.sistemadegestionbibliotecaria.libraries.aplication.port.out;
+package com.biblioteca.library_service.aplication.port.out;
 
-import com.biblioteca.sistemadegestionbibliotecaria.libraries.domain.model.Library;
+import com.biblioteca.library_service.domain.model.Library;
 
 public interface LibraryRepositoryPort {
 

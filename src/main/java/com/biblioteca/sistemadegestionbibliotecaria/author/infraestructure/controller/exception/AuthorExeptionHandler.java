@@ -1,9 +1,9 @@
-package com.biblioteca.sistemadegestionbibliotecaria.author.infraestructure.controller.exception;
+package com.biblioteca.library_service.author.infraestructure.controller.exception;
 
 
-import com.biblioteca.sistemadegestionbibliotecaria.author.domain.exception.AuthorException;
-import com.biblioteca.sistemadegestionbibliotecaria.author.domain.exception.AuthorNotFoundException;
-import com.biblioteca.sistemadegestionbibliotecaria.author.infraestructure.controller.dto.out.AuthorErrorResponse;
+import com.biblioteca.library_service.author.domain.exception.AuthorException;
+import com.biblioteca.library_service.author.domain.exception.AuthorNotFoundException;
+import com.biblioteca.library_service.author.infraestructure.controller.dto.out.AuthorErrorResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;

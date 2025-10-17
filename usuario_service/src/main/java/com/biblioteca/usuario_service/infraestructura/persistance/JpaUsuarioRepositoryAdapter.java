@@ -1,8 +1,8 @@
 package com.biblioteca.usuario_service.infraestructura.persistance;
 
-import com.biblioteca.sistemadegestionbibliotecaria.usuario.aplication.port.out.UsuarioRepositoryPort;
-import com.biblioteca.sistemadegestionbibliotecaria.usuario.domain.model.Usuario;
-import com.biblioteca.sistemadegestionbibliotecaria.usuario.infraestructura.mapper.IUsuarioMapper;
+import com.biblioteca.library_service.usuario.aplication.port.out.UsuarioRepositoryPort;
+import com.biblioteca.library_service.usuario.domain.model.Usuario;
+import com.biblioteca.library_service.usuario.infraestructura.mapper.IUsuarioMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 

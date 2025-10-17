@@ -1,4 +1,4 @@
-package com.biblioteca.sistemadegestionbibliotecaria.usuario.domain.exception;
+package com.biblioteca.library_service.usuario.domain.exception;
 
 import lombok.Getter;
 

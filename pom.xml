@@ -9,11 +9,11 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.biblioteca</groupId>
-    <artifactId>SistemaDeGestionBibliotecaria</artifactId>
+    <artifactId>library_service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
-    <name>SistemaDeGestionBibliotecaria</name>
-    <description>SistemaDeGestionBibliotecaria</description>
+    <name>library_service</name>
+    <description>library_service</description>
     <url/>
     <licenses>
         <license/>

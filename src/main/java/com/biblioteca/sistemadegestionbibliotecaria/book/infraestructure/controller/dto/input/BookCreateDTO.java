@@ -1,4 +1,4 @@
-package com.biblioteca.sistemadegestionbibliotecaria.book.infraestructure.controller.dto.input;
+package com.biblioteca.library_service.book.infraestructure.controller.dto.input;
 
 public record BookCreateDTO(
         String title,

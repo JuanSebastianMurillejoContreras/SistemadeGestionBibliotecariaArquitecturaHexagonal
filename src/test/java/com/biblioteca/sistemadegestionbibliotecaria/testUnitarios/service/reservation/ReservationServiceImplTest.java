@@ -1,11 +1,11 @@
-package com.biblioteca.sistemadegestionbibliotecaria.testUnitarios.service.reservation;
+package com.biblioteca.library_service.testUnitarios.service.reservation;
 
-import com.biblioteca.sistemadegestionbibliotecaria.reservation.aplication.port.out.ReservationRepositoryPort;
-import com.biblioteca.sistemadegestionbibliotecaria.reservation.aplication.service.ReservationService;
-import com.biblioteca.sistemadegestionbibliotecaria.reservation.domain.exception.ReservationErrorMessage;
-import com.biblioteca.sistemadegestionbibliotecaria.reservation.domain.exception.ReservationException;
-import com.biblioteca.sistemadegestionbibliotecaria.reservation.domain.model.Reservation;
-import com.biblioteca.sistemadegestionbibliotecaria.reservation.infraestructure.mapper.IMapperReservation;
+import com.biblioteca.library_service.reservation.aplication.port.out.ReservationRepositoryPort;
+import com.biblioteca.library_service.reservation.aplication.service.ReservationService;
+import com.biblioteca.library_service.reservation.domain.exception.ReservationErrorMessage;
+import com.biblioteca.library_service.reservation.domain.exception.ReservationException;
+import com.biblioteca.library_service.reservation.domain.model.Reservation;
+import com.biblioteca.library_service.reservation.infraestructure.mapper.IMapperReservation;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mapstruct.factory.Mappers;
