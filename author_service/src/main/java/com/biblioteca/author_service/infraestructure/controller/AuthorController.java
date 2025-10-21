@@ -49,7 +49,7 @@ public class AuthorController implements AuthorApi {
         AuthorGetCommand authorGetCommand = new AuthorGetCommand(id, books);
 
         Author found = getAuthorUseCase.getAuthorById(authorGetCommand);
-        //AuthorResponseDTO response = authorMapper.toResponseDTO(found);
+
         AuthorResponseWithBooksDTO response2 = authorMapper.authorToAuthorResponseWithBooksDTO(found);
 
         return ResponseEntity.ok(response2);

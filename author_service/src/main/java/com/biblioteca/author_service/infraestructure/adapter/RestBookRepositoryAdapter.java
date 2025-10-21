@@ -20,6 +20,7 @@ public class RestBookRepositoryAdapter implements BookRepositoryPort {
 
     @Override
     public BookServiceResponseDTO getBooksByAuthor(Long authorId, Pageable pageable) {
+
         if (authorId == null) {
             throw new IllegalArgumentException("El ID del autor no puede ser nulo al consultar libros.");
         }
