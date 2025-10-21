@@ -5,6 +5,7 @@ import com.biblioteca.library_service.infraestructure.controller.dto.out.BookSer
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
@@ -20,13 +21,12 @@ public class RestBookRepositoryAdapter implements BookRepositoryPort {
     private String bookServiceUrl;
 
     @Override
-    public BookServiceResponseDTO getBooksByLibrary(Long libraryId) {
+    public BookServiceResponseDTO getBooksByLibrary(Long libraryId, Pageable pageable) {
         if (libraryId == null) {
             throw new IllegalArgumentException("El ID del autor no puede ser nulo al consultar libros.");
         }
 
-        String url = String.format("%s?libraryId=%d", bookServiceUrl, libraryId);
-        System.out.println("📘 Solicitando libros del la librería con ID = " + libraryId + " → " + url);
+        String url = String.format("%s?libraryId=%d", bookServiceUrl, libraryId, pageable);
 
         ResponseEntity<BookServiceResponseDTO> response = restTemplate.exchange(
                 url,

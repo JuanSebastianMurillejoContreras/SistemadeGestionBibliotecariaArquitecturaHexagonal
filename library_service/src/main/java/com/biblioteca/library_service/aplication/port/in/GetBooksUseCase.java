@@ -1,9 +1,10 @@
 package com.biblioteca.library_service.aplication.port.in;
 
-import com.biblioteca.library_service.infraestructure.controller.dto.out.LibraryResponseWithBooksDTO;
+import com.biblioteca.library_service.domain.model.Library;
+import org.springframework.data.domain.Pageable;
 
 public interface GetBooksUseCase {
 
-    LibraryResponseWithBooksDTO getLibraryWithBooks(Long id);
+    Library getLibraryWithBooks(Long libraryId, Pageable pageable);
 
 }

@@ -14,6 +14,8 @@ import com.biblioteca.library_service.infraestructure.controller.dto.out.Library
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.awt.print.Pageable;
+
 @Service
 @RequiredArgsConstructor
 public class LibraryService implements CreateLibraryUseCase, GetLibraryUseCase, GetBooksUseCase {
@@ -64,7 +66,7 @@ public class LibraryService implements CreateLibraryUseCase, GetLibraryUseCase, 
     }
 
     @Override
-    public LibraryResponseWithBooksDTO getLibraryWithBooks(Long libraryId) {
+    public Library getLibraryWithBooks(Long libraryId, Pageable pageable) {
         Library library = repositoryPort.getLibraryById(libraryId);
 
         if (library == null) {
@@ -74,8 +76,11 @@ public class LibraryService implements CreateLibraryUseCase, GetLibraryUseCase, 
         // Llamada al microservicio de libros
         BookServiceResponseDTO bookServiceResponseDTO = bookRepositoryPort.getBooksByLibrary(libraryId);
 
+
+
+
         // Devolver el libro junto con todos los metadatos del servicio de libros
-        return new LibraryResponseWithBooksDTO(
+        return new Library(
                 library,
                 bookServiceResponseDTO.data(),
                 bookServiceResponseDTO.currentPage(),

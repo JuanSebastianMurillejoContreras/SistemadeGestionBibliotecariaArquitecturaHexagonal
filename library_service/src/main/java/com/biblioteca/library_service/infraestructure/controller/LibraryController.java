@@ -15,6 +15,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.awt.print.Pageable;
+
 @RestController
 @RequestMapping("/api/v1/libraries")
 @RequiredArgsConstructor
@@ -43,8 +45,8 @@ public class LibraryController implements LibraryApi {
     }
 
     @GetMapping("/{id}/books")
-    public ResponseEntity<LibraryResponseWithBooksDTO> getByIdWithBooks(@PathVariable Long id) {
-        LibraryResponseWithBooksDTO found = getBooksUseCase.getLibraryWithBooks(id);
+    public ResponseEntity<LibraryResponseWithBooksDTO> getByIdWithBooks(@PathVariable Long id, ) {
+        LibraryResponseWithBooksDTO found = getBooksUseCase.getLibraryWithBooks(id, pageable);
         return ResponseEntity.ok(found);
     }
 
