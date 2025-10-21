@@ -13,21 +13,14 @@ public interface IAuthorMapper {
 
     // Request -> DTO
     AuthorCreateCommand authorRequestDTOToAuthorDTO(AuthorRequestDTO authorRequestDTO);
-    Author authorDTOToAuthor(AuthorCreateCommand author);
     AuthorCreateCommand authorToAuthorDTO(Author author);
     AuthorResponseDTO authorDTOToAuthorResponseDTO(AuthorCreateCommand authorCreateCommand);
     Author authorCreateCommandToAuthor(AuthorCreateCommand authorCreateCommand);
-
-    AuthorResponseWithBooksDTO authorResponseDTOToAuthorResponseWithBooks(AuthorResponseDTO authorResponseDTO);
-
-    // Domain -> Response
-    AuthorResponseDTO toResponseDTO(Author author);
 
     // Domain <-> Entity
     AuthorEntity toEntity(Author author);
     Author toDomain(AuthorEntity entity);
 
-
-
+    AuthorResponseWithBooksDTO authorToAuthorResponseWithBooksDTO(Author author);
 
 }

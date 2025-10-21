@@ -65,10 +65,8 @@ public class BookService implements CreateBookUseCase, GetBookUseCase {
         return repositoryPort.save(book);
     }
 
-
     @Override
     public Page<Book> buscarLibroPorIdAutorOTituloIgnorandoMasyusculaOMinuscula(Long libraryId, Long authorId, String title, Pageable pageable) {
         return  repositoryPort.findByLibraryIdOrAuthorIdOrTitleContainingIgnoreCase(libraryId, authorId, title, pageable);
     }
-
 }

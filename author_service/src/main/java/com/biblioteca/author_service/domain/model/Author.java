@@ -1,9 +1,8 @@
 package com.biblioteca.author_service.domain.model;
 
-import java.util.List;
+import com.biblioteca.author_service.infraestructure.controller.dto.out.PageDTO;
 
 public record Author(
-        Long id,
         String name,
-        List<Book> books
+        PageDTO<Book> books
 ) {}

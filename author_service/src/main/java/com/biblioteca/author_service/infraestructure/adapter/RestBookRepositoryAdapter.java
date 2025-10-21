@@ -4,6 +4,7 @@ import com.biblioteca.author_service.aplication.port.out.BookRepositoryPort;
 import com.biblioteca.author_service.infraestructure.controller.dto.out.BookServiceResponseDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
@@ -18,21 +19,19 @@ public class RestBookRepositoryAdapter implements BookRepositoryPort {
     private String bookServiceUrl;
 
     @Override
-    public BookServiceResponseDTO getBooksByAuthor(Long authorId) {
+    public BookServiceResponseDTO getBooksByAuthor(Long authorId, Pageable pageable) {
         if (authorId == null) {
             throw new IllegalArgumentException("El ID del autor no puede ser nulo al consultar libros.");
         }
 
+        // Construir la URL base
         String url = String.format("%s?authorId=%d", bookServiceUrl, authorId);
-        //System.out.println("📘 Solicitando libros del autor con ID = " + authorId + " → " + url);
 
-        //GetEntity
-       /* ResponseEntity<BookServiceResponseDTO> response = restTemplate.exchange(
-                url,
-                HttpMethod.GET,
-                null,
-                new ParameterizedTypeReference<>() {}
-        );*/
+        // Si la paginación está activa, añadir los parámetros
+        if (pageable.isPaged()) {
+            url += String.format("&page=%d&size=%d", pageable.getPageNumber(), pageable.getPageSize());
+        }
+
         ResponseEntity<BookServiceResponseDTO> response = restTemplate.getForEntity(url, BookServiceResponseDTO.class);
         return response.getBody();
     }

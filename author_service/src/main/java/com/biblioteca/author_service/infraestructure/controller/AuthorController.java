@@ -23,7 +23,6 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class AuthorController implements AuthorApi {
 
-
     private final CreateAuthorUseCase createAuthorUseCase;
     private final GetAuthorUseCase getAuthorUseCase;
     private final IAuthorMapper authorMapper;
@@ -45,21 +44,14 @@ public class AuthorController implements AuthorApi {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<AuthorResponseDTO> getById(@PathVariable Long id, @RequestParam Boolean books) {
+    public ResponseEntity<AuthorResponseWithBooksDTO> getById(@PathVariable Long id, @RequestParam Boolean books) {
 
         AuthorGetCommand authorGetCommand = new AuthorGetCommand(id, books);
 
         Author found = getAuthorUseCase.getAuthorById(authorGetCommand);
+        //AuthorResponseDTO response = authorMapper.toResponseDTO(found);
+        AuthorResponseWithBooksDTO response2 = authorMapper.authorToAuthorResponseWithBooksDTO(found);
 
-        AuthorResponseDTO response = authorMapper.toResponseDTO(found);
-
-        return ResponseEntity.ok(response);
+        return ResponseEntity.ok(response2);
     }
-
-    @GetMapping("/{id}/books")
-    public ResponseEntity<AuthorResponseWithBooksDTO> getByIdWithBooks(@PathVariable Long id) {
-        AuthorResponseWithBooksDTO found = getAuthorUseCase.getAuthorWithBooks(id);
-        return ResponseEntity.ok(found);
-    }
-
 }

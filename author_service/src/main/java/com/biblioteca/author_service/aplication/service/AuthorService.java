@@ -7,17 +7,17 @@ import com.biblioteca.author_service.aplication.port.out.BookRepositoryPort;
 import com.biblioteca.author_service.domain.exception.AuthorErrorMessage;
 import com.biblioteca.author_service.domain.exception.AuthorException;
 import com.biblioteca.author_service.domain.model.Author;
+import com.biblioteca.author_service.domain.model.Book;
 import com.biblioteca.author_service.infraestructure.controller.dto.input.AuthorCreateCommand;
 import com.biblioteca.author_service.infraestructure.controller.dto.input.AuthorGetCommand;
-import com.biblioteca.author_service.infraestructure.controller.dto.out.AuthorResponseWithBooksDTO;
-import com.biblioteca.author_service.infraestructure.controller.dto.out.BookDTO;
 import com.biblioteca.author_service.infraestructure.controller.dto.out.BookServiceResponseDTO;
+import com.biblioteca.author_service.infraestructure.controller.dto.out.PageDTO;
 import com.biblioteca.author_service.infraestructure.mapper.IAuthorMapper;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Random;
 
 @Service
 @RequiredArgsConstructor
@@ -56,38 +56,44 @@ public class AuthorService implements CreateAuthorUseCase, GetAuthorUseCase {
         }
 
         if (authorGetCommand.withBooks() == true){
-            return getAuthorWithBooks(authorGetCommand.authorId());
+            return getAuthorWithBooks(authorGetCommand.authorId(), Pageable.unpaged());
         }
 
         return repositoryPort.getAuthorById(authorGetCommand.authorId());
     }
 
     @Override
-    public Author getAuthorWithBooks(Long authorId) {//Debe ser un Author->Dominio no un DTO añadir el Dominio de Books
+    public Author getAuthorWithBooks(Long authorId, Pageable pageable) {
 
         if (authorId == null){
             throw new IllegalArgumentException(AuthorErrorMessage.ID_AUTOR_NOT_NULL);
         }
 
+        // Obtener el autor desde el repositorio local
         Author author = repositoryPort.getAuthorById(authorId);
 
-        // Llamada al microservicio de libros
-        BookServiceResponseDTO response = bookRepositoryPort.getBooksByAuthor(authorId);
+        // Llamar al microservicio de libros
+        BookServiceResponseDTO response = bookRepositoryPort.getBooksByAuthor(authorId, pageable);
 
-        // Devolver el autor junto con todos los metadatos del servicio de libros
-        return new Author(
-                author.id(),
-                author.name(),
-                response.data()
-                /*response.data(),
+        // Convertir los BookDTO al dominio Book
+        List<Book> books = response.data()
+                .stream()
+                .map(bookDTO -> new Book(bookDTO.title()))
+                .toList();
+
+        // Crear el PageDTO con los metadatos del servicio de libros
+        PageDTO<Book> pageDTO = new PageDTO<>(
+                books,
                 response.currentPage(),
                 response.totalPages(),
                 response.totalElements(),
-                response.pageSize()*/
+                response.pageSize()
+        );
+
+        // Devolver el autor junto con todos los metadatos del servicio de libros
+        return new Author(
+                author.name(),
+                pageDTO
         );
     }
-
 }
-
-
-

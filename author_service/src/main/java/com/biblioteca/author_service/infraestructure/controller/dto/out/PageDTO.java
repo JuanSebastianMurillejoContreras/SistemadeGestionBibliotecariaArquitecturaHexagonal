@@ -2,8 +2,8 @@ package com.biblioteca.author_service.infraestructure.controller.dto.out;
 
 import java.util.List;
 
-public record BookServiceResponseDTO(
-        List<BookResponseDTO> data,
+public record PageDTO<T>(
+        List<T> data,
         int currentPage,
         int totalPages,
         long totalElements,
