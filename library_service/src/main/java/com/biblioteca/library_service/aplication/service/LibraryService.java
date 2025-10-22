@@ -8,6 +8,7 @@ import com.biblioteca.library_service.aplication.port.out.LibraryRepositoryPort;
 import com.biblioteca.library_service.domain.exception.LibraryErrorMessage;
 import com.biblioteca.library_service.domain.exception.LibraryException;
 import com.biblioteca.library_service.domain.exception.LibraryNotFoundException;
+import com.biblioteca.library_service.domain.model.Book;
 import com.biblioteca.library_service.domain.model.Library;
 import com.biblioteca.library_service.infraestructure.controller.dto.out.BookServiceResponseDTO;
 import com.biblioteca.library_service.infraestructure.controller.dto.out.LibraryResponseWithBooksDTO;
@@ -15,6 +16,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.awt.print.Pageable;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -67,15 +69,22 @@ public class LibraryService implements CreateLibraryUseCase, GetLibraryUseCase, 
 
     @Override
     public Library getLibraryWithBooks(Long libraryId, Pageable pageable) {
-        Library library = repositoryPort.getLibraryById(libraryId);
 
-        if (library == null) {
+        if (libraryId == null) {
             throw new LibraryNotFoundException(LibraryErrorMessage.ID_LIBRARY_NOT_EXIST);
         }
 
-        // Llamada al microservicio de libros
-        BookServiceResponseDTO bookServiceResponseDTO = bookRepositoryPort.getBooksByLibrary(libraryId);
+        //Obtener la libraría desde el repositorio local
+        Library library = repositoryPort.getLibraryById(libraryId);
 
+        // Llamada al microservicio de libros
+        BookServiceResponseDTO response = bookRepositoryPort.getBooksByLibrary(libraryId);
+
+        // Convertir los BookDTO al dominio Book
+        List<Book> books = response.data()
+                .stream()
+                .map(bookDTO -> new Book(bookDTO.title()))
+                .toList();
 
 
 
