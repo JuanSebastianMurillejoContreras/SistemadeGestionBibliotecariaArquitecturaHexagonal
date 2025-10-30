@@ -6,6 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface SpringDataLibraryRepository extends JpaRepository<LibraryEntity, Long> {
 
     boolean existsByName(String name);
-    Library save(Library library);
-    Library getLibraryById(Long id);
+    LibraryEntity getLibraryById(Long id);
 }

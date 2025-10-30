@@ -10,6 +10,7 @@ import com.biblioteca.library_service.domain.exception.LibraryException;
 import com.biblioteca.library_service.domain.exception.LibraryNotFoundException;
 import com.biblioteca.library_service.domain.model.Book;
 import com.biblioteca.library_service.domain.model.Library;
+import com.biblioteca.library_service.infraestructure.controller.dto.input.LibraryGetCommand;
 import com.biblioteca.library_service.infraestructure.controller.dto.out.PageDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
@@ -53,17 +54,16 @@ public class LibraryService implements CreateLibraryUseCase, GetLibraryUseCase, 
     }
 
     @Override
-    public Library getLibrary(Long id) {
-        if (id == null) {
+    public Library getLibraryById(LibraryGetCommand libraryGetCommand) {
+
+        if (libraryGetCommand.libraryId() == null) {
             throw new LibraryException(LibraryErrorMessage.LIBRARY_ID_NULL);
         }
-
-        Library library = repositoryPort.getLibraryById(id);
-
-        if (library == null) {
-            throw new LibraryException(LibraryErrorMessage.ID_LIBRARY_NOT_EXIST);
+        if (libraryGetCommand.withBooks() == true) {
+            return getLibraryWithBooks(libraryGetCommand.libraryId(), libraryGetCommand.pageable());
         }
-        return library;
+
+        return repositoryPort.getLibraryById(libraryGetCommand.libraryId());
     }
 
     @Override
@@ -81,7 +81,9 @@ public class LibraryService implements CreateLibraryUseCase, GetLibraryUseCase, 
 
         // Devolver el libro junto con todos los metadatos del servicio de libros
         return new Library(
+                library.id(),
                 library.name(),
+                library.address(),
                 response
         );
     }

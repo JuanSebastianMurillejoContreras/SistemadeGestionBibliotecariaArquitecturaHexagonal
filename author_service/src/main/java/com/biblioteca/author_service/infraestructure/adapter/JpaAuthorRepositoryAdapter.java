@@ -29,7 +29,6 @@ public class JpaAuthorRepositoryAdapter implements AuthorRepositoryPort {
     public Author getAuthorById(Long id) {
         AuthorEntity entity = repository.findById(id)
                 .orElseThrow(() -> new AuthorNotFoundException(AuthorErrorMessage.AUTOR_NOT_REGISTERED));
-
         return mapper.toDomain(entity);
     }
 

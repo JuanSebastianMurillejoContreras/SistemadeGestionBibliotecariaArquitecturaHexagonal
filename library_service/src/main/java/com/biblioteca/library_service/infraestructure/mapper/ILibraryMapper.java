@@ -3,6 +3,7 @@ package com.biblioteca.library_service.infraestructure.mapper;
 import com.biblioteca.library_service.domain.model.Library;
 import com.biblioteca.library_service.infraestructure.controller.dto.input.LibraryRequestDTO;
 import com.biblioteca.library_service.infraestructure.controller.dto.out.LibraryResponseDTO;
+import com.biblioteca.library_service.infraestructure.controller.dto.out.LibraryResponseWithBooksDTO;
 import com.biblioteca.library_service.infraestructure.persistance.LibraryEntity;
 import org.mapstruct.Mapper;
 
@@ -14,6 +15,8 @@ public interface ILibraryMapper {
 
     // Domain -> Response
     LibraryResponseDTO toResponseDTO(Library library);
+    LibraryResponseWithBooksDTO toResponseWithBooksDTO(Library library);
+
 
     // Domain -> Entity
     LibraryEntity toEntity(Library library);
