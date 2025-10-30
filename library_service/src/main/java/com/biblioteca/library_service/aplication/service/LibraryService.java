@@ -10,12 +10,11 @@ import com.biblioteca.library_service.domain.exception.LibraryException;
 import com.biblioteca.library_service.domain.exception.LibraryNotFoundException;
 import com.biblioteca.library_service.domain.model.Book;
 import com.biblioteca.library_service.domain.model.Library;
-import com.biblioteca.library_service.infraestructure.controller.dto.out.BookServiceResponseDTO;
-import com.biblioteca.library_service.infraestructure.controller.dto.out.LibraryResponseWithBooksDTO;
+import com.biblioteca.library_service.infraestructure.controller.dto.out.PageDTO;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.awt.print.Pageable;
 import java.util.List;
 
 @Service
@@ -78,24 +77,12 @@ public class LibraryService implements CreateLibraryUseCase, GetLibraryUseCase, 
         Library library = repositoryPort.getLibraryById(libraryId);
 
         // Llamada al microservicio de libros
-        BookServiceResponseDTO response = bookRepositoryPort.getBooksByLibrary(libraryId);
-
-        // Convertir los BookDTO al dominio Book
-        List<Book> books = response.data()
-                .stream()
-                .map(bookDTO -> new Book(bookDTO.title()))
-                .toList();
-
-
+        PageDTO<Book> response  = bookRepositoryPort.getBooksByLibrary(libraryId, pageable);
 
         // Devolver el libro junto con todos los metadatos del servicio de libros
         return new Library(
-                library,
-                bookServiceResponseDTO.data(),
-                bookServiceResponseDTO.currentPage(),
-                bookServiceResponseDTO.totalPages(),
-                bookServiceResponseDTO.totalElements(),
-                bookServiceResponseDTO.pageSize()
+                library.name(),
+                response
         );
     }
 }

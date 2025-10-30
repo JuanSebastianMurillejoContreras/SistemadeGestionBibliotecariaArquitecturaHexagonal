@@ -13,9 +13,13 @@ import com.biblioteca.author_service.infraestructure.controller.dto.out.AuthorRe
 import com.biblioteca.author_service.infraestructure.mapper.IAuthorMapper;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+
 
 
 @RestController
@@ -44,9 +48,11 @@ public class AuthorController implements AuthorApi {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<AuthorResponseWithBooksDTO> getById(@PathVariable Long id, @RequestParam Boolean books) {
+    public ResponseEntity<AuthorResponseWithBooksDTO> getById(@PathVariable Long id,
+                                                              @RequestParam Boolean books,
+                                                              @PageableDefault Pageable pageable) {
 
-        AuthorGetCommand authorGetCommand = new AuthorGetCommand(id, books);
+        AuthorGetCommand authorGetCommand = new AuthorGetCommand(id, books, pageable);
 
         Author found = getAuthorUseCase.getAuthorById(authorGetCommand);
 
