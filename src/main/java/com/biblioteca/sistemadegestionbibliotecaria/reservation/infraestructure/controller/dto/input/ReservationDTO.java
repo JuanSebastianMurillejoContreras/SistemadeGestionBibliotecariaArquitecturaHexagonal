@@ -1,4 +1,4 @@
-package com.biblioteca.library_service.reservation.infraestructure.controller.dto.input;
+package com.biblioteca.reservation_service.infraestructure.controller.dto.input;
 
 import java.time.LocalDateTime;
 

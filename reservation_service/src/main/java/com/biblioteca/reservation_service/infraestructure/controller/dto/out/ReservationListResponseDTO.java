@@ -1,6 +1,6 @@
 package com.biblioteca.reservation_service.infraestructure.controller.dto.out;
 
-import com.biblioteca.library_service.reservation.infraestructure.controller.dto.out.ReservationResponseDTO;
+import com.biblioteca.reservation_service.infraestructure.controller.dto.out.ReservationResponseDTO;
 
 import java.util.List;
 

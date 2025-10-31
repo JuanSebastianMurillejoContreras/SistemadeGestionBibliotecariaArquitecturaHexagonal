@@ -1,15 +1,14 @@
 package com.biblioteca.reservation_service.infraestructure.mapper;
 
-import com.biblioteca.library_service.book.infraestructure.persistance.BookEntity;
-import com.biblioteca.library_service.reservation.domain.model.Reservation;
-import com.biblioteca.library_service.reservation.infraestructure.controller.dto.input.ReservationCreateDTO;
-import com.biblioteca.library_service.reservation.infraestructure.controller.dto.input.ReservationDTO;
-import com.biblioteca.library_service.reservation.infraestructure.controller.dto.input.ReservationRequestDTO;
-import com.biblioteca.library_service.reservation.infraestructure.controller.dto.input.ReservationUpdateDTO;
-import com.biblioteca.library_service.reservation.infraestructure.controller.dto.out.ReservationListResponseDTO;
-import com.biblioteca.library_service.reservation.infraestructure.controller.dto.out.ReservationResponseDTO;
-import com.biblioteca.library_service.reservation.infraestructure.persistance.ReservationEntity;
-import com.biblioteca.usuario_service.infraestructura.persistance.UsuarioEntity;
+import com.biblioteca.reservation_service.domain.model.Reservation;
+import com.biblioteca.reservation_service.infraestructure.controller.dto.input.ReservationCreateDTO;
+import com.biblioteca.reservation_service.infraestructure.controller.dto.input.ReservationDTO;
+import com.biblioteca.reservation_service.infraestructure.controller.dto.input.ReservationRequestDTO;
+import com.biblioteca.reservation_service.infraestructure.controller.dto.input.ReservationUpdateDTO;
+import com.biblioteca.reservation_service.infraestructure.controller.dto.out.ReservationListResponseDTO;
+import com.biblioteca.reservation_service.infraestructure.controller.dto.out.ReservationResponseDTO;
+import com.biblioteca.reservation_service.infraestructure.persistance.ReservationEntity;
+
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
@@ -24,44 +23,11 @@ import java.util.stream.Collectors;
 @Mapper(componentModel = "spring")
 public interface IMapperReservation {
 
-    @Named("mapUsuarioIdToEntity")
-    default UsuarioEntity mapUsuarioIdToEntity(Long id) {
-        if (id == null) return null;
-        UsuarioEntity user = new UsuarioEntity();
-        user.setId(id);
-        return user;
-    }
-
-    @Named("mapUsuarioEntityToId")
-    default Long mapUsuarioEntityToId(UsuarioEntity user) {
-        return user != null ? user.getId() : null;
-    }
-
-    @Named("mapBookIdToEntity")
-    default BookEntity mapBookIdToEntity(Long id) {
-        if (id == null) return null;
-        BookEntity book = new BookEntity();
-        book.setId(id);
-        return book;
-    }
-
-    @Named("mapBookEntityToId")
-    default Long mapBookEntityToId(BookEntity book) {
-        return book != null ? book.getId() : null;
-    }
-
-    @Mapping(source = "usuarioId", target = "usuario", qualifiedByName = "mapUsuarioIdToEntity")
-    @Mapping(source = "bookId", target = "book", qualifiedByName = "mapBookIdToEntity")
     ReservationEntity toEntity(Reservation reservation);
 
-    @Mapping(source = "usuario", target = "usuarioId", qualifiedByName = "mapUsuarioEntityToId")
-    @Mapping(source = "book", target = "bookId", qualifiedByName = "mapBookEntityToId")
     Reservation toDomain(ReservationEntity reservationEntity);
 
-    @Mapping(source = "usuarioId", target = "usuarioId")
-    @Mapping(source = "bookId", target = "bookId")
     ReservationDTO toDTO(Reservation reservation);
-
 
     List<ReservationResponseDTO> reservationDTOListToReservationResponseDTOList(List<ReservationDTO> reservationDTOs);
 

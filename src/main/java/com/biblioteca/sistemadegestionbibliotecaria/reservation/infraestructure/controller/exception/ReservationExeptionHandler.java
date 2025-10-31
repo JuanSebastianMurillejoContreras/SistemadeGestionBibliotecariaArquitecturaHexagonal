@@ -1,8 +1,8 @@
-package com.biblioteca.library_service.reservation.infraestructure.controller.exception;
+package com.biblioteca.reservation_service.infraestructure.controller.exception;
 
-import com.biblioteca.library_service.reservation.domain.exception.ReservationException;
-import com.biblioteca.library_service.reservation.domain.exception.ReservationNotFoundException;
-import com.biblioteca.library_service.reservation.infraestructure.controller.dto.out.ReservationErrorResponse;
+import com.biblioteca.reservation_service.domain.exception.ReservationException;
+import com.biblioteca.reservation_service.domain.exception.ReservationNotFoundException;
+import com.biblioteca.reservation_service.infraestructure.controller.dto.out.ReservationErrorResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;

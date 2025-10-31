@@ -1,7 +1,6 @@
 package com.biblioteca.reservation_service.infraestructure.persistance;
 
-import com.biblioteca.library_service.book.infraestructure.persistance.BookEntity;
-import com.biblioteca.usuario_service.infraestructura.persistance.UsuarioEntity;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,16 +20,14 @@ public class ReservationEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "usuario_id", nullable = false)
-    private UsuarioEntity usuario;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "book_id", nullable = false)
-    private BookEntity book;
-
     @Column(nullable = false)
     private LocalDateTime dateReservation;
+
+    @Column(nullable = false)
+    private Long usuarioId;
+
+    @Column(nullable = false)
+    private Long bookId;
 
     @PrePersist
     public void prePersist() {

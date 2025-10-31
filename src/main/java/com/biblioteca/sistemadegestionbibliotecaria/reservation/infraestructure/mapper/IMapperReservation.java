@@ -1,14 +1,14 @@
-package com.biblioteca.library_service.reservation.infraestructure.mapper;
+package com.biblioteca.reservation_service.infraestructure.mapper;
 
 import com.biblioteca.library_service.book.infraestructure.persistance.BookEntity;
-import com.biblioteca.library_service.reservation.domain.model.Reservation;
-import com.biblioteca.library_service.reservation.infraestructure.controller.dto.input.ReservationCreateDTO;
-import com.biblioteca.library_service.reservation.infraestructure.controller.dto.input.ReservationDTO;
-import com.biblioteca.library_service.reservation.infraestructure.controller.dto.input.ReservationRequestDTO;
-import com.biblioteca.library_service.reservation.infraestructure.controller.dto.input.ReservationUpdateDTO;
-import com.biblioteca.library_service.reservation.infraestructure.controller.dto.out.ReservationListResponseDTO;
-import com.biblioteca.library_service.reservation.infraestructure.controller.dto.out.ReservationResponseDTO;
-import com.biblioteca.library_service.reservation.infraestructure.persistance.ReservationEntity;
+import com.biblioteca.reservation_service.domain.model.Reservation;
+import com.biblioteca.reservation_service.infraestructure.controller.dto.input.ReservationCreateDTO;
+import com.biblioteca.reservation_service.infraestructure.controller.dto.input.ReservationDTO;
+import com.biblioteca.reservation_service.infraestructure.controller.dto.input.ReservationRequestDTO;
+import com.biblioteca.reservation_service.infraestructure.controller.dto.input.ReservationUpdateDTO;
+import com.biblioteca.reservation_service.infraestructure.controller.dto.out.ReservationListResponseDTO;
+import com.biblioteca.reservation_service.infraestructure.controller.dto.out.ReservationResponseDTO;
+import com.biblioteca.reservation_service.infraestructure.persistance.ReservationEntity;
 import com.biblioteca.usuario_service.infraestructura.persistance.UsuarioEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

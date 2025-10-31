@@ -1,22 +1,23 @@
 package com.biblioteca.reservation_service.infraestructure.controller;
 
-import com.biblioteca.library_service.reservation.aplication.port.in.CancelReservationUseCase;
-import com.biblioteca.library_service.reservation.aplication.port.in.CreateReservationUseCase;
-import com.biblioteca.library_service.reservation.aplication.port.in.GetReservationUseCase;
-import com.biblioteca.library_service.reservation.domain.model.Reservation;
-import com.biblioteca.library_service.reservation.infraestructure.controller.dto.input.ReservationCreateDTO;
-import com.biblioteca.library_service.reservation.infraestructure.controller.dto.input.ReservationDTO;
-import com.biblioteca.library_service.reservation.infraestructure.controller.dto.input.ReservationRequestDTO;
-import com.biblioteca.library_service.reservation.infraestructure.controller.dto.input.ReservationUpdateDTO;
-import com.biblioteca.library_service.reservation.infraestructure.controller.dto.out.ReservationListResponseDTO;
-import com.biblioteca.library_service.reservation.infraestructure.controller.dto.out.ReservationResponseDTO;
-import com.biblioteca.library_service.reservation.infraestructure.mapper.IMapperReservation;
+import com.biblioteca.reservation_service.aplication.port.in.CancelReservationUseCase;
+import com.biblioteca.reservation_service.aplication.port.in.CreateReservationUseCase;
+import com.biblioteca.reservation_service.aplication.port.in.GetReservationUseCase;
+import com.biblioteca.reservation_service.domain.model.Reservation;
+import com.biblioteca.reservation_service.infraestructure.controller.dto.input.ReservationCreateDTO;
+import com.biblioteca.reservation_service.infraestructure.controller.dto.input.ReservationDTO;
+import com.biblioteca.reservation_service.infraestructure.controller.dto.input.ReservationRequestDTO;
+import com.biblioteca.reservation_service.infraestructure.controller.dto.input.ReservationUpdateDTO;
+import com.biblioteca.reservation_service.infraestructure.controller.dto.out.ReservationListResponseDTO;
+import com.biblioteca.reservation_service.infraestructure.controller.dto.out.ReservationResponseDTO;
+import com.biblioteca.reservation_service.infraestructure.mapper.IMapperReservation;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor

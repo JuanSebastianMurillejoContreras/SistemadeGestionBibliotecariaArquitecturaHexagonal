@@ -1,10 +1,10 @@
-package com.biblioteca.library_service.reservation.infraestructure.persistance;
+package com.biblioteca.reservation_service.infraestructure.persistance;
 
-import com.biblioteca.library_service.reservation.aplication.port.out.ReservationRepositoryPort;
-import com.biblioteca.library_service.reservation.domain.exception.ReservationErrorMessage;
-import com.biblioteca.library_service.reservation.domain.exception.ReservationException;
-import com.biblioteca.library_service.reservation.domain.model.Reservation;
-import com.biblioteca.library_service.reservation.infraestructure.mapper.IMapperReservation;
+import com.biblioteca.reservation_service.aplication.port.out.ReservationRepositoryPort;
+import com.biblioteca.reservation_service.domain.exception.ReservationErrorMessage;
+import com.biblioteca.reservation_service.domain.exception.ReservationException;
+import com.biblioteca.reservation_service.domain.model.Reservation;
+import com.biblioteca.reservation_service.infraestructure.mapper.IMapperReservation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

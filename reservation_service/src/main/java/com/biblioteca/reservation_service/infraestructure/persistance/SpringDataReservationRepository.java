@@ -9,6 +9,6 @@ import org.springframework.stereotype.Repository;
 public interface SpringDataReservationRepository extends JpaRepository<ReservationEntity, Long> {
 
     ReservationEntity save(ReservationEntity reservation);
-    boolean existsByBook_IdAndIsActive(Long bookId, Boolean isActive);
-    Page<ReservationEntity> findByIsActiveAndUsuario_Id(Boolean isActive, Long usuarioId, Pageable pageable);
+    boolean existsByBookIdAndIsActive(Long bookId, Boolean isActive);
+    Page<ReservationEntity> findByIsActiveAndUsuarioId(Boolean isActive, Long usuarioId, Pageable pageable);
 }

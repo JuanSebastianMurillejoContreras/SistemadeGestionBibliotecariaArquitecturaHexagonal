@@ -1,4 +1,4 @@
-package com.biblioteca.library_service.reservation.infraestructure.persistance;
+package com.biblioteca.reservation_service.infraestructure.persistance;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

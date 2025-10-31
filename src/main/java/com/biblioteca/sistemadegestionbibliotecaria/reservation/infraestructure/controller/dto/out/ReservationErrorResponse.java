@@ -1,4 +1,4 @@
-package com.biblioteca.library_service.reservation.infraestructure.controller.dto.out;
+package com.biblioteca.reservation_service.infraestructure.controller.dto.out;
 
 public record ReservationErrorResponse(
         String message
