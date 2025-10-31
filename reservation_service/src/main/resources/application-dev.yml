@@ -23,3 +23,6 @@ server:
 book:
   service:
     url: http://localhost:8082/api/v1/books
+usuario:
+  service:
+    url: http://localhost:8085/api/v1/users

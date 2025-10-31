@@ -13,7 +13,7 @@ services:
       timeout: 5s
       retries: 5
 
-  app:
+  author_service:
     build: .
     ports:
       - "8080:8080"

@@ -1,3 +1,5 @@
 spring:
   application:
     name: author_service
+  profiles:
+    active: dev
