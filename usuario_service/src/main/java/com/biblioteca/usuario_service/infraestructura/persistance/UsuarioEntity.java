@@ -1,13 +1,14 @@
 package com.biblioteca.usuario_service.infraestructura.persistance;
 
-import com.biblioteca.library_service.reservation.infraestructure.persistance.ReservationEntity;
+
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
 import java.util.Objects;
+
 
 @Getter
 @Setter
@@ -25,9 +26,6 @@ public class UsuarioEntity {
 
     @Column(nullable = false, unique = true)
     private String email;
-
-    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
-    private List<ReservationEntity> lstReservations;
 
     @Override
     public boolean equals(Object o) {

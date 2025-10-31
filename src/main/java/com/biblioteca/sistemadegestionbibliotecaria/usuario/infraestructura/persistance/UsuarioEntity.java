@@ -1,4 +1,4 @@
-package com.biblioteca.library_service.usuario.infraestructura.persistance;
+package com.biblioteca.usuario_service.infraestructura.persistance;
 
 import com.biblioteca.library_service.reservation.infraestructure.persistance.ReservationEntity;
 import jakarta.persistence.*;

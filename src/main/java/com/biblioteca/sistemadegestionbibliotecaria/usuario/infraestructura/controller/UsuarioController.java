@@ -1,12 +1,12 @@
-package com.biblioteca.library_service.usuario.infraestructura.controller;
+package com.biblioteca.usuario_service.infraestructura.controller;
 
-import com.biblioteca.library_service.usuario.aplication.port.in.CreateUserUseCase;
-import com.biblioteca.library_service.usuario.domain.model.Usuario;
-import com.biblioteca.library_service.usuario.infraestructura.controller.api.UsuarioApi;
-import com.biblioteca.library_service.usuario.infraestructura.controller.dto.input.UsuarioDTO;
-import com.biblioteca.library_service.usuario.infraestructura.controller.dto.input.UsuarioRequestDTO;
-import com.biblioteca.library_service.usuario.infraestructura.controller.dto.out.UsuarioResponseDTO;
-import com.biblioteca.library_service.usuario.infraestructura.mapper.IUsuarioMapper;
+import com.biblioteca.usuario_service.aplication.port.in.CreateUserUseCase;
+import com.biblioteca.usuario_service.domain.model.Usuario;
+import com.biblioteca.usuario_service.infraestructura.controller.api.UsuarioApi;
+import com.biblioteca.usuario_service.infraestructura.controller.dto.input.UsuarioDTO;
+import com.biblioteca.usuario_service.infraestructura.controller.dto.input.UsuarioRequestDTO;
+import com.biblioteca.usuario_service.infraestructura.controller.dto.out.UsuarioResponseDTO;
+import com.biblioteca.usuario_service.infraestructura.mapper.IUsuarioMapper;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

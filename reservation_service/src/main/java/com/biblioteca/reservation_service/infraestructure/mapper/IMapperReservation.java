@@ -9,7 +9,7 @@ import com.biblioteca.library_service.reservation.infraestructure.controller.dto
 import com.biblioteca.library_service.reservation.infraestructure.controller.dto.out.ReservationListResponseDTO;
 import com.biblioteca.library_service.reservation.infraestructure.controller.dto.out.ReservationResponseDTO;
 import com.biblioteca.library_service.reservation.infraestructure.persistance.ReservationEntity;
-import com.biblioteca.library_service.usuario.infraestructura.persistance.UsuarioEntity;
+import com.biblioteca.usuario_service.infraestructura.persistance.UsuarioEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;

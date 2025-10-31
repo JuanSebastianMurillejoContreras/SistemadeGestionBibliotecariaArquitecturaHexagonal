@@ -1,4 +1,4 @@
-package com.biblioteca.library_service.usuario.domain.model;
+package com.biblioteca.usuario_service.domain.model;
 
 public record Usuario(
     Long id,

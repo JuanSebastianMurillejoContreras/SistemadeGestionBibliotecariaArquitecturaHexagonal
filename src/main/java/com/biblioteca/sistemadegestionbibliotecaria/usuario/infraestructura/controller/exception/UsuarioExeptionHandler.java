@@ -1,8 +1,8 @@
-package com.biblioteca.library_service.usuario.infraestructura.controller.exception;
+package com.biblioteca.usuario_service.infraestructura.controller.exception;
 
-import com.biblioteca.library_service.usuario.domain.exception.UsuarioException;
-import com.biblioteca.library_service.usuario.domain.exception.UsuarioNotFoundException;
-import com.biblioteca.library_service.usuario.infraestructura.controller.dto.out.UsuarioErrorResponse;
+import com.biblioteca.usuario_service.domain.exception.UsuarioException;
+import com.biblioteca.usuario_service.domain.exception.UsuarioNotFoundException;
+import com.biblioteca.usuario_service.infraestructura.controller.dto.out.UsuarioErrorResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;

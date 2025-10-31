@@ -1,6 +1,6 @@
-package com.biblioteca.library_service.usuario.aplication.port.in;
+package com.biblioteca.usuario_service.aplication.port.in;
 
-import com.biblioteca.library_service.usuario.domain.model.Usuario;
+import com.biblioteca.usuario_service.domain.model.Usuario;
 
 public interface CreateUserUseCase {
 

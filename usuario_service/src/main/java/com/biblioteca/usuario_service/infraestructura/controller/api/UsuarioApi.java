@@ -1,7 +1,7 @@
 package com.biblioteca.usuario_service.infraestructura.controller.api;
 
-import com.biblioteca.library_service.usuario.infraestructura.controller.dto.input.UsuarioRequestDTO;
-import com.biblioteca.library_service.usuario.infraestructura.controller.dto.out.UsuarioResponseDTO;
+import com.biblioteca.usuario_service.infraestructura.controller.dto.input.UsuarioRequestDTO;
+import com.biblioteca.usuario_service.infraestructura.controller.dto.out.UsuarioResponseDTO;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -9,6 +9,9 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Tag(name = "Usuarios", description = "Gestionar usuarios")
 @RequestMapping("/api/v1/usuario")

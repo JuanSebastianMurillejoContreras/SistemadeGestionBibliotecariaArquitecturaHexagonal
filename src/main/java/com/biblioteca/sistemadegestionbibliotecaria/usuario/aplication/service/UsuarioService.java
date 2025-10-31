@@ -1,10 +1,10 @@
-package com.biblioteca.library_service.usuario.aplication.service;
+package com.biblioteca.usuario_service.aplication.service;
 
-import com.biblioteca.library_service.usuario.aplication.port.in.CreateUserUseCase;
-import com.biblioteca.library_service.usuario.aplication.port.out.UsuarioRepositoryPort;
-import com.biblioteca.library_service.usuario.domain.exception.UsuarioErrorMessage;
-import com.biblioteca.library_service.usuario.domain.exception.UsuarioException;
-import com.biblioteca.library_service.usuario.domain.model.Usuario;
+import com.biblioteca.usuario_service.aplication.port.in.CreateUserUseCase;
+import com.biblioteca.usuario_service.aplication.port.out.UsuarioRepositoryPort;
+import com.biblioteca.usuario_service.domain.exception.UsuarioErrorMessage;
+import com.biblioteca.usuario_service.domain.exception.UsuarioException;
+import com.biblioteca.usuario_service.domain.model.Usuario;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

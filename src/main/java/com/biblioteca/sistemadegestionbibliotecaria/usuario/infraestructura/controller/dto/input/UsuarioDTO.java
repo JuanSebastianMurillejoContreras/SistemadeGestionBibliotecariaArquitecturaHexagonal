@@ -1,4 +1,4 @@
-package com.biblioteca.library_service.usuario.infraestructura.controller.dto.input;
+package com.biblioteca.usuario_service.infraestructura.controller.dto.input;
 
 public record UsuarioDTO (
         String name,

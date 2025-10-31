@@ -1,11 +1,11 @@
 package com.biblioteca.library_service.testUnitarios.service.usuario;
 
-import com.biblioteca.library_service.usuario.aplication.port.out.UsuarioRepositoryPort;
-import com.biblioteca.library_service.usuario.aplication.service.UsuarioService;
-import com.biblioteca.library_service.usuario.domain.exception.UsuarioErrorMessage;
-import com.biblioteca.library_service.usuario.domain.exception.UsuarioException;
-import com.biblioteca.library_service.usuario.domain.model.Usuario;
-import com.biblioteca.library_service.usuario.infraestructura.mapper.IUsuarioMapper;
+import com.biblioteca.usuario_service.aplication.port.out.UsuarioRepositoryPort;
+import com.biblioteca.usuario_service.aplication.service.UsuarioService;
+import com.biblioteca.usuario_service.domain.exception.UsuarioErrorMessage;
+import com.biblioteca.usuario_service.domain.exception.UsuarioException;
+import com.biblioteca.usuario_service.domain.model.Usuario;
+import com.biblioteca.usuario_service.infraestructura.mapper.IUsuarioMapper;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mapstruct.factory.Mappers;

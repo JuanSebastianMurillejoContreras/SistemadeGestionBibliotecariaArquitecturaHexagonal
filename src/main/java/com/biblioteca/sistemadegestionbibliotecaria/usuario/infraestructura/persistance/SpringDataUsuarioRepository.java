@@ -1,4 +1,4 @@
-package com.biblioteca.library_service.usuario.infraestructura.persistance;
+package com.biblioteca.usuario_service.infraestructura.persistance;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
