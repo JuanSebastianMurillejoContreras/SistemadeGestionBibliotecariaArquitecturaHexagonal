@@ -1,5 +1,5 @@
 spring:
   application:
-    name: library_service
+    name: api_gateway
   profiles:
     active: ${SPRING_PROFILES_ACTIVE:dev}

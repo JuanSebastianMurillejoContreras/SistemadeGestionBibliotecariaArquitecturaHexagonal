@@ -3,7 +3,7 @@ WORKDIR /app
 COPY . .
 RUN chmod +x mvnw && ./mvnw clean package -DskipTests
 
-FROM eclipse-temurin:17-jdk-alpine
+FROM eclipse-temurin:17-jre-alpine
 EXPOSE 8081
 WORKDIR /app
 COPY --from=builder /app/target/*.jar app.jar

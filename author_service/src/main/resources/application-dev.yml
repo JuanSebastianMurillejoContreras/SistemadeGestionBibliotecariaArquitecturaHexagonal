@@ -29,3 +29,8 @@ server:
 book:
   service:
     url: http://localhost:8082/api/v1/books
+
+logging:
+  level:
+    root: debug
+

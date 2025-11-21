@@ -1,3 +1,6 @@
 spring:
   application:
     name: library_service
+  profiles:
+    active: ${SPRING_PROFILES_ACTIVE:dev}
+

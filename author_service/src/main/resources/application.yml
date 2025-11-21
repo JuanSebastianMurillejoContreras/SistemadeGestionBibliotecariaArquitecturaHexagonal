@@ -2,4 +2,5 @@ spring:
   application:
     name: author_service
   profiles:
-    active: dev
+    active: ${SPRING_PROFILES_ACTIVE:dev}
+

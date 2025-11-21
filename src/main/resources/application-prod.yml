@@ -1,8 +1,0 @@
-spring:
-  datasource:
-    url: jdbc:postgresql://localhost:5432/biblioteca
-    username: postgres
-    password: 12345
-  jpa:
-    hibernate:
-      ddl-auto: create-drop
