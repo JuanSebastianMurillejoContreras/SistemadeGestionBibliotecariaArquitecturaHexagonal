@@ -1,45 +1,15 @@
-server:
-  port: 8080
-
 spring:
+  application:
+    name: demo
   cloud:
     gateway:
       server:
-        webflux:
-          globalcors:
-            cors-configurations:
-              '[/**]':
-                          allowedOrigins: "*"
-                          allowedHeaders: "*"
-                          allowedMethods:
-                            - GET
-                            - POST
-                            - PUT
-                            - DELETE
+        webmvc:
           routes:
-            # Ruta larga: mantiene /api/v1/authors/**
-                    - id: author_service
-                      uri: http://localhost:8081
-                      predicates:
-                        - Path=/api/v1/authors/**
-
-                    # Ruta corta: /authors/** -> /api/v1/authors/**
-                    - id: author_service_short
-                      uri: http://localhost:8081
-                      predicates:
-                        - Path=/authors/**
-                      filters:
-                        - RewritePath=/authors/(?<segment>.*), /api/v1/authors/${segment}
-
+            - id: service_authors
+              uri: http://localhost:8081
+              predicates:
+                - Path=/api/v1/authors/**
 logging:
   level:
-    org.springframework.cloud.gateway: DEBUG
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"
-  endpoint:
-    gateway:
-      access: none
+    root: debug
