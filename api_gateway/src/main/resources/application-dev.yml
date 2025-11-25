@@ -10,6 +10,23 @@ spring:
               uri: http://localhost:8081
               predicates:
                 - Path=/api/v1/authors/**
+            - id: service_book
+              uri: http://localhost:8082
+              predicates:
+                - Path=/api/v1/books/**
+            - id: service_library
+              uri: http://localhost:8083
+              predicates:
+                - Path=/api/v1/libraries/**
+            - id: service_reservation
+              uri: http://localhost:8084
+              predicates:
+                - Path=/api/v1/reservations/**
+            - id: service_users
+              uri: http://localhost:8085
+              predicates:
+                - Path=/api/v1/usuario/**
+
 logging:
   level:
     root: debug
