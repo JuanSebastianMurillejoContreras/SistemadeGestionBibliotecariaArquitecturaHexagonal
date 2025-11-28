@@ -1,0 +1,10 @@
+FROM eclipse-temurin:17-jdk-alpine as builder
+WORKDIR /app
+COPY . .
+RUN chmod +x mvnw && ./mvnw clean package -DskipTests
+
+FROM eclipse-temurin:17-jre-alpine
+EXPOSE 8087
+WORKDIR /app
+COPY --from=builder /app/target/*.jar app.jar
+ENTRYPOINT ["java", "-jar", "app.jar"]

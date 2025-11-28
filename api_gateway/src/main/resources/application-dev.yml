@@ -7,7 +7,7 @@ spring:
         webmvc:
           routes:
             - id: service_authors
-              uri: http://localhost:8081
+              uri: http://author_service:8081
               predicates:
                 - Path=/api/v1/authors/**
             - id: service_book
@@ -25,7 +25,7 @@ spring:
             - id: service_users
               uri: http://localhost:8085
               predicates:
-                - Path=/api/v1/usuario/**
+                - Path=/api/v1/users/**
 
 logging:
   level:
