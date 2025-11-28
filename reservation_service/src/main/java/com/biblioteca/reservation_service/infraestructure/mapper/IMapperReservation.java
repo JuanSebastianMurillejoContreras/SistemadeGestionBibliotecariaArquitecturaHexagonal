@@ -12,21 +12,22 @@ import com.biblioteca.reservation_service.infraestructure.persistance.Reservatio
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
-import org.mapstruct.Named;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 import java.util.stream.Collectors;
-
 @Mapper(componentModel = "spring")
 public interface IMapperReservation {
 
+    @Mapping(target = "id", source = "id")
     ReservationEntity toEntity(Reservation reservation);
 
+    @Mapping(target = "id", source = "id")
     Reservation toDomain(ReservationEntity reservationEntity);
 
+    @Mapping(target = "id", source = "id")
     ReservationDTO toDTO(Reservation reservation);
 
     List<ReservationResponseDTO> reservationDTOListToReservationResponseDTOList(List<ReservationDTO> reservationDTOs);
@@ -53,10 +54,20 @@ public interface IMapperReservation {
     }
 
     ReservationCreateDTO reservationRequestDTOToReservationCreateDTO(ReservationRequestDTO reservationRequestDTO);
+
     Reservation reservationCreateDTOToReservation(ReservationCreateDTO reservationCreateDTO);
+
+    @Mapping(target = "id", source = "id")
     ReservationResponseDTO reservationToReservationResponseDTO(Reservation reservation);
+
     ReservationDTO ReservationUpdateDTOToReservation(ReservationUpdateDTO reservationUpdateDTO);
+
+    @Mapping(target = "id", source = "id")
     Reservation reservationDTOToReservation(ReservationDTO reservationDTO);
+
+    @Mapping(target = "id", source = "id")
     ReservationDTO reservationToReservationDTO(Reservation reservation);
+
+    @Mapping(target = "id", source = "id")
     ReservationResponseDTO reservationDTOToReservationResponseDTO(ReservationDTO reservationDTO);
 }

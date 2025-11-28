@@ -1,7 +1,5 @@
-package com.biblioteca.book_service.infraestructure.controller.exception;
+package com.biblioteca.book_service.domain.exception;
 
-import com.biblioteca.book_service.domain.exception.BookException;
-import com.biblioteca.book_service.domain.exception.BookNotFoundException;
 import com.biblioteca.book_service.infraestructure.controller.dto.out.BookErrorResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.FieldError;

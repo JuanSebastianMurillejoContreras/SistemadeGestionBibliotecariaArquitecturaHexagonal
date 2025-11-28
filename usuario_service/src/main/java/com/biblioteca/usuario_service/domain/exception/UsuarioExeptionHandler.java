@@ -1,7 +1,5 @@
-package com.biblioteca.usuario_service.infraestructura.controller.exception;
+package com.biblioteca.usuario_service.domain.exception;
 
-import com.biblioteca.usuario_service.domain.exception.UsuarioException;
-import com.biblioteca.usuario_service.domain.exception.UsuarioNotFoundException;
 import com.biblioteca.usuario_service.infraestructura.controller.dto.out.UsuarioErrorResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.FieldError;

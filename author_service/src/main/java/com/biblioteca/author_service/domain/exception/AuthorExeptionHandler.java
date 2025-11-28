@@ -1,8 +1,7 @@
-package com.biblioteca.library_service.infraestructure.controller.exception;
+package com.biblioteca.author_service.domain.exception;
 
-import com.biblioteca.library_service.domain.exception.LibraryException;
-import com.biblioteca.library_service.domain.exception.LibraryNotFoundException;
-import com.biblioteca.library_service.infraestructure.controller.dto.out.LibraryErrorResponse;
+
+import com.biblioteca.author_service.infraestructure.controller.dto.out.AuthorErrorResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -14,33 +13,37 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestControllerAdvice
-public class LibraryExeptionHandler {
+public class AuthorExeptionHandler {
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public LibraryErrorResponse handleValidationExceptions(MethodArgumentNotValidException ex) {
+    public AuthorErrorResponse handleValidationExceptions(MethodArgumentNotValidException ex) {
         List<String> errors = ex.getBindingResult()
                 .getAllErrors()
                 .stream()
                 .map(error -> ((FieldError) error).getField() + ": " + error.getDefaultMessage())
                 .toList();
-        return new LibraryErrorResponse(errors);
+        return new AuthorErrorResponse(errors);
     }
 
-    @ExceptionHandler(LibraryNotFoundException.class)
+    @ExceptionHandler(AuthorNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public LibraryErrorResponse handleLibraryNotFoundException(LibraryNotFoundException ex) {
+    public AuthorErrorResponse handleAuthorNotFoundException(AuthorNotFoundException ex) {
+
         List<String> errors = new ArrayList<>();
         errors.add(ex.getMessage());
-        return new LibraryErrorResponse(errors);
+
+        return new AuthorErrorResponse(errors);
     }
 
-    @ExceptionHandler(LibraryException.class)
+    @ExceptionHandler(AuthorException.class)
     @ResponseStatus(HttpStatus.CONFLICT)
-    public LibraryErrorResponse handleLibraryException(LibraryException ex) {
+    public AuthorErrorResponse handleAuthorException(AuthorException ex) {
+
         List<String> errors = new ArrayList<>();
         errors.add(ex.getMessage());
-        return new LibraryErrorResponse(errors);
+
+        return new AuthorErrorResponse(errors);
     }
 
 }
